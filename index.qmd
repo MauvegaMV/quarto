@@ -1,0 +1,7 @@
+---
+toc-title: "Contenidos"
+---
+
+# Bienvenida {.unnumbered}
+
+Temas de capacitación de la Mesa de Monitoreo por Puntos del [Sistema Nacional de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (SIMOCUTE)](https://simocute.go.cr/).

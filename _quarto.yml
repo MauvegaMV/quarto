@@ -1,0 +1,21 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Desarrollo de capacidades"
+  subtitle: "Mesa de monitoreo por puntos"
+  chapters:
+    - index.qmd
+    - 01-markdown.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
