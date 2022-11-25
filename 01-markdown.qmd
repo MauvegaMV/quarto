@@ -4,7 +4,6 @@ toc-title: "Contenidos"
 
 # Markdown
 
-
 ## Resumen
 Markdown es un lenguaje de marcado ligero ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible, entre otras aplicaciones. Incluye marcas para especificar aspectos de estructura, semántica y estilo de un documento. Se basa en texto simple y se convierte fácilmente a HTML, el lenguaje de marcado más utilizado en páginas web.
 
@@ -421,10 +420,10 @@ Se definen con guiones (`-`) o asteriscos (`*`) antes de cada elemento.
 
 ## Ejercicios
 1.  Con RStudio, cree un documento Markdown llamado `README.md` y escriba en este un breve *curriculum* académico o profesional.
-    -   Incluya información como: nombre, fotografía, datos de contacto, áreas de interés, carrera, cursos aprobados, publicaciones, etc.
-    -   Puede usar información ficticia (**no incluya datos confidenciales o sensibles**).
-    -   Especifique la fuente de las imágenes (y de cualquier otra información para la que sea necesario) y no utilice imágenes para las que no tiene autorización. Considere utilizar sitios con imágenes con licencias abiertas (ej. [Wikimedia Commons](https://commons.wikimedia.org/), [Unsplash](https://unsplash.com/), [FreeImages](https://www.freeimages.com/)).
-    -   Asegúrese de utilizar los siguientes elementos de sintaxis Markdown:
+    a. Incluya información como: nombre, fotografía, datos de contacto, áreas de interés, carrera, cursos aprobados, publicaciones, etc.
+    b. Puede usar información ficticia (**no incluya datos confidenciales o sensibles**).
+    c. Especifique la fuente de las imágenes (y de cualquier otra información para la que sea necesario) y no utilice imágenes para las que no tiene autorización. Considere utilizar sitios con imágenes con licencias abiertas (ej. [Wikimedia Commons](https://commons.wikimedia.org/), [Unsplash](https://unsplash.com/), [FreeImages](https://www.freeimages.com/)).
+    d. Asegúrese de utilizar los siguientes elementos de sintaxis Markdown:
         -   Varios niveles de encabezados.
         -   Negritas e itálicas.
         -   Listas.
