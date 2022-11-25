@@ -174,7 +174,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#instalación-de-software" id="toc-instalación-de-software" class="nav-link" data-scroll-target="#instalación-de-software"> <span class="header-section-number">1.2.1</span> Instalación de software</a></li>
   <li><a href="#tutoriales" id="toc-tutoriales" class="nav-link" data-scroll-target="#tutoriales"> <span class="header-section-number">1.2.2</span> Tutoriales</a></li>
-  <li><a href="#otros" id="toc-otros" class="nav-link" data-scroll-target="#otros"> <span class="header-section-number">1.2.3</span> Otros</a></li>
   </ul></li>
   <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link" data-scroll-target="#descripción-general"> <span class="header-section-number">1.3</span> Descripción general</a>
   <ul class="collapse">
@@ -193,6 +192,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#itálica" id="toc-itálica" class="nav-link" data-scroll-target="#itálica"> <span class="header-section-number">1.6.4</span> Itálica</a></li>
   <li><a href="#citas-textuales" id="toc-citas-textuales" class="nav-link" data-scroll-target="#citas-textuales"> <span class="header-section-number">1.6.5</span> Citas textuales</a></li>
   <li><a href="#enlaces-hipervínculos" id="toc-enlaces-hipervínculos" class="nav-link" data-scroll-target="#enlaces-hipervínculos"> <span class="header-section-number">1.6.6</span> Enlaces (hipervínculos)</a></li>
+  <li><a href="#imágenes" id="toc-imágenes" class="nav-link" data-scroll-target="#imágenes"> <span class="header-section-number">1.6.7</span> Imágenes</a></li>
+  <li><a href="#listas-numeradas" id="toc-listas-numeradas" class="nav-link" data-scroll-target="#listas-numeradas"> <span class="header-section-number">1.6.8</span> Listas numeradas</a></li>
+  <li><a href="#listas-no-numeradas" id="toc-listas-no-numeradas" class="nav-link" data-scroll-target="#listas-no-numeradas"> <span class="header-section-number">1.6.9</span> Listas no numeradas</a></li>
   </ul></li>
   <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"> <span class="header-section-number">1.7</span> Ejercicios</a></li>
   <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"> <span class="header-section-number">1.8</span> Recursos de interés</a></li>
@@ -220,18 +222,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="resumen" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="resumen"><span class="header-section-number">1.1</span> Resumen</h2>
-<p>Markdown es un lenguaje de marcado ligero ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible. En este capítulo, se explican los principales elementos de la sintaxis de Markdown, cómo utilizarlos en la elaboración de documentos y cómo estos en la Web.</p>
+<p>Markdown es un lenguaje de marcado ligero ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible, entre otras aplicaciones. Incluye marcas para especificar aspectos de estructura, semántica y estilo de un documento. Se basa en texto simple y se convierte fácilmente a HTML, el lenguaje de marcado más utilizado en páginas web.</p>
+<p>Markdown puede emplearse junto con lenguajes de programación (ej. R, Python) para así combinar texto con código fuente, el cual inserta en los documentos salidas como tablas, gráficos y mapas, entre otras. Esta forma de trabajo facilita la automatización y la reproducibilidad de una investigación.</p>
+<p>En este capítulo, se explican los principales elementos de la sintaxis de Markdown y como utilizarlos en la creación de documentos.</p>
 </section>
 <section id="trabajo-previo" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="trabajo-previo"><span class="header-section-number">1.2</span> Trabajo previo</h2>
 <section id="instalación-de-software" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="instalación-de-software"><span class="header-section-number">1.2.1</span> Instalación de software</h3>
-<p>Para la edición de código Markdown, se recomienda instalar:</p>
+<p>Para la edición de código Markdown, en el contexto de la programación en R, se recomienda instalar:</p>
 <ul>
 <li><a href="https://cloud.r-project.org/">Sistema base del lenguaje R</a> (no es necesario para este capítulo, pero sí se utilizará más adelante)</li>
 <li><a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a></li>
 </ul>
-<p>Opcionalmente, puede instalarse el editor de código fuente <a href="https://code.visualstudio.com/">Visual Studio Code</a> u otro editor de texto.</p>
+<p>Opcionalmente, puede instalar <a href="https://code.visualstudio.com/">Visual Studio Code</a> u otro editor de código fuente.</p>
 </section>
 <section id="tutoriales" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="tutoriales"><span class="header-section-number">1.2.2</span> Tutoriales</h3>
@@ -239,22 +243,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://www.markdowntutorial.com/">Markdown Tutorial</a></li>
 </ul>
 </section>
-<section id="otros" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="otros"><span class="header-section-number">1.2.3</span> Otros</h3>
-<p>Para publicar documentos Markdown en la Web, cree una cuenta gratuita en la plataforma de desarrollo colaborativo <a href="https://github.com/">GitHub</a>.</p>
-</section>
 </section>
 <section id="descripción-general" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">1.3</span> Descripción general</h2>
-<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> es un <a href="https://es.wikipedia.org/wiki/Lenguaje_de_marcado">lenguaje de marcado</a>, creado en 2004 por John Gruber. Las “marcas” se utilizan para brindar información acerca de la presentación (ej. negritas, itálicas) o la estructura (ej. títulos, encabezados) de un documento. Markdown se caracteriza por ser más sencillo de leer y de usar que otros lenguajes de marcado (ej. <a href="https://es.wikipedia.org/wiki/HTML">Lenguaje de Marcado de Hipertexto o HTML</a>), por lo que se considera un <a href="https://es.wikipedia.org/wiki/Lenguaje_de_marcas_ligero">lenguaje de marcado ligero</a>.</p>
-<p>Los documentos escritos en Markdown pueden exportarse a una gran variedad de formatos (ej. HTML, DOC, PDF, LaTex) para ser usados en libros, presentaciones o páginas web, entre otros fines. Markdown es ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible.</p>
+<p><a href="https://daringfireball.net/projects/markdown/">Markdown</a> es un <a href="https://es.wikipedia.org/wiki/Lenguaje_de_marcado">lenguaje de marcado</a>, creado en 2004 por John Gruber y Aaron Swartz. Las “marcas” se utilizan para especificar aspectos de la estructura (ej. títulos, encabezados), estilo (ej. negritas, itálicas) y semántica de un documento. Markdown se caracteriza por ser más sencillo de leer y de usar que otros lenguajes de marcado (ej. <a href="https://es.wikipedia.org/wiki/HTML">Lenguaje de Marcado de Hipertexto o HTML</a>), por lo que se considera un <a href="https://es.wikipedia.org/wiki/Lenguaje_de_marcas_ligero">lenguaje de marcado ligero</a>.</p>
+<p>Los documentos escritos en Markdown pueden exportarse a una gran variedad de formatos (ej. HTML, DOC, PDF, LaTex) para ser usados en libros, presentaciones o páginas web, entre otros fines.</p>
 <section id="variaciones" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="variaciones"><span class="header-section-number">1.3.1</span> Variaciones</h3>
 <p>Las variaciones de Markdown, también llamadas <em>flavors</em>, son extensiones o modificaciones de la <a href="(https://daringfireball.net/projects/markdown/)">especificación original</a>. Entre las más populares están:</p>
 <ul>
 <li><a href="https://rmarkdown.rstudio.com/">R Markdown</a>: para el lenguaje R.</li>
-<li><a href="https://help.github.com/en/github/writing-on-github">GitHub Flavored Markdown</a>: para la plataforma GitHub.</li>
+<li><a href="https://quarto.org/">Quarto</a>: es la “siguiente generación” de R Markdown, con soporte para más lenguajes de programación (Python, Julia, Observable, R) y motores de procesamiento (Jupyter, Knitr), entre otras mejoras.</li>
 <li><a href="https://github.com/Python-Markdown/markdown">Python Markdown</a>: para el lenguaje Python.</li>
+<li><a href="https://help.github.com/en/github/writing-on-github">GitHub Flavored Markdown</a>: para la plataforma GitHub.</li>
 <li><a href="https://pandoc.org/MANUAL.html#pandocs-markdown">Pandoc’s Markdown</a>: para el programa <a href="https://pandoc.org/">Pandoc</a> de conversión entre formatos.</li>
 <li><a href="https://kramdown.gettalong.org/quickref.html">Kramdown</a>: para el lenguaje Ruby.</li>
 </ul>
@@ -277,7 +278,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Jupiter_and_the_Galilean_Satellites.jpg/168px-Jupiter_and_the_Galilean_Satellites.jpg)</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>**Figura 1**. Los cuatro satélites galileanos, </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>en una composición comparando sus tamaños con el tamaño de Júpiter. </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>en una composición que compara sus tamaños con el tamaño de Júpiter. </span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>En orden descendente, son *Ío*, *Europa*, *Ganimedes* y *Calisto*.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 <p>Y la siguiente es la manera en la que se visualiza el documento:</p>
@@ -286,14 +287,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="unnumbered anchored" data-anchor-id="los-satélites-galileanos">Los satélites galileanos</h3>
 <p>Se llaman <strong>satélites galileanos</strong> los cuatro satélites de Júpiter descubiertos en 1610 por <a href="https://es.wikipedia.org/wiki/Galileo_Galilei">Galileo Galilei</a>: <em>Ío</em>, <em>Europa</em>, <em>Ganimedes</em> y <em>Calisto</em>. Son los más grandes de los satélites de Júpiter, siendo visibles incluso con telescopios de baja potencia.</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Jupiter_and_the_Galilean_Satellites.jpg/168px-Jupiter_and_the_Galilean_Satellites.jpg" class="img-fluid"></p>
-<p><strong>Figura 1</strong>. Los cuatro satélites galileanos, en una composición comparando sus tamaños con el tamaño de Júpiter. En orden descendente, son <em>Ío</em>, <em>Europa</em>, <em>Ganimedes</em> y <em>Calisto</em>.</p>
+<p><strong>Figura 1</strong>. Los cuatro satélites galileanos, en una composición que compara sus tamaños con el tamaño de Júpiter. En orden descendente, son <em>Ío</em>, <em>Europa</em>, <em>Ganimedes</em> y <em>Calisto</em>.</p>
 <hr>
 <p>El contenido de este ejemplo fue tomado de <a href="https://es.wikipedia.org/wiki/Sat%C3%A9lite_galileano">Satélite galileano - Wikipedia, la enciclopedia libre</a>.</p>
 </section>
 </section>
 <section id="herramientas-para-escritura-de-documentos" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="herramientas-para-escritura-de-documentos"><span class="header-section-number">1.5</span> Herramientas para escritura de documentos</h2>
-<p>Ya que Markdown consiste de <a href="https://es.wikipedia.org/wiki/Archivo_de_texto">“texto plano”</a> (i.e.&nbsp;texto sin formato compuesto únicamente por caracteres que son legibles por humanos), puede escribirse con cualquier <a href="https://es.wikipedia.org/wiki/Editor_de_texto">editor de texto</a>. Se recomienda el uso de editores de texto orientados a programación, también llamados <a href="https://es.wikipedia.org/wiki/Editor_de_c%C3%B3digo_fuente">editores de código fuente</a>, los cuales proporcionan facilidades para el programador, como coloración de palabras clave, sangrado y autocompletado, entre otras.</p>
+<p>Markdown se escribe en <a href="https://es.wikipedia.org/wiki/Archivo_de_texto">“texto simple o plano”</a> (i.e.&nbsp;texto sin formato, compuesto únicamente por caracteres que son legibles por humanos), por lo que puede escribirse con cualquier <a href="https://es.wikipedia.org/wiki/Editor_de_texto">editor de texto</a>. Se recomienda el uso de editores orientados a programación, también llamados <a href="https://es.wikipedia.org/wiki/Editor_de_c%C3%B3digo_fuente">editores de código fuente</a>, los cuales proporcionan facilidades para el programador, como coloración de palabras clave, sangrado y autocompletado, entre otras.</p>
 <p>También pueden utilizarse <a href="https://es.wikipedia.org/wiki/Entorno_de_desarrollo_integrado">Entornos Integrados de Desarrollo o IDE</a>, los cuales son aplicaciones informáticas que proporcionan servicios integrales para facilitarle al programador el desarrollo de software. Además de un editor de código fuente, un IDE incluye funciones para <a href="https://es.wikipedia.org/wiki/Depurador">depuración</a> (i.e.&nbsp;identificación de errores), <a href="https://es.wikipedia.org/wiki/Int%C3%A9rprete_(inform%C3%A1tica)">interpretación</a> y <a href="https://es.wikipedia.org/wiki/Compilador">compilación</a> de programas, entre otras.</p>
 <p>Algunos de los editores de código fuente o IDE recomendados para Markdown son:</p>
 <ul>
@@ -331,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 <section id="encabezados" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored"><span class="header-section-number">1.6.1</span> Encabezados</h3>
-<p>Hay seis niveles de encabezados, siendo el nivel 1 el de letras más grandes.</p>
+<p>Hay seis niveles de encabezados en Markdown, siendo el nivel 1 el de letras más grandes y el 6 el de letras más pequeñas. Se especifican mediante símbolos de numeral (<code>#</code>) antes del texto del encabezado (note el espacio entre el último signo de numeral y el inicio del texto).</p>
 
 <table>
 <tbody><tr>
@@ -404,7 +405,7 @@ Encabezado de nivel 6
 </tr>
 
 </tbody></table>
-<p>Para los encabezados de nivel 1 y nivel 2, existe una sintaxis alterna.</p>
+<p>Para los encabezados de nivel 1 y nivel 2, existe una sintaxis alterna, con símbolos de igual (<code>=====</code>) o guiones (<code>-----</code>) bajo el texto del encabezado.</p>
 
 <table>
 <tbody><tr>
@@ -467,7 +468,7 @@ Este es el texto que corresponde al segundo párrafo de un documento.
 </section>
 <section id="negrita" class="level3" data-number="1.6.3">
 <h3 data-number="1.6.3" class="anchored" data-anchor-id="negrita"><span class="header-section-number">1.6.3</span> Negrita</h3>
-<p>Hay dos sintaxis para especificar texto en <em>negrita</em>.</p>
+<p>Hay dos sintaxis para especificar texto en <em>negrita</em>: con dos asteriscos (<code>**</code>) o con dos guiones bajos (<code>__</code>), antes y después del texto.</p>
 
 <table>
 <tbody><tr>
@@ -499,7 +500,7 @@ Salida
 </section>
 <section id="itálica" class="level3" data-number="1.6.4">
 <h3 data-number="1.6.4" class="anchored" data-anchor-id="itálica"><span class="header-section-number">1.6.4</span> Itálica</h3>
-<p>Hay dos sintaxis para especificar texto en <em>itálica</em>.</p>
+<p>Hay dos sintaxis para especificar texto en <em>itálica</em>: con un asterisco (<code>*</code>) o con un guión bajo (<code>_</code>), antes y después del texto.</p>
 
 <table>
 <tbody><tr>
@@ -531,6 +532,7 @@ Salida
 </section>
 <section id="citas-textuales" class="level3" data-number="1.6.5">
 <h3 data-number="1.6.5" class="anchored" data-anchor-id="citas-textuales"><span class="header-section-number">1.6.5</span> Citas textuales</h3>
+<p>Se especifican con un símbolo de “mayor que” (<code>&gt;</code>) antes de cada línea.</p>
 
 <table>
 <tbody><tr>
@@ -543,12 +545,13 @@ Salida
 </tr>
 <tr>
 <td>
-<code>&gt; *And on the pedestal these words appear:*</code> <code>&gt; *"My name is Ozymandias, king of kings:*</code> <code>&gt; *Look on my works, ye Mighty, and despair!"*</code>
+<code>&gt; *And on the pedestal these words appear:*</code> <code>&gt; *"My name is Ozymandias, king of kings:*</code> <code>&gt; *Look on my works, ye Mighty, and despair!"*</code> <code>*Percy Bysshe Shelley, "Ozymandias" (1818)*</code>
 </td>
 <td>
 <blockquote class="blockquote">
 <em> “And on the pedestal these words appear:<br>”My name is Ozymandias, king of kings:<br> Look on my works, ye Mighty, and despair!“<br> </em>
 </blockquote>
+<em>Percy Bysshe Shelley, “Ozymandias” (1818)</em>
 </td>
 </tr>
 
@@ -556,6 +559,7 @@ Salida
 </section>
 <section id="enlaces-hipervínculos" class="level3" data-number="1.6.6">
 <h3 data-number="1.6.6" class="anchored" data-anchor-id="enlaces-hipervínculos"><span class="header-section-number">1.6.6</span> Enlaces (hipervínculos)</h3>
+<p>Se definen con paréntesis cuadrados (<code>[]</code>) seguidos de paréntesis redondos (<code>()</code>). En los paréntesis cuadrados se coloca (opcionalmente) el texto del enlace y en los redondos la dirección del documento al que conduce el enlace.</p>
 
 <table>
 <tbody><tr>
@@ -568,20 +572,117 @@ Salida
 </tr>
 <tr>
 <td>
-<code>[Project Gutenberg](https://www.gutenberg.org/)</code>
+<code>[Proyecto Gutenberg](https://www.gutenberg.org/)</code>
 </td>
 <td>
-<a href="https://www.gutenberg.org/">Project Gutenberg</a>
+<a href="https://www.gutenberg.org/">Proyecto Gutenberg</a>
 </td>
 </tr>
 
 </tbody></table>
 </section>
+<section id="imágenes" class="level3" data-number="1.6.7">
+<h3 data-number="1.6.7" class="anchored" data-anchor-id="imágenes"><span class="header-section-number">1.6.7</span> Imágenes</h3>
+<p>Se definen con un signo de admiración de cierre (<code>!</code>), paréntesis cuadrados (<code>[]</code>) y paréntesis redondos (<code>()</code>). En los paréntesis cuadrados se coloca (opcionalmente) un texto alternativo de la imagen y en los redondos la dirección de la imagen, ya sea local o remota.</p>
+
+<table>
+<tbody><tr>
+<th>
+Sintaxis Markdown
+</th>
+<th>
+Salida
+</th>
+</tr>
+<tr>
+<td>
+<code>![Imagen local](img/Jupiter_and_the_Galilean_Satellites.jpg)</code>
+</td>
+<td>
+<img src="img/Jupiter_and_the_Galilean_Satellites.jpg" alt="Imagen local">
+</td>
+</tr>
+<tr>
+<td>
+<code>![Imagen remota](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Jupiter_and_the_Galilean_Satellites.jpg/168px-Jupiter_and_the_Galilean_Satellites.jpg)</code>
+</td>
+<td>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Jupiter_and_the_Galilean_Satellites.jpg/168px-Jupiter_and_the_Galilean_Satellites.jpg" alt="Imagen remota">
+</td>
+</tr>
+
+</tbody></table>
+</section>
+<section id="listas-numeradas" class="level3" data-number="1.6.8">
+<h3 data-number="1.6.8" class="anchored" data-anchor-id="listas-numeradas"><span class="header-section-number">1.6.8</span> Listas numeradas</h3>
+<p>Se definen con números (<code>1. 2. 3. ...</code>) antes de cada elemento.</p>
+
+<table>
+<tbody><tr>
+<th>
+Sintaxis Markdown
+</th>
+<th>
+Salida
+</th>
+</tr>
+<tr>
+<td>
+<code>1. Primer elemento.</code><br>
+<code>2. Segundo elemento.</code><br>
+<code>3. Tercer elemento.</code><br>
+
+</td>
+<td>
+<ol type="1">
+<li>Primer elemento.</li>
+<li>Segundo elemento.</li>
+<li>Tercer elemento.
+</li></ol></td>
+</tr>
+
+</tbody></table>
+
+</section>
+<section id="listas-no-numeradas" class="level3" data-number="1.6.9">
+<h3 data-number="1.6.9" class="anchored" data-anchor-id="listas-no-numeradas"><span class="header-section-number">1.6.9</span> Listas no numeradas</h3>
+<p>Se definen con guiones (<code>-</code>) o asteriscos (<code>*</code>) antes de cada elemento.</p>
+
+<table>
+<tbody><tr>
+<th>
+Sintaxis Markdown
+</th>
+<th>
+Salida
+</th>
+</tr>
+<tr>
+<td>
+<code>- Un elemento.</code><br>
+<code>- Otro elemento.</code><br>
+<code>- Otro elemento más.</code><br>
+
+</td>
+<td>
+<ul>
+<li>Un elemento.<br>
+</li>
+<li>Otro elemento.<br>
+</li>
+<li>Otro elemento más.<br>
+
+</li></ul></td>
+</tr>
+
+</tbody></table>
+
+</section>
 </section>
 <section id="ejercicios" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">1.7</span> Ejercicios</h2>
 <ol type="1">
-<li>Cree un documento Markdown llamado <code>README.md</code>, en RStudio, y escriba en este un breve perfil académico (<em>curriculum</em> académico).
+<li>Con RStudio, cree un documento Markdown llamado <code>README.md</code> y escriba en este un breve <em>curriculum</em> académico o profesional.
 <ul>
 <li>Incluya información como: nombre, fotografía, datos de contacto, áreas de interés, carrera, cursos aprobados, publicaciones, etc.</li>
 <li>Puede usar información ficticia (<strong>no incluya datos confidenciales o sensibles</strong>).</li>
@@ -595,8 +696,6 @@ Salida
 <li>Imágenes (al menos una local y una remota).</li>
 </ul></li>
 </ul></li>
-<li>Cree un repositorio en <a href="https://github.com/">GitHub</a> llamado <code>perfil-academico</code> y suba a este el documento que creó en el paso 1.</li>
-<li>Cree un sitio web en <a href="https://pages.github.com/">GitHub Pages</a> con el repositorio creado en el paso 2.</li>
 </ol>
 </section>
 <section id="recursos-de-interés" class="level2" data-number="1.8">
