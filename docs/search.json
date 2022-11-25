@@ -61,5 +61,54 @@
     "title": "1  Markdown",
     "section": "1.8 Recursos de interés",
     "text": "1.8 Recursos de interés\n\nDaring Fireball: Markdown (sitio oficial de Markdown)\nHow to Install R on Windows, Mac OS X, and Ubuntu Tutorial\nMarkdown Guide"
+  },
+  {
+    "objectID": "02-git.html",
+    "href": "02-git.html",
+    "title": "2  Git",
+    "section": "",
+    "text": "Git es un sistema para administrar versiones de código fuente o, en general, de cualquier conjunto de archivos.\nEn este capítulo, se estudia el funcionamiento de Git y la forma de sincronizar repositorios según su protocolo."
+  },
+  {
+    "objectID": "02-git.html#trabajo-previo",
+    "href": "02-git.html#trabajo-previo",
+    "title": "2  Git",
+    "section": "2.2 Trabajo previo",
+    "text": "2.2 Trabajo previo\n\n2.2.1 Instalación de software\n\nGit\n\n\n\n2.2.2 Tutoriales\n\nGit and GitHub Tutorial – Version Control for Beginners\n\n\n\n2.2.3 Otros\nCree una cuenta gratuita en la plataforma de desarrollo colaborativo de software GitHub."
+  },
+  {
+    "objectID": "02-git.html#descripción-general",
+    "href": "02-git.html#descripción-general",
+    "title": "2  Git",
+    "section": "2.3 Descripción general",
+    "text": "2.3 Descripción general\nGit es un sistema de control de versiones diseñado para “rastrear” cambios en el código fuente durante el proceso de desarrollo de software. Sin embargo, puede ser utilizado para llevar el control de los cambios en cualquier conjunto de archivos (ej. documentación, música).\nUn sistema de control de versiones proporciona, entre otras ventajas:\n\nLa capacidad de recuperar versiones anteriores de los archivos.\nLa capacidad de integrar modificaciones efectuadas por varias personas en el mismo conjunto de archivos.\nLa capacidad de mantener varias “ramas” (branches) de un producto (ej. “estable”, “evaluación”, “inestable”, como en el caso de Debian Linux, GRASS GIS y muchos otros proyectos de software libre).\nFacilidades para mantener redundancia y respaldos de los archivos (ej. Programa de respaldos de GitHub). Esta es una facilidad que implementan algunos servicios en la nube.\n\nGit fue diseñado por Linus Torvalds en 2005 durante del desarrollo del kernel del sistema operativo Linux. Se caracteriza por ser un sistema de control de versiones distribuido, lo que significa que el código fuente puede estar alojado en la estación de trabajo de cualquier miembro del equipo de desarrollo. No requiere un repositorio “central”, pero también puede trabajar de esa forma.\nEl protocolo de Git es utilizado en varios sitios que proveen servicios de alojamiento de software, entre los que están SourceForge, Bitbucket, GitLab y GitHub."
+  },
+  {
+    "objectID": "02-git.html#funcionamiento-de-git",
+    "href": "02-git.html#funcionamiento-de-git",
+    "title": "2  Git",
+    "section": "2.4 Funcionamiento de Git",
+    "text": "2.4 Funcionamiento de Git\nDesde el punto de vista de un usuario de Git (ej. un programador), Git se utiliza para sincronizar la versión local (i.e. en una computadora personal) de un conjunto de archivos, llamado proyecto o repositorio, con la versión que está alojada en un sistema remoto (ej. GitHub). Cada repositorio se almacena en un directorio (carpeta) del sistema operativo. La sincronización se realiza principalmente a través de dos operaciones:\n\npush: para “subir” al repositorio remoto los cambios realizados en el repositorio local. Esta operación se realiza mediante el comando git push. Es probable que el sistema remoto le solicite al usuario algún tipo de autenticación (ej. nombre de usuario y clave).\npull: para “bajar” al repositorio local los cambios realizados en el repositorio remoto. Esta operación se realiza mediante el comando git pull.\n\nLas operaciones push y pull se ilustran en la Figure 2.1.\n\n\n\n\n\nFigure 2.1: Operaciones push y pull. Imagen de Melinda Higgins.\n\n\n\n\nAntes de un push, el usuario debe seleccionar los archivos que desea subir mediante el comando git add, el cual pasa los archivos a un “área de espera” (staging area). Luego debe usarse el comando git commit para “guardar” los cambios pendientes en el área de espera. Cada commit guarda el estado del conjunto de archivos en un momento específico (snapshot).\nLa relación entre estas operaciones de Git, se ilustra en la Figure 2.2.\n\n\n\n\n\nFigure 2.2: Operaciones de Git. Imagen de Steven Klavins.\n\n\n\n\nEn la Figure 2.3, se muestra el funcionamiento de Git mediante una comparación con el procesamiento de una compra en línea.\n\n\n\n\n\nFigure 2.3: Operaciones de Git y compras en línea. Imagen de Melinda Higgins.\n\n\n\n\nOtras operaciones de Git de uso frecuente son:\n\ngit config: para especificar opciones globales de la sesión de Git (ej. nombre del usuario, dirección de correo electrónico).\ngit init: para inicializar un repositorio git.\ngit clone: para clonar (i.e. copiar) un repositorio remoto en la computadora local.\ngit status: para revisar el estado de los archivos y, por ejemplo, saber cuales deben pasarse al área de espera.\ngit log: para revisar el historial de commits.\ngit show: para visualizar los cambios efectuados en los commits.\ngit reset: para regresar al estado correspondiente a un commit anterior."
+  },
+  {
+    "objectID": "02-git.html#github",
+    "href": "02-git.html#github",
+    "title": "2  Git",
+    "section": "2.5 GitHub",
+    "text": "2.5 GitHub\nGitHub es una plataforma para desarrollo colaborativo de software basada en Git. Le permite a sus usuario mantener repositorios Git en su infraestructura en la nube y una serie de servicios asociados, como GitHub Pages, para el hospedaje de sitios web."
+  },
+  {
+    "objectID": "02-git.html#ejercicios",
+    "href": "02-git.html#ejercicios",
+    "title": "2  Git",
+    "section": "2.6 Ejercicios",
+    "text": "2.6 Ejercicios\n\nClonación de un repositorio remoto, edición local y sincronización de repositorios.\n\nRealice un fork a su cuenta en GitHub del repositorio localizado en la dirección https://github.com/mesa-monitoreo-puntos/repositorio-ejemplo-git. Obtendrá un repositorio llamado “https://github.com/[nombre-usuario]/repositorio-ejemplo-git”, en donde [nombre-usuario] es su nombre de usuario en GitHub.\nCon la opción File - New Project - Version Control - Git, de RStudio, clone a su computadora el repositorio que acaba de bifurcar.\nCon el editor de RStudio, abra el archivo README.md, agregue una línea y guarde el archivo.\nCon la opción Add File - Upload Files, de la interfaz de GitHub, suba el archivo README.md a su repositorio. Especifique un comentario para la operación commit.\nRevise los cambios aplicados en el repositorio en GitHub.\nAgregue más líneas al archivo del repositorio local y sincronícelo con el remoto. Recuerde que los comentarios de cada commit deben reflejar los cambios que están siendo aplicados.\n\nPublicación de un sitio web en GitHub Pages.\n\nCree un nuevo repositorio en su cuenta en GitHub y suba el archivo README.md que escribió como ejercicio en el capítulo sobre Markdown.\nPublique el repositorio como un sitio web de GitHub Pages.\n\nDesarrollo y publicación de un sitio web.\n\nCree un nuevo repositorio en su cuenta en GitHub.\nCon la opción File - New Project - Version Control - Git, de RStudio, clone el nuevo repositorio a su computadora.\nCree un archivo llamado README.md e introduzca el texto disponible en este enlace.\nPublique el repositorio como un sitio GitHub Pages. Debe verse como en las siguientes imágenes:\n\n\n\n\n\n\n\n\n\n\n\n\n\nProcure incluir en su documento los siguientes componentes:\n\nEncabezados.\nNegritas e itálicas.\nCitas textuales.\nImagen de la figura 1 (el archivo está en ZiemannEtAlFig1.png.\nHipervínculos (además de los dos de la bibliografía, incluya uno al sitio web de la FDA en https://www.fda.gov/, en donde se mencionan las siglas)."
+  },
+  {
+    "objectID": "02-git.html#recursos-de-interés",
+    "href": "02-git.html#recursos-de-interés",
+    "title": "2  Git",
+    "section": "2.7 Recursos de interés",
+    "text": "2.7 Recursos de interés\n\nGit (sitio oficial de Git)\nGitHub Archive Program\nReproducible Templates for Analysis and Dissemination\nVersion Control part 1"
   }
 ]

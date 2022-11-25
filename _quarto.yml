@@ -8,6 +8,7 @@ book:
   chapters:
     - index.qmd
     - 01-markdown.qmd
+    - 02-git.qmd
 
 bibliography: references.bib
 

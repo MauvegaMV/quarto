@@ -1,0 +1,134 @@
+---
+toc-title: "Contenidos"
+---
+
+# Git
+
+## Resumen
+Git es un sistema para administrar versiones de código fuente o, en general, de cualquier conjunto de archivos.
+
+En este capítulo, se estudia el funcionamiento de Git y la forma de sincronizar repositorios según su protocolo.
+
+## Trabajo previo
+
+### Instalación de software
+- [Git](https://git-scm.com/downloads)
+
+### Tutoriales
+- [Git and GitHub Tutorial -- Version Control for Beginners](https://www.freecodecamp.org/news/git-and-github-for-beginners/)
+
+### Otros
+Cree una cuenta gratuita en la plataforma de desarrollo colaborativo de software [GitHub](https://github.com/).
+
+
+## Descripción general
+[Git](https://git-scm.com/) es un sistema de [control de versiones](https://es.wikipedia.org/wiki/Control_de_versiones) diseñado para "rastrear" cambios en el código fuente durante el proceso de desarrollo de software. Sin embargo, puede ser utilizado para llevar el control de los cambios en cualquier conjunto de archivos (ej. [documentación](https://guides.github.com/features/wikis/), [música](https://techcrunch.com/2013/10/09/splice-music/)). 
+
+Un sistema de control de versiones proporciona, entre otras ventajas:
+
+* La capacidad de recuperar versiones anteriores de los archivos.
+* La capacidad de integrar modificaciones efectuadas por varias personas en el mismo conjunto de archivos.
+* La capacidad de mantener varias "ramas" (_branches_) de un producto (ej. "estable", "evaluación", "inestable", como en el caso de [Debian Linux](https://www.debian.org/releases/), [GRASS GIS](https://grass.osgeo.org/download/linux/) y muchos otros proyectos de software libre).
+* Facilidades para mantener redundancia y respaldos de los archivos (ej. [Programa de respaldos de GitHub](https://archiveprogram.github.com/)). Esta es una facilidad que implementan algunos servicios en la nube.
+
+Git fue diseñado por Linus Torvalds en 2005 durante del desarrollo del _kernel_ del sistema operativo Linux. Se caracteriza por ser un [sistema de control de versiones distribuido](https://es.wikipedia.org/wiki/Control_de_versiones_distribuido), lo que significa que el código fuente puede estar alojado en la estación de trabajo de cualquier miembro del equipo de desarrollo. No requiere un repositorio "central", pero también puede trabajar de esa forma.
+
+El protocolo de Git es utilizado en varios sitios que proveen servicios de alojamiento de software, entre los que están [SourceForge](https://sourceforge.net/), [Bitbucket](https://bitbucket.org/), [GitLab](https://about.gitlab.com/) y [GitHub](https://github.com/).
+
+## Funcionamiento de Git
+Desde el punto de vista de un usuario de Git (ej. un programador), Git se utiliza para sincronizar la versión local (i.e. en una computadora personal) de un conjunto de archivos, llamado proyecto o repositorio, con la versión que está alojada en un sistema remoto (ej. GitHub). Cada repositorio se almacena en un directorio (carpeta) del sistema operativo. La sincronización se realiza principalmente a través de dos operaciones:
+
+* **_push_**: para "subir" al repositorio remoto los cambios realizados en el repositorio local. Esta operación se realiza mediante el comando [git push](https://git-scm.com/docs/git-push). Es probable que el sistema remoto le solicite al usuario algún tipo de autenticación (ej. nombre de usuario y clave).
+* **_pull_**: para "bajar" al repositorio local los cambios realizados en el repositorio remoto. Esta operación se realiza mediante el comando [git pull](https://git-scm.com/docs/git-pull).
+
+Las operaciones _push_ y _pull_ se ilustran en la @fig-git-push-pull.
+
+```{r}
+#| label: fig-git-push-pull
+#| fig.cap: Operaciones _push_ y _pull_. Imagen de [Melinda Higgins](https://www.coursera.org/learn/reproducible-templates-analysis/lecture/NGbQv/git-and-github-part-1).
+#| echo: false
+
+knitr::include_graphics(rep("img/git-push-pull.png"))
+```
+
+Antes de un _push_, el usuario debe seleccionar los archivos que desea subir mediante el comando [git add](https://git-scm.com/docs/git-add), el cual pasa los archivos a un "área de espera" (_staging area_). Luego debe usarse el comando [git commit](https://git-scm.com/docs/git-commit) para "guardar" los cambios pendientes en el área de espera. Cada _commit_ guarda el estado del conjunto de archivos en un momento específico (_snapshot_).
+
+La relación entre estas operaciones de Git, se ilustra en la @fig-git-push-pull-commit.
+
+```{r}
+#| label: fig-git-push-pull-commit
+#| fig.cap: Operaciones de Git. Imagen de [Steven Klavins](https://medium.com/@stevenklavins94/version-control-part-4-c9387cf5b33e).
+#| echo: false
+
+knitr::include_graphics(rep("img/git-push-pull-commit.png"))
+```
+
+En la @fig-git-stage-commit-push, se muestra el funcionamiento de Git mediante una comparación con el procesamiento de una compra en línea.
+
+```{r}
+#| label: fig-git-stage-commit-push
+#| fig.cap: Operaciones de Git y compras en línea. Imagen de [Melinda Higgins](https://www.coursera.org/learn/reproducible-templates-analysis/lecture/NGbQv/git-and-github-part-2).
+#| echo: false
+
+knitr::include_graphics(rep("img/git-stage-commit-push.png"))
+```
+
+Otras operaciones de Git de uso frecuente son:
+
+* [git config](https://git-scm.com/docs/git-config): para especificar opciones globales de la sesión de Git (ej. nombre del usuario, dirección de correo electrónico).
+* [git init](https://git-scm.com/docs/git-init): para inicializar un repositorio git.
+* [git clone](https://git-scm.com/docs/git-clone): para clonar (i.e. copiar) un repositorio remoto en la computadora local.
+* [git status](https://git-scm.com/docs/git-status): para revisar el estado de los archivos y, por ejemplo, saber cuales deben pasarse al área de espera.
+* [git log](https://git-scm.com/docs/git-log): para revisar el historial de _commits_.
+* [git show](https://git-scm.com/docs/git-show): para visualizar los cambios efectuados en los _commits_.
+* [git reset](https://git-scm.com/docs/git-reset): para regresar al estado correspondiente a un _commit_ anterior.
+
+
+## GitHub
+[GitHub](https://github.com/) es una plataforma para desarrollo colaborativo de software basada en Git. Le permite a sus usuario mantener repositorios Git en su infraestructura en la nube y una serie de servicios asociados, como [GitHub Pages](https://pages.github.com/), para el hospedaje de sitios web.
+
+
+## Ejercicios
+
+1. Clonación de un repositorio remoto, edición local y sincronización de repositorios.
+    a. Realice un _fork_ a su cuenta en GitHub del repositorio localizado en la dirección [https://github.com/mesa-monitoreo-puntos/repositorio-ejemplo-git](https://github.com/mesa-monitoreo-puntos/repositorio-ejemplo-git). Obtendrá un repositorio llamado "https://github.com/[nombre-usuario]/repositorio-ejemplo-git", en donde [nombre-usuario] es su nombre de usuario en GitHub.
+    b. Con la opción *File - New Project - Version Control - Git*, de RStudio, clone a su computadora el repositorio que acaba de bifurcar.
+    c. Con el editor de RStudio, abra el archivo `README.md`, agregue una línea y guarde el archivo.
+    d. Con la opción *Add File - Upload Files*, de la interfaz de GitHub, suba el archivo `README.md` a su repositorio. Especifique un comentario para la operación `commit`.
+    e. Revise los cambios aplicados en el repositorio en GitHub.
+    f. Agregue más líneas al archivo del repositorio local y sincronícelo con el remoto. Recuerde que los comentarios de cada `commit` deben reflejar los cambios que están siendo aplicados.
+    
+2. Publicación de un sitio web en GitHub Pages.
+    a. Cree un nuevo repositorio en su cuenta en GitHub y suba el archivo `README.md` que escribió como ejercicio en el capítulo sobre Markdown.
+    b. Publique el repositorio como un sitio web de GitHub Pages.
+
+3. Desarrollo y publicación de un sitio web.
+    a. Cree un nuevo repositorio en su cuenta en GitHub.
+    b. Con la opción *File - New Project - Version Control - Git*, de RStudio, clone el nuevo repositorio a su computadora.
+    c. Cree un archivo llamado `README.md` e introduzca el texto disponible en [este enlace](otros/ejercicio-git-texto.txt). 
+    d. Publique el repositorio como un sitio GitHub Pages. Debe verse como en las siguientes imágenes:
+    
+```{r ejercicio-git-img-01, echo=FALSE}
+knitr::include_graphics(rep("img/ejercicio-git-img-01.png"))
+```
+
+```{r ejercicio-git-img-02, echo=FALSE}
+knitr::include_graphics(rep("img/ejercicio-git-img-02.png"))
+```    
+
+  f. Procure incluir en su documento los siguientes componentes:
+        - Encabezados.
+        - Negritas e itálicas.
+        - Citas textuales.
+        - Imagen de la figura 1 (el archivo está en [ZiemannEtAlFig1.png](img/ZiemannEtAlFig1.png).
+        - Hipervínculos (además de los dos de la bibliografía, incluya uno al sitio web de la FDA en https://www.fda.gov/, en donde se mencionan las siglas).
+
+
+## Recursos de interés
+- [Git](https://git-scm.com/) (sitio oficial de Git)
+
+- [GitHub Archive Program](https://archiveprogram.github.com/)
+
+- [Reproducible Templates for Analysis and Dissemination](https://www.coursera.org/learn/reproducible-templates-analysis)
+
+- [Version Control part 1](https://stevenklavins94.medium.com/version-control-part-1-c5f1b43127f6)
