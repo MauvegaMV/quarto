@@ -9,6 +9,7 @@ book:
     - index.qmd
     - 01-markdown.qmd
     - 02-git.qmd
+    - 03-quarto.qmd
 
 bibliography: references.bib
 

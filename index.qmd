@@ -7,3 +7,4 @@ Este sitio contiene un conjunto de temas de capacitación que son de interés pa
 
 - **Markdown**: lenguaje de marcado ligero para comunicación técnica y científica.
 - **Git**: sistema para control de versiones. 
+- **Quarto**: sistema de publicación de documentos técnicos y científicos.
