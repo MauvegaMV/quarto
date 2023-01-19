@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Desarrollo de capacidades",
     "section": "",
-    "text": "Este sitio contiene un conjunto de temas de capacitación que son de interés para la Mesa de Monitoreo por Puntos del Sistema Nacional de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (SIMOCUTE).\n\nMarkdown: lenguaje de marcado ligero para comunicación técnica y científica.\nGit: sistema para control de versiones.\nQuarto: sistema de publicación de documentos técnicos y científicos."
+    "text": "Bienvenida\nEste sitio contiene un conjunto de temas de capacitación que son de interés para la Mesa de Monitoreo por Puntos del Sistema Nacional de Monitoreo de Cobertura y Uso de la Tierra y Ecosistemas (SIMOCUTE).\n\nMarkdown: lenguaje de marcado ligero para comunicación técnica y científica.\nGit: sistema para control de versiones.\nQuarto: sistema de publicación de documentos técnicos y científicos."
   },
   {
-    "objectID": "01-markdown.html",
-    "href": "01-markdown.html",
+    "objectID": "01-markdown.html#resumen",
+    "href": "01-markdown.html#resumen",
     "title": "1  Markdown",
-    "section": "",
-    "text": "Markdown es un lenguaje de marcado ligero ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible, entre otras aplicaciones. Incluye marcas para especificar aspectos de estructura, semántica y estilo de un documento. Se basa en texto simple y se convierte fácilmente a HTML, el lenguaje de marcado más utilizado en páginas web.\nMarkdown puede emplearse junto con lenguajes de programación (ej. R, Python) para así combinar texto con código fuente, el cual inserta en los documentos salidas como tablas, gráficos y mapas, entre otras. Esta forma de trabajo facilita la automatización y la reproducibilidad de una investigación.\nEn este capítulo, se explican los principales elementos de la sintaxis de Markdown y como utilizarlos en la creación de documentos."
+    "section": "1.1 Resumen",
+    "text": "1.1 Resumen\nMarkdown es un lenguaje de marcado ligero ampliamente utilizado en comunicación científica, documentación de programas e investigación reproducible, entre otras aplicaciones. Incluye marcas para especificar aspectos de estructura, semántica y estilo de un documento. Se basa en texto simple y se convierte fácilmente a HTML, el lenguaje de marcado más utilizado en páginas web.\nMarkdown puede emplearse junto con lenguajes de programación (ej. R, Python) para así combinar texto con código fuente, el cual inserta en los documentos salidas como tablas, gráficos y mapas, entre otras. Esta forma de trabajo facilita la automatización y la reproducibilidad de una investigación.\nEn este capítulo, se explican los principales elementos de la sintaxis de Markdown y como utilizarlos en la creación de documentos."
   },
   {
     "objectID": "01-markdown.html#trabajo-previo",
@@ -60,14 +60,14 @@
     "href": "01-markdown.html#recursos-de-interés",
     "title": "1  Markdown",
     "section": "1.8 Recursos de interés",
-    "text": "1.8 Recursos de interés\n\nDaring Fireball: Markdown (sitio oficial de Markdown)\nHow to Install R on Windows, Mac OS X, and Ubuntu Tutorial\nMarkdown Guide"
+    "text": "1.8 Recursos de interés\n\nDaring Fireball: Markdown (sitio oficial de Markdown)\nHow to Install R on Windows, Mac OS X, and Ubuntu Tutorial\nMarkdown Guide\nQuarto - Markdown Basics"
   },
   {
-    "objectID": "02-git.html",
-    "href": "02-git.html",
+    "objectID": "02-git.html#resumen",
+    "href": "02-git.html#resumen",
     "title": "2  Git",
-    "section": "",
-    "text": "Git es un sistema para administrar versiones de código fuente o, en general, de cualquier conjunto de archivos.\nEn este capítulo, se estudia el funcionamiento de Git y la forma de sincronizar repositorios según su protocolo."
+    "section": "2.1 Resumen",
+    "text": "2.1 Resumen\nGit es un sistema para administrar versiones de código fuente o, en general, de cualquier conjunto de archivos.\nEn este capítulo, se estudia el funcionamiento de Git y la forma de sincronizar repositorios según su protocolo."
   },
   {
     "objectID": "02-git.html#trabajo-previo",
@@ -88,7 +88,7 @@
     "href": "02-git.html#funcionamiento-de-git",
     "title": "2  Git",
     "section": "2.4 Funcionamiento de Git",
-    "text": "2.4 Funcionamiento de Git\nDesde el punto de vista de un usuario de Git (ej. un programador), Git se utiliza para sincronizar la versión local (i.e. en una computadora personal) de un conjunto de archivos, llamado proyecto o repositorio, con la versión que está alojada en un sistema remoto (ej. GitHub). Cada repositorio se almacena en un directorio (carpeta) del sistema operativo. La sincronización se realiza principalmente a través de dos operaciones:\n\npush: para “subir” al repositorio remoto los cambios realizados en el repositorio local. Esta operación se realiza mediante el comando git push. Es probable que el sistema remoto le solicite al usuario algún tipo de autenticación (ej. nombre de usuario y clave).\npull: para “bajar” al repositorio local los cambios realizados en el repositorio remoto. Esta operación se realiza mediante el comando git pull.\n\nLas operaciones push y pull se ilustran en la Figure 2.1.\n\n\n\n\n\nFigure 2.1: Operaciones push y pull. Imagen de Melinda Higgins.\n\n\n\n\nAntes de un push, el usuario debe seleccionar los archivos que desea subir mediante el comando git add, el cual pasa los archivos a un “área de espera” (staging area). Luego debe usarse el comando git commit para “guardar” los cambios pendientes en el área de espera. Cada commit guarda el estado del conjunto de archivos en un momento específico (snapshot).\nLa relación entre estas operaciones de Git, se ilustra en la Figure 2.2.\n\n\n\n\n\nFigure 2.2: Operaciones de Git. Imagen de Steven Klavins.\n\n\n\n\nEn la Figure 2.3, se muestra el funcionamiento de Git mediante una comparación con el procesamiento de una compra en línea.\n\n\n\n\n\nFigure 2.3: Operaciones de Git y compras en línea. Imagen de Melinda Higgins.\n\n\n\n\nOtras operaciones de Git de uso frecuente son:\n\ngit config: para especificar opciones globales de la sesión de Git (ej. nombre del usuario, dirección de correo electrónico).\ngit init: para inicializar un repositorio git.\ngit clone: para clonar (i.e. copiar) un repositorio remoto en la computadora local.\ngit status: para revisar el estado de los archivos y, por ejemplo, saber cuales deben pasarse al área de espera.\ngit log: para revisar el historial de commits.\ngit show: para visualizar los cambios efectuados en los commits.\ngit reset: para regresar al estado correspondiente a un commit anterior."
+    "text": "2.4 Funcionamiento de Git\nDesde el punto de vista de un usuario de Git (ej. un programador), Git se utiliza para sincronizar la versión local (i.e. en una computadora personal) de un conjunto de archivos, llamado proyecto o repositorio, con la versión que está alojada en un sistema remoto (ej. GitHub). Cada repositorio se almacena en un directorio (carpeta) del sistema operativo. La sincronización se realiza principalmente a través de dos operaciones:\n\npush: para “subir” al repositorio remoto los cambios realizados en el repositorio local. Esta operación se realiza mediante el comando git push. Es probable que el sistema remoto le solicite al usuario algún tipo de autenticación (ej. nombre de usuario y clave).\npull: para “bajar” al repositorio local los cambios realizados en el repositorio remoto. Esta operación se realiza mediante el comando git pull.\n\nLas operaciones push y pull se ilustran en la Figure 2.1.\n\n\n\n\n\nFigure 2.1: Operaciones push y pull. Imagen de Melinda Higgins.\n\n\n\n\nAntes de un push, el usuario debe seleccionar los archivos que desea subir mediante el comando git add, el cual pasa los archivos a un “área de espera” (staging area). Luego debe usarse el comando git commit para “guardar” los cambios pendientes en el área de espera. Cada commit guarda el estado del conjunto de archivos en un momento específico (snapshot).\nLa relación entre estas operaciones de Git, se ilustra en la Figure 2.2.\n\n\n\n\n\nFigure 2.2: Operaciones de Git. Imagen de Steven Klavins.\n\n\n\n\nEn la Figure 2.3, se muestra el funcionamiento de Git mediante una comparación con el procesamiento de una compra en línea.\n\n\n\n\n\nFigure 2.3: Operaciones de Git y compras en línea. Imagen de Melinda Higgins.\n\n\n\n\nOtras operaciones de Git de uso frecuente son:\n\ngit config: para especificar opciones globales de la sesión de Git (ej. nombre del usuario, dirección de correo electrónico).\ngit init: para inicializar un repositorio git.\ngit clone: para clonar (i.e. copiar) un repositorio remoto en la computadora local.\ngit status: para revisar el estado de los archivos y, por ejemplo, saber cuales deben pasarse al área de espera.\ngit log: para revisar el historial de commits.\ngit show: para visualizar los cambios efectuados en los commits.\ngit reset: para regresar al estado correspondiente a un commit anterior."
   },
   {
     "objectID": "02-git.html#github",
@@ -112,11 +112,11 @@
     "text": "2.7 Recursos de interés\n\nGit (sitio oficial de Git)\nGitHub Archive Program\nReproducible Templates for Analysis and Dissemination\nVersion Control part 1"
   },
   {
-    "objectID": "03-quarto.html",
-    "href": "03-quarto.html",
+    "objectID": "03-quarto.html#resumen",
+    "href": "03-quarto.html#resumen",
     "title": "3  Quarto",
-    "section": "",
-    "text": "Quarto es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Estos documentos combinan código fuente en varios lenguajes de programación, y sus salidas (ej. tablas, gráficos, mapas), con la sintaxis de Markdown.\nEn este capítulo, se estudia la sintaxis básica de Quarto y se muestran algunos ejemplos de cómo combinarla con código en R."
+    "section": "3.1 Resumen",
+    "text": "3.1 Resumen\nQuarto es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Estos documentos combinan código fuente en varios lenguajes de programación, y sus salidas (ej. tablas, gráficos, mapas), con la sintaxis de Markdown.\nEn este capítulo, se estudia la sintaxis básica de Quarto y se muestran algunos ejemplos de cómo combinarla con código en R."
   },
   {
     "objectID": "03-quarto.html#trabajo-previo",
@@ -144,7 +144,7 @@
     "href": "03-quarto.html#cómo-funciona-quarto",
     "title": "3  Quarto",
     "section": "3.5 ¿Cómo funciona Quarto?",
-    "text": "3.5 ¿Cómo funciona Quarto?\nQuarto se apoya en knitr y en Pandoc. knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la Figure 3.1.\n\n\n\n\n\nFigure 3.1: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de quarto.org."
+    "text": "3.5 ¿Cómo funciona Quarto?\nQuarto se apoya en knitr y en Pandoc. knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la Figure 3.1.\n\n\n\n\n\nFigure 3.1: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de quarto.org."
   },
   {
     "objectID": "03-quarto.html#ejemplo-de-documento-quarto",

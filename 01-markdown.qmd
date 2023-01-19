@@ -432,7 +432,6 @@ Se definen con guiones (`-`) o asteriscos (`*`) antes de cada elemento.
 
 ## Recursos de interés
 - [Daring Fireball: Markdown](https://daringfireball.net/projects/markdown/) (sitio oficial de Markdown)
-
 - [How to Install R on Windows, Mac OS X, and Ubuntu Tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu)
-
 - [Markdown Guide](https://www.markdownguide.org/)
+- [Quarto - Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
