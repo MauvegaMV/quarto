@@ -418,7 +418,7 @@ Se definen con guiones (`-`) o asteriscos (`*`) antes de cada elemento.
   </tr>
 </table>
 
-## Ecuaciones
+### Ecuaciones
 Las ecuaciones se escriben con base en la sintaxis de [LaTeX](https://latex-project.org/). Se delimitan (al inicio y al final) con:
 
 - Un símbolo de dólar (`$`), para ecuaciones dentro de un renglón (*inline math*).
