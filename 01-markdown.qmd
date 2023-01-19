@@ -418,6 +418,43 @@ Se definen con guiones (`-`) o asteriscos (`*`) antes de cada elemento.
   </tr>
 </table>
 
+## Ecuaciones
+Las ecuaciones se escriben con base en la sintaxis de [LaTeX](https://latex-project.org/). Se delimitan (al inicio y al final) con:
+
+- Un símbolo de dólar (`$`), para ecuaciones dentro de un renglón (*inline math*).
+- Dos símbolos de dólar (`$$`), para ecuaciones en su propio bloque (*display math*).
+
+<table>
+  <tr>
+    <th>Sintaxis Markdown</th>
+    <th>Salida</th>
+  </tr>
+  <tr>
+    <td>
+`Equivalencia entre masa y energía: $E = mc^{2}$`  
+    </td>
+    <td>
+Equivalencia entre masa y energía: $E = mc^{2}$
+    </td>
+  </tr>
+  <tr>
+    <td>
+`Equivalencia entre masa y energía:`
+`$$E = mc^{2}$$`
+    </td>
+    <td>
+Equivalencia entre masa y energía: 
+
+$$E = mc^{2}$$
+    </td>
+  </tr>  
+</table>
+
+Para más detalles sobre la sintaxis de ecuaciones, se recomienda consultar:
+
+- [Writing mathematical expressions - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
+- [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
 ## Ejercicios
 1.  Con RStudio, cree un documento Markdown llamado `README.md` y escriba en este un breve *curriculum* académico o profesional.
     a. Incluya información como: nombre, fotografía, datos de contacto, áreas de interés, carrera, cursos aprobados, publicaciones, etc.
@@ -435,3 +472,5 @@ Se definen con guiones (`-`) o asteriscos (`*`) antes de cada elemento.
 - [How to Install R on Windows, Mac OS X, and Ubuntu Tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu)
 - [Markdown Guide](https://www.markdownguide.org/)
 - [Quarto - Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+- [Writing mathematical expressions - GitHub Docs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
+- [LaTeX/Mathematics](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
