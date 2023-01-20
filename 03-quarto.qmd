@@ -266,7 +266,7 @@ Todos los felinos de Costa Rica
 Todos los felinos de Costa Rica
 :::
 
-Para más detalles sobre referencias, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
+Para más detalles sobre figuras, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
 
 ### Citas bibliográficas
 Quarto puede generar citas bibliográficas y bibliografías en un varios estilos. Para esto, es necesario:
