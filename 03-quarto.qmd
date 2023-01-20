@@ -126,8 +126,140 @@ Quarto se apoya en [knitr](https://yihui.org/knitr/) y en [Pandoc](http://pandoc
 knitr::include_graphics(rep("img/rstudio-qmd-how-it-works.png"))
 ```
 
-## Ejemplo de documento Quarto
-Visualización de datos con funciones del paquete base de R.
+## Herramientas para escritura
 
--   Sitio en GitHub Pages: <https://pf0953-programacionr.github.io/2022-ii-graficacion-base/>
--   Código fuente: <https://github.com/pf0953-programacionr/2022-ii-graficacion-base>
+### Figuras
+
+#### Sintaxis básica
+En su forma más básica, una figura puede crearse en Quarto con la misma sintaxis de Markdown (específicamente Pandoc Markdown).
+
+```
+![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
+```
+![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
+
+Nótese como el texto entre paréntesis cuadrados se despliega al pie de la figura. En algunos formatos de salida (ej. PDF, LaTeX), las figuras se numeran automáticamente.
+
+#### Tamaño
+Por defecto, las figuras se despliegan con su tamaño nativo. Este puede modificarse con los atributos `width` y `height`, los cuales utilizan pixeles como unidad de medida por defecto.
+
+```
+![Jaguar](img/jaguar.jpg){width=300}
+```
+![Jaguar](img/jaguar.jpg){width=300}
+
+Si se usa solo uno de los atributos, el otro se ajusta automáticamente. Pueden usarse otras unidades de medida como porcentajes, pulgadas o milímetros.
+
+```
+![Jaguar](img/jaguar.jpg){width=80%}
+```
+![Jaguar](img/jaguar.jpg){width=80%}
+
+```
+![Jaguar](img/jaguar.jpg){height=3in}
+```
+![Jaguar](img/jaguar.jpg){height=3in}
+
+```
+![Jaguar](img/jaguar.jpg){height=76.2mm}
+```
+![Jaguar](img/jaguar.jpg){height=76.2mm}
+
+#### Enlaces
+Una figura puede funcionar como un enlace a otro documento. La dirección del enlace se escribe entre paréntesis redondos.
+
+```
+[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
+```
+[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
+
+#### Alineación
+La alineación por defecto de las figuras es en el centro. Se pueden elegir otras alineaciones mediante el atributo `fig-align`.
+
+```
+![Puma](img/puma.jpg){fig-align="right" height=50mm}
+```
+![Puma](img/jaguar.jpg){fig-align="right" height=50mm}
+
+#### Referencias
+Para crear referencias a figuras, deben identificarse con el prefijo `fig-`. Luego, pueden referenciarse con el prefijo `@`. Por ejemplo:
+
+```
+Actualmente, el portal de datos de la Infraestructura Mundial
+de Información en Biodiversidad (GBIF) agrupa más de 
+dos mil millones de registros de presencia de especies, 
+cuya distribución espacial puede observarse en la @fig-mapagbif.
+
+![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}
+```
+
+Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la @fig-mapa-gbif.
+
+![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapa-gbif}
+
+#### Grupos de figuras
+Para mostrar varias figuras como un grupo, puede crearse una división (`div`) con los caracteres `:::`, al inicial y al final. Por ejemplo:
+
+```
+::: {#fig-felinos-grandes-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+Felinos más grandes de Costa Rica
+:::
+```
+
+::: {#fig-felinos-grandes-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+Felinos más grandes de Costa Rica
+:::
+
+El atributo `layout-ncol` especifica el número de columnas.
+
+```
+::: {#fig-felinos-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
+
+![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
+
+![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
+
+![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
+
+Todos los felinos de Costa Rica
+:::
+```
+
+::: {#fig-felinos-costarica layout-ncol=3}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
+
+![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
+
+![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
+
+![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
+
+
+Todos los felinos de Costa Rica
+:::
+
+Para más detalles sobre referencias, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
+
+## Recursos de interés
+- [Quarto - Figures](https://quarto.org/docs/authoring/figures.html)

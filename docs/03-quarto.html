@@ -198,7 +198,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#bloques-de-código-fuente" id="toc-bloques-de-código-fuente" class="nav-link" data-scroll-target="#bloques-de-código-fuente"><span class="toc-section-number">3.4.3</span>  Bloques de código fuente</a></li>
   </ul></li>
   <li><a href="#cómo-funciona-quarto" id="toc-cómo-funciona-quarto" class="nav-link" data-scroll-target="#cómo-funciona-quarto"><span class="toc-section-number">3.5</span>  ¿Cómo funciona Quarto?</a></li>
-  <li><a href="#ejemplo-de-documento-quarto" id="toc-ejemplo-de-documento-quarto" class="nav-link" data-scroll-target="#ejemplo-de-documento-quarto"><span class="toc-section-number">3.6</span>  Ejemplo de documento Quarto</a></li>
+  <li><a href="#herramientas-para-escritura" id="toc-herramientas-para-escritura" class="nav-link" data-scroll-target="#herramientas-para-escritura"><span class="toc-section-number">3.6</span>  Herramientas para escritura</a>
+  <ul class="collapse">
+  <li><a href="#figuras" id="toc-figuras" class="nav-link" data-scroll-target="#figuras"><span class="toc-section-number">3.6.1</span>  Figuras</a></li>
+  </ul></li>
+  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="toc-section-number">3.7</span>  Recursos de interés</a></li>
   </ul>
 </nav>
     </div>
@@ -334,12 +338,210 @@ format:
 </div>
 </div>
 </section>
-<section id="ejemplo-de-documento-quarto" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="ejemplo-de-documento-quarto"><span class="header-section-number">3.6</span> Ejemplo de documento Quarto</h2>
-<p>Visualización de datos con funciones del paquete base de R.</p>
+<section id="herramientas-para-escritura" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="herramientas-para-escritura"><span class="header-section-number">3.6</span> Herramientas para escritura</h2>
+<section id="figuras" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="figuras"><span class="header-section-number">3.6.1</span> Figuras</h3>
+<section id="sintaxis-básica" class="level4" data-number="3.6.1.1">
+<h4 data-number="3.6.1.1" class="anchored" data-anchor-id="sintaxis-básica"><span class="header-section-number">3.6.1.1</span> Sintaxis básica</h4>
+<p>En su forma más básica, una figura puede crearse en Quarto con la misma sintaxis de Markdown (específicamente Pandoc Markdown).</p>
+<pre><code>![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Jaguar (<em>Panthera onca</em>). Imagen del <em>U.S. Fish and Wildlife Service</em>.</figcaption><p></p>
+</figure>
+</div>
+<p>Nótese como el texto entre paréntesis cuadrados se despliega al pie de la figura. En algunos formatos de salida (ej. PDF, LaTeX), las figuras se numeran automáticamente.</p>
+</section>
+<section id="tamaño" class="level4" data-number="3.6.1.2">
+<h4 data-number="3.6.1.2" class="anchored" data-anchor-id="tamaño"><span class="header-section-number">3.6.1.2</span> Tamaño</h4>
+<p>Por defecto, las figuras se despliegan con su tamaño nativo. Este puede modificarse con los atributos <code>width</code> y <code>height</code>, los cuales utilizan pixeles como unidad de medida por defecto.</p>
+<pre><code>![Jaguar](img/jaguar.jpg){width=300}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" class="img-fluid figure-img" width="300"></p>
+<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
+</figure>
+</div>
+<p>Si se usa solo uno de los atributos, el otro se ajusta automáticamente. Pueden usarse otras unidades de medida como porcentajes, pulgadas o milímetros.</p>
+<pre><code>![Jaguar](img/jaguar.jpg){width=80%}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
+</figure>
+</div>
+<pre><code>![Jaguar](img/jaguar.jpg){height=3in}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" style="height:3in" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
+</figure>
+</div>
+<pre><code>![Jaguar](img/jaguar.jpg){height=76.2mm}</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" style="height:76.2mm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="enlaces" class="level4" data-number="3.6.1.3">
+<h4 data-number="3.6.1.3" class="anchored" data-anchor-id="enlaces"><span class="header-section-number">3.6.1.3</span> Enlaces</h4>
+<p>Una figura puede funcionar como un enlace a otro documento. La dirección del enlace se escribe entre paréntesis redondos.</p>
+<pre><code>[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://es.wikipedia.org/wiki/Panthera_onca"><img src="img/jaguar.jpg" style="height:50mm" class="figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="alineación" class="level4" data-number="3.6.1.4">
+<h4 data-number="3.6.1.4" class="anchored" data-anchor-id="alineación"><span class="header-section-number">3.6.1.4</span> Alineación</h4>
+<p>La alineación por defecto de las figuras es en el centro. Se pueden elegir otras alineaciones mediante el atributo <code>fig-align</code>.</p>
+<pre><code>![Puma](img/puma.jpg){fig-align="right" height=50mm}</code></pre>
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="img/jaguar.jpg" style="height:50mm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Puma</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="referencias" class="level4" data-number="3.6.1.5">
+<h4 data-number="3.6.1.5" class="anchored" data-anchor-id="referencias"><span class="header-section-number">3.6.1.5</span> Referencias</h4>
+<p>Para crear referencias a figuras, deben identificarse con el prefijo <code>fig-</code>. Luego, pueden referenciarse con el prefijo <code>@</code>. Por ejemplo:</p>
+<pre><code>Actualmente, el portal de datos de la Infraestructura Mundial
+de Información en Biodiversidad (GBIF) agrupa más de 
+dos mil millones de registros de presencia de especies, 
+cuya distribución espacial puede observarse en la @fig-mapagbif.
+
+![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}</code></pre>
+<p>Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la <a href="#fig-mapa-gbif">Figure&nbsp;<span>3.2</span></a>.</p>
+<div id="fig-mapa-gbif" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/mapa-gbif.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: Distribución espacial de los registros de presencia agrupados por GBIF</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="grupos-de-figuras" class="level4" data-number="3.6.1.6">
+<h4 data-number="3.6.1.6" class="anchored" data-anchor-id="grupos-de-figuras"><span class="header-section-number">3.6.1.6</span> Grupos de figuras</h4>
+<p>Para mostrar varias figuras como un grupo, puede crearse una división (<code>div</code>) con los caracteres <code>:::</code>, al inicial y al final. Por ejemplo:</p>
+<pre><code>::: {#fig-felinos-grandes-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+Felinos más grandes de Costa Rica
+:::</code></pre>
+<div id="fig-felinos-grandes-costarica" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-jaguar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/panthera_onca_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-grandes-costarica"></p>
+<p></p><figcaption class="figure-caption">(a) Jaguar (<em>Panthera onca</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-puma" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/puma_concolor_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-grandes-costarica"></p>
+<p></p><figcaption class="figure-caption">(b) Puma (<em>Puma concolor</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.3: Felinos más grandes de Costa Rica</figcaption><p></p>
+</figure>
+</div>
+<p>El atributo <code>layout-ncol</code> especifica el número de columnas.</p>
+<pre><code>::: {#fig-felinos-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
+
+![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
+
+![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
+
+![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
+
+Todos los felinos de Costa Rica
+:::</code></pre>
+<div id="fig-felinos-costarica" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-jaguar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/panthera_onca_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(a) Jaguar (<em>Panthera onca</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-puma" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/puma_concolor_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(b) Puma (<em>Puma concolor</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-manigordo" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/leopardus_pardalis_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(c) Manigordo (<em>Leopardus pardalis</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-yaguarondi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/puma_yagouaroundi_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(d) Yaguarondí (<em>Puma yagouaroundi</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-caucel" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/leopardus_wiedii_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(e) Caucel (<em>Leopardus wiedii</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-tigrinus" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/leopardus_tigrinus_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
+<p></p><figcaption class="figure-caption">(f) Tigrillo (<em>Leopardus tigrinus</em>)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: Todos los felinos de Costa Rica</figcaption><p></p>
+</figure>
+</div>
+<p>Para más detalles sobre referencias, se recomienda consultar <a href="https://quarto.org/docs/authoring/figures.html">Quarto - Figures</a>.</p>
+</section>
+</section>
+</section>
+<section id="recursos-de-interés" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">3.7</span> Recursos de interés</h2>
 <ul>
-<li>Sitio en GitHub Pages: <a href="https://pf0953-programacionr.github.io/2022-ii-graficacion-base/" class="uri">https://pf0953-programacionr.github.io/2022-ii-graficacion-base/</a></li>
-<li>Código fuente: <a href="https://github.com/pf0953-programacionr/2022-ii-graficacion-base" class="uri">https://github.com/pf0953-programacionr/2022-ii-graficacion-base</a></li>
+<li><a href="https://quarto.org/docs/authoring/figures.html">Quarto - Figures</a></li>
 </ul>
 
 
