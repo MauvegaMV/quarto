@@ -1,13 +1,15 @@
 ---
 toc-title: "Contenidos"
+bibliography: bibliografia/referencias.bib
+csl: bibliografia/apa-6th-edition.csl
 ---
 
 # Quarto
 
 ## Resumen
-Quarto es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Estos documentos combinan código fuente en varios lenguajes de programación, y sus salidas (ej. tablas, gráficos, mapas), con la sintaxis de Markdown.
+Quarto es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Estos documentos combinan código fuente en varios lenguajes de programación y sus salidas (ej. tablas, gráficos, mapas), con la sintaxis de Markdown.
 
-En este capítulo, se estudia la sintaxis básica de Quarto y se muestran algunos ejemplos de cómo combinarla con código en R.
+En este capítulo, se estudia la sintaxis básica de Quarto y se presentan algunas de sus herramientas para la escritura de documentos.
 
 ## Trabajo previo
 
@@ -181,6 +183,11 @@ La alineación por defecto de las figuras es en el centro. Se pueden elegir otra
 ```
 ![Puma](img/jaguar.jpg){fig-align="right" height=50mm}
 
+```
+![Puma](img/puma.jpg){fig-align="left" height=50mm}
+```
+![Puma](img/jaguar.jpg){fig-align="left" height=50mm}
+
 #### Referencias
 Para crear referencias a figuras, deben identificarse con el prefijo `fig-`. Luego, pueden referenciarse con el prefijo `@`. Por ejemplo:
 
@@ -261,5 +268,88 @@ Todos los felinos de Costa Rica
 
 Para más detalles sobre referencias, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
 
+### Citas bibliográficas
+Quarto puede generar citas bibliográficas y bibliografías en un varios estilos. Para esto, es necesario:
+
+- Un documento Quarto con citas (vea [Citation Markdown](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations)).
+- Una fuente de datos bibliográfica como, por ejemplo, un archivo BibLaTeX (`.bib`) o un archivo BibTeX (`.bibtex`).
+- Opcionalmente, un archivo CSL (`.csl`) para formatear las citas y la bibiografía.
+
+#### Archivos bibliográficos
+El archivo (o los archivos) bibliográficos que utiliza un documento, se especifican en la sección de YAML, mediante el campo `bibliography`. Por ejemplo:
+
+```
+---
+title: "Felinos"
+bibliography: bibliografia/referencias.bib
+---
+```
+
+En [Pandoc - Citations](https://pandoc.org/MANUAL.html#citations) puede encontrar más información sobre los formatos bibliográficos. También puede ver aquí un [ejemplo de archivo `.bib`](bibliografia/referencias.bib).
+
+#### Sintaxis de las citas
+Las citas se especifican con el prefijo `@`. Por ejemplo:
+
+```
+La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
+```
+
+Genera la siguiente salida:
+
+La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
+
+Para más información sobre las variaciones en la sintaxis de las citas, se recomienda consultar [Citation Syntax](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations).
+
+#### Estilo de las citas
+Por defecto, Quarto utiliza el [Manual de estilo Chicago](https://chicagomanualofstyle.org/), pero puede usar cualquier estilo definido mediante [Citation Style Language (CSL)](https://citationstyles.org/). El archivo CSL que se utiliza debe especificarse en la sección YAML con el campo `csl`.
+
+```
+---
+title: "Felinos"
+bibliography: bibliografia/referencias.bib
+csl: bibliografia/apa-6th-edition.csl
+---
+```
+
+Pueden encontrarse archivos CSL ya definidos en el [repositorio central del Proyecto CSL](https://github.com/citation-style-language/styles) o en el [repositorio de estilos de Zotero](https://www.zotero.org/styles).
+
+Para más información sobre los estilos de las citas, se recomienda consultar [Citation Style](https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style).
+
+#### Generación de bibliografía
+La lista de recursos citados se genera en una división con la identificación `refs`. Por ejemplo:
+
+```
+### Referencias
+
+::: {#refs}
+:::
+```
+
+Si no encuentra esta división en el documento, Quarto generará la bibliografía al final de este.
+
+Para más detalles sobre citas bibliográficas en Quarto, se recomienda consultar [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html).
+
+## Ejemplo de documento Quarto
+-   Sitio en GitHub Pages: <https://mesa-monitoreo-puntos.github.io/felinos/>
+-   Código fuente: <https://github.com/mesa-monitoreo-puntos/felinos>
+
+## Ejercicios
+1. Desarrolle en documento Quarto con un tema de su elección y publíquelo en GitHub Pages. Se recomienda seguir los siguientes pasos:
+    a. Cree un nuevo proyecto en RStudio.
+    b. Cree un documento Quarto con nombre `index.qmd` que incluya, al menos:
+        - Texto.
+        - Varios niveles de encabezados.
+        - Enlaces.
+        - Figuras y referencias a estas.
+        - Citas bibliográficas.
+    c. Genere el archivo `index.html`.
+    d. Cree un nuevo repositorio en GitHub y suba los archivos `index.qmd` e `index.html`.
+    e. Publique el repositorio como un sitio GitHub Pages.
+        
 ## Recursos de interés
 - [Quarto - Figures](https://quarto.org/docs/authoring/figures.html)
+- [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html)
+
+## Referencias
+::: {#refs}
+:::
