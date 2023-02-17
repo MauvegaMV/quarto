@@ -1,0 +1,457 @@
+---
+toc-title: "Contenidos"
+bibliography: bibliografia/referencias.bib
+csl: bibliografia/apa-6th-edition.csl
+---
+
+# R
+
+## Resumen
+
+
+## Trabajo previo
+
+### Instalación de software
+Para la edición de código en R, se recomienda instalar:
+
+- [Sistema base del lenguaje R](https://cloud.r-project.org/)
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/) (la versión v2022.07 y superiores son las cuales cuentan con los componentes necesarios para trabajar con Quarto)
+
+Si se va a trabajar con datos geoespaciales, es conveniente contar con un sistema de información geográfica de escritorio, como [QGIS](https://qgis.org/).
+
+### Tutoriales
+
+
+## El lenguaje de programación R
+[R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [ciencia de datos (*data science*)](https://en.wikipedia.org/wiki/Data_science), [*big data*](https://en.wikipedia.org/wiki/Big_data) y [aprendizaje automático (*machine learning*)](https://en.wikipedia.org/wiki/Machine_learning), con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
+
+R es un proyecto de [software libre](https://en.wikipedia.org/wiki/Free_software) que se comparte mediante una licencia [GNU General Public Licence (GNU GPL)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). Esta característica permite que la funcionalidad original de R pueda ser ampliada mediante bibliotecas o paquetes desarrollados por la comunidad de programadores.
+
+Para programar en R, puede utilizarse una interfaz de línea de comandos, editores de texto (ej. [Visual Studio Code](https://code.visualstudio.com/), [Vim](https://www.vim.org/)) y también ambientes de desarrollo integrados (IDE, *integrated development environment*) como [Jupyter](https://jupyter.org/) o [RStudio](https://rstudio.com/).
+
+### Tipos de datos y variables
+R puede trabajar con varios [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types), entre los que están números, caracteres (i.e. textos), lógicos, vectores y matrices. También puede trabajar con [tipos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects), como factores y *data frames*.
+
+En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación. Estos son `=` y `<-` (o `->`). Por ejemplo, las siguientes sentencias crean variables de varios tipos de datos simples.
+
+```{r}
+#| label: code-asignacion
+#| collapse: true
+
+# Números (pueden ser enteros o decimales)
+x <- 10
+x
+
+# Hileras de caracteres (se delimitan entre comillas simples o dobles)
+nombre <- 'Manuel'
+nombre
+
+# Lógicos (Verdadero o Falso, TRUE o FALSE)
+p <- 1 > 2
+p
+
+# Vectores (pueden contener elementos de cualquier tipo de datos)
+dias <- c('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado')
+dias
+```
+
+Un tipo de datos fundamental para el análisis de datos en R, es el [data frame](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Data-frame-objects). Es una estructura bidimensional similar a lo que comúnmente se conoce como una tabla. Sus filas corresponden a las [observaciones](https://es.wikipedia.org/wiki/Observaci%C3%B3n) de un conjunto de datos y sus columnas a las [variables](https://es.wikipedia.org/wiki/Variable_estad%C3%ADstica). Los data frames implementan un conjunto de funciones similares a las de una hoja electrónica o una tabla de una base de datos relacional.
+
+R cuenta con una gran cantidad de funciones para manejar data frames y también con varios conjuntos de datos, implementados como data frames, los cuales se instalan con la distribución base de R.
+
+```{r}
+#| label: code-data
+#| eval: false
+
+# Información sobre todos los conjuntos de datos incorporados en la distribución base de R
+data()
+
+# Información sobre el cojunto de datos cars
+?cars
+# Despliegue de los datos de cars
+View(cars)
+
+# Información sobre el cojunto de datos mtcars
+?mtcars
+# Despliegue de los datos de mtcars
+View(mtcars)
+
+# Información sobre el cojunto de datos iris
+?iris
+# Despliegue de los datos de iris
+View(iris)
+```
+
+### Funciones
+R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamadas [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (`()`) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (`,`).
+
+```{r}
+#| label: code-functions-examples
+
+# Impresión de una hilera de caracteres
+print("Hola mundo")
+
+
+# Cálculo de la media aritmética
+mean(c(2, 4, 5, 9))
+```
+
+### Paquetes
+Las funciones de R se distribuyen en [paquetes](https://en.wikipedia.org/wiki/R_package). Cada paquete contiene un conjunto de funciones y estructuras de datos relacionadas entre sí. También hay paquetes que contienen datos.
+
+Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función [library()](https://rdrr.io/r/base/library.html).
+
+```{r}
+#| label: code-library
+
+# Carga del paquete stats
+library(stats)
+```
+
+Algunos paquetes están contenidos en la distribución base de R. Otros deben instalarse con la función [install.packages()](https://rdrr.io/r/utils/install.packages.html).
+
+En el siguiente ejemplo, se instala el paquete [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/).
+
+```{r}
+#| label: code-install.packages
+#| eval: false
+
+# Instalación del paquete palmerpenguins (note las comillas)
+install.packages("palmerpenguins")
+
+# Carga del paquete palmerpenguins
+library(palmerpenguins)
+```
+
+## Descripción general
+[Quarto](https://quarto.org/) es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Entre sus principales capacidades están:
+
+-   Crear contenido dinámico con los lenguajes [R](https://www.r-project.org/), [Python](https://www.python.org/), [Julia](https://julialang.org/) y [Observable](https://observablehq.com/@observablehq/observables-not-javascript).
+-   Crear documentos Markdown de texto plano o [cuadernos de notas de Jupyter](https://jupyter.org/).
+-   Publicar artículos académicos, reportes, presentaciones, sitios web, *blogs* y libros en HTML, PDF, MS Word, ePub y otros formatos.
+-   Crear contenido científico, incluyendo ecuaciones, citas bibliográficas, referencias cruzadas, figuras y otros elementos.
+
+
+Quarto fue anunciado oficialmente por [Posit](https://posit.co/) (anteriormente, la Fundación RStudio) en [julio de 2022](https://posit.co/blog/announcing-quarto-a-new-scientific-and-technical-publishing-system/), como la [siguiente generación](https://quarto.org/docs/faq/rmarkdown.html) de [R Markdown](https://rmarkdown.rstudio.com/), un formato que permite insertar código en R, y sus salidas, en documentos escritos en Markdown. R Markdown fue introducido por Yihui Xie en 2012, junto con el paquete [knitr](https://yihui.org/knitr/), cuyo propósito es facilitar la investigación reproducible en R a través de la [programación literaria (*literate programming*)](https://es.wikipedia.org/wiki/Programaci%C3%B3n_literaria), un paradigma de programación propuesto por Donald Knuth en 1984.
+
+Los programas "literarios" (o "letrados") están escritos como una exposición lógica en un lenguaje humano similar a la explicación de las fórmulas y ecuaciones empleadas para representar y resolver un problema en un texto de física o de matemáticas. En estos programas, se describe el análisis del problema, su solución y su implementación, intercalando código fuente entre los párrafos (y otros contenidos como imágenes, tablas, gráficos estadísticos y mapas), de forma similar a como en los textos de matemáticas se intercalan las fórmulas y las ecuaciones. La programación literaria puede mejorar enormemente un programa, ya que permite documentar ampliamente en qué consiste el problema a resolver, cómo se resuelve, cómo y por qué se adoptó cierto diseño, cómo se optimizó y cómo se implementó en un lenguaje de programación.
+
+## Anatomía de un documento Quarto
+Un documento Quarto tiene tres tipos de contenido:
+
+-   Metadatos en YAML.
+-   Narrativa en Markdown.
+-   Bloques de código fuente.
+
+### Metadatos en YAML
+Todo documento Quarto inicia con un encabezado en la sintaxis [YAML (YAML Ain't Markup Language)](https://es.wikipedia.org/wiki/YAML), el cual contiene metadatos del documento como el título, el autor, la fecha de creación, el formato de salida y la estructura de la tabla de contenidos, entre muchos otros.
+
+Un encabezado YAML comienza y termina con tres guiones (`---`) y contiene un conjunto de campos y valores de la forma:
+
+    ---
+    campo01: valor01
+    campo02: valor02
+    campo0n: valor0n
+    ---
+
+Por ejemplo, un encabezado YAML típico puede ser el siguiente:
+
+    ---
+    title: Mi primer documento Quarto
+    format: html
+    editor: visual
+    ---
+
+Los campos del encabezado pueden anidarse con sangrías de dos espacios como, por ejemplo:
+
+    ---
+    format:
+      html:
+        toc: true
+        toc_float: true
+    ---
+
+Los elementos de metadatos que pueden especificarse en el encabezado, pueden variar de acuerdo al formato de salida, como puede verse en los siguientes enlaces:
+
+-   [Elementos de metadatos para HTML](https://quarto.org/docs/reference/formats/html.html)
+-   [Elementos de metadatos para PDF](https://quarto.org/docs/reference/formats/pdf.html)
+-   [Elementos metadatos para MS Word](https://quarto.org/docs/reference/formats/docx.html)
+
+Existen elementos de metadatos para muchos otros formatos de salida (OpenOffice, ePub, presentaciones, wikis, etc.), como puede apreciarse en la [Referencia de Quarto](https://quarto.org/docs/reference/).
+
+### Narrativa en Markdown
+La narrativa proporciona estructura y contenido al documento en la forma de encabezados, párrafos, enlaces y otros elementos de la sintaxis de [Markdown](https://daringfireball.net/projects/markdown/).
+
+### Bloques de código fuente
+En Quarto, los bloques (*chunks*) de código fuente se delimitan con tres [*backticks*](https://en.wikipedia.org/wiki/Backtick), tanto al inicio como al final del bloque. Los bloques en R se identifican con `{r}` y se configuran con diferentes opciones que inician con `#|`. Los bloques de otros lenguajes de programación se identifican con `{python}` y `{julia}`, por ejemplo.
+
+El siguiente es un ejemplo de bloque de código en R y su salida:
+
+```` md
+```{r}`r ''`
+#| label: graficacion-cars
+#| include: true
+#| echo: true
+
+plot(
+  x = cars$speed,
+  y = cars$dist,
+  main = "Velocidad vs distancia de frenado",
+  xlab = "Velocidad (mph)",
+  ylab = "Distancia (pies)"
+)
+```
+````
+
+```{r}
+#| label: graficacion-cars
+#| include: true
+#| echo: false
+
+plot(
+  x = cars$speed,
+  y = cars$dist,
+  main = "Velocidad vs distancia de frenado",
+  xlab = "Velocidad (mph)",
+  ylab = "Distancia (pies)"
+)
+```
+
+La opción `label` se utiliza para etiquetar el bloque. La de `include` para especificar si se desea que el bloque y sus resultados se incluyan en el documento de salida. Por su parte, `echo` indica si el código fuente debe desplegarse o no.
+
+## ¿Cómo funciona Quarto?
+Quarto se apoya en [knitr](https://yihui.org/knitr/) y en [Pandoc](http://pandoc.org/). knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la @fig-quarto-knitr-pandoc.
+
+```{r}
+#| label: fig-quarto-knitr-pandoc
+#| fig.cap: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de [quarto.org](Conversión de un documento R Markdown (.RMD) a su formato de salida).
+#| echo: false
+
+knitr::include_graphics(rep("img/rstudio-qmd-how-it-works.png"))
+```
+
+## Herramientas para escritura
+
+### Figuras
+
+#### Sintaxis básica
+En su forma más básica, una figura puede crearse en Quarto con la misma sintaxis de Markdown (específicamente Pandoc Markdown).
+
+```
+![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
+```
+![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
+
+Nótese como el texto entre paréntesis cuadrados se despliega al pie de la figura. En algunos formatos de salida (ej. PDF, LaTeX), las figuras se numeran automáticamente.
+
+#### Tamaño
+Por defecto, las figuras se despliegan con su tamaño nativo. Este puede modificarse con los atributos `width` y `height`, los cuales utilizan pixeles como unidad de medida por defecto.
+
+```
+![Jaguar](img/jaguar.jpg){width=300}
+```
+![Jaguar](img/jaguar.jpg){width=300}
+
+Si se usa solo uno de los atributos, el otro se ajusta automáticamente. Pueden usarse otras unidades de medida como porcentajes, pulgadas o milímetros.
+
+```
+![Jaguar](img/jaguar.jpg){width=80%}
+```
+![Jaguar](img/jaguar.jpg){width=80%}
+
+```
+![Jaguar](img/jaguar.jpg){height=3in}
+```
+![Jaguar](img/jaguar.jpg){height=3in}
+
+```
+![Jaguar](img/jaguar.jpg){height=76.2mm}
+```
+![Jaguar](img/jaguar.jpg){height=76.2mm}
+
+#### Enlaces
+Una figura puede funcionar como un enlace a otro documento. La dirección del enlace se escribe entre paréntesis redondos.
+
+```
+[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
+```
+[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
+
+#### Alineación
+La alineación por defecto de las figuras es en el centro. Se pueden elegir otras alineaciones mediante el atributo `fig-align`.
+
+```
+![Puma](img/puma.jpg){fig-align="right" height=50mm}
+```
+![Puma](img/jaguar.jpg){fig-align="right" height=50mm}
+
+```
+![Puma](img/puma.jpg){fig-align="left" height=50mm}
+```
+![Puma](img/jaguar.jpg){fig-align="left" height=50mm}
+
+#### Referencias
+Para crear referencias a figuras, deben identificarse con el prefijo `fig-`. Luego, pueden referenciarse con el prefijo `@`. Por ejemplo:
+
+```
+Actualmente, el portal de datos de la Infraestructura Mundial
+de Información en Biodiversidad (GBIF) agrupa más de 
+dos mil millones de registros de presencia de especies, 
+cuya distribución espacial puede observarse en la @fig-mapagbif.
+
+![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}
+```
+
+Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la @fig-mapa-gbif.
+
+![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapa-gbif}
+
+#### Grupos de figuras
+Para mostrar varias figuras como un grupo, puede crearse una división (`div`) con los caracteres `:::`, al inicial y al final. Por ejemplo:
+
+```
+::: {#fig-felinos-grandes-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+Felinos más grandes de Costa Rica
+:::
+```
+
+::: {#fig-felinos-grandes-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+Felinos más grandes de Costa Rica
+:::
+
+El atributo `layout-ncol` especifica el número de columnas.
+
+```
+::: {#fig-felinos-costarica layout-ncol=2}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
+
+![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
+
+![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
+
+![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
+
+Todos los felinos de Costa Rica
+:::
+```
+
+::: {#fig-felinos-costarica layout-ncol=3}
+
+![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
+
+![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
+
+![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
+
+![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
+
+![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
+
+![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
+
+
+Todos los felinos de Costa Rica
+:::
+
+Para más detalles sobre figuras, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
+
+### Citas bibliográficas
+Quarto puede generar citas bibliográficas y bibliografías en un varios estilos. Para esto, es necesario:
+
+- Un documento Quarto con citas (vea [Citation Markdown](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations)).
+- Una fuente de datos bibliográfica como, por ejemplo, un archivo BibLaTeX (`.bib`) o un archivo BibTeX (`.bibtex`).
+- Opcionalmente, un archivo CSL (`.csl`) para formatear las citas y la bibiografía.
+
+#### Archivos bibliográficos
+El archivo (o los archivos) bibliográficos que utiliza un documento, se especifican en la sección de YAML, mediante el campo `bibliography`. Por ejemplo:
+
+```
+---
+title: "Felinos"
+bibliography: bibliografia/referencias.bib
+---
+```
+
+En [Pandoc - Citations](https://pandoc.org/MANUAL.html#citations) puede encontrar más información sobre los formatos bibliográficos. También puede ver aquí un [ejemplo de archivo `.bib`](bibliografia/referencias.bib).
+
+#### Sintaxis de las citas
+Las citas se especifican con el prefijo `@`. Por ejemplo:
+
+```
+La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
+```
+
+Genera la siguiente salida:
+
+La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
+
+Para más información sobre las variaciones en la sintaxis de las citas, se recomienda consultar [Citation Syntax](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations).
+
+#### Estilo de las citas
+Por defecto, Quarto utiliza el [Manual de estilo Chicago](https://chicagomanualofstyle.org/), pero puede usar cualquier estilo definido mediante [Citation Style Language (CSL)](https://citationstyles.org/). El archivo CSL que se utiliza debe especificarse en la sección YAML con el campo `csl`.
+
+```
+---
+title: "Felinos"
+bibliography: bibliografia/referencias.bib
+csl: bibliografia/apa-6th-edition.csl
+---
+```
+
+Pueden encontrarse archivos CSL ya definidos en el [repositorio central del Proyecto CSL](https://github.com/citation-style-language/styles) o en el [repositorio de estilos de Zotero](https://www.zotero.org/styles).
+
+Para más información sobre los estilos de las citas, se recomienda consultar [Citation Style](https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style).
+
+#### Generación de bibliografía
+La lista de recursos citados se genera en una división con la identificación `refs`. Por ejemplo:
+
+```
+### Referencias
+
+::: {#refs}
+:::
+```
+
+Si no encuentra esta división en el documento, Quarto generará la bibliografía al final de este.
+
+Para más detalles sobre citas bibliográficas en Quarto, se recomienda consultar [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html).
+
+## Ejemplo de documento Quarto
+-   Sitio en GitHub Pages: <https://mesa-monitoreo-puntos.github.io/felinos/>
+-   Código fuente: <https://github.com/mesa-monitoreo-puntos/felinos>
+
+## Ejercicios
+1. Desarrolle en documento Quarto con un tema de su elección y publíquelo en GitHub Pages. Se recomienda seguir los siguientes pasos:
+    a. Cree un nuevo proyecto en RStudio.
+    b. Cree un documento Quarto con nombre `index.qmd` que incluya, al menos:
+        - Texto.
+        - Varios niveles de encabezados.
+        - Enlaces.
+        - Figuras y referencias a estas.
+        - Citas bibliográficas.
+    c. Genere el archivo `index.html`.
+    d. Cree un nuevo repositorio en GitHub y suba los archivos `index.qmd` e `index.html`.
+    e. Publique el repositorio como un sitio GitHub Pages.
+        
+## Recursos de interés
+- [Quarto - Figures](https://quarto.org/docs/authoring/figures.html)
+- [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html)
+
+## Referencias
+::: {#refs}
+:::

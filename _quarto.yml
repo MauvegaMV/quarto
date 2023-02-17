@@ -10,6 +10,7 @@ book:
     - 01-markdown.qmd
     - 02-git.qmd
     - 03-quarto.qmd
+    - 04-r.qmd
 
 bibliography: references.bib
 

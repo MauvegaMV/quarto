@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -112,6 +112,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./04-r.html" rel="next">
 <link href="./02-git.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -194,6 +195,11 @@ div.csl-indent {
   <a href="./03-quarto.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-r.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -242,7 +248,6 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
-  
     
   </div>
   
@@ -349,13 +354,13 @@ format:
 </section>
 <section id="cómo-funciona-quarto" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="cómo-funciona-quarto"><span class="header-section-number">3.5</span> ¿Cómo funciona Quarto?</h2>
-<p>Quarto se apoya en <a href="https://yihui.org/knitr/">knitr</a> y en <a href="http://pandoc.org/">Pandoc</a>. knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la <a href="#fig-quarto-knitr-pandoc">Figure&nbsp;<span>3.1</span></a>.</p>
+<p>Quarto se apoya en <a href="https://yihui.org/knitr/">knitr</a> y en <a href="http://pandoc.org/">Pandoc</a>. knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la <a href="04-r.html#fig-quarto-knitr-pandoc">Figure&nbsp;<span>4.1</span></a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-quarto-knitr-pandoc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/rstudio-qmd-how-it-works.png" class="img-fluid figure-img" width="700"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de <a href="Conversión de un documento R Markdown (.RMD) a su formato de salida">quarto.org</a>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de <a href="Conversión%20de%20un%20documento%20R%20Markdown%20(.RMD)%20a%20su%20formato%20de%20salida">quarto.org</a>.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -448,7 +453,7 @@ dos mil millones de registros de presencia de especies,
 cuya distribución espacial puede observarse en la @fig-mapagbif.
 
 ![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}</code></pre>
-<p>Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la <a href="#fig-mapa-gbif">Figure&nbsp;<span>3.2</span></a>.</p>
+<p>Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la <a href="04-r.html#fig-mapa-gbif">Figure&nbsp;<span>4.2</span></a>.</p>
 <div id="fig-mapa-gbif" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="img/mapa-gbif.png" class="img-fluid figure-img"></p>
@@ -651,13 +656,8 @@ csl: bibliografia/apa-6th-edition.csl
 </section>
 <section id="referencias-1" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="referencias-1"><span class="header-section-number">3.10</span> Referencias</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-lamberski_felidae_2015" class="csl-entry" role="doc-biblioentry">
-Lamberski, N. (2015). Felidae. In <em>Fowler’s <span>Zoo</span> and
-<span>Wild</span> <span>Animal</span> <span>Medicine</span>,
-<span>Volume</span> 8</em> (pp. 467–476). Elsevier. <a href="https://doi.org/10.1016/B978-1-4557-7397-8.00047-5">https://doi.org/10.1016/B978-1-4557-7397-8.00047-5</a>
-</div>
-</div>
+
+
 
 
 </section>
@@ -704,24 +704,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -757,42 +740,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>
@@ -803,6 +768,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./04-r.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
