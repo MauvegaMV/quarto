@@ -468,7 +468,7 @@ leaflet() |>
   ) |>
   addLayersControl(
     baseGroups = c("OpenStreetMap"),
-    overlayGroups = c("Felinos")) |> # control de capas
+    overlayGroups = c("Puma concolor")) |> # control de capas
   addScaleBar(position = "bottomleft", options = scaleBarOptions(imperial = FALSE)) |> # barra de escala
   addMiniMap(position = "bottomleft") # mapa de ubicación
 ```
