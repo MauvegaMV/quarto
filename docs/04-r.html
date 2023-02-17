@@ -83,25 +83,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -141,6 +122,26 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+
+<script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<link href="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet">
+<script src="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="site_libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
 
 
 </head>
@@ -212,31 +213,23 @@ div.csl-indent {
   <li><a href="#trabajo-previo" id="toc-trabajo-previo" class="nav-link" data-scroll-target="#trabajo-previo"><span class="toc-section-number">4.2</span>  Trabajo previo</a>
   <ul class="collapse">
   <li><a href="#instalación-de-software" id="toc-instalación-de-software" class="nav-link" data-scroll-target="#instalación-de-software"><span class="toc-section-number">4.2.1</span>  Instalación de software</a></li>
-  <li><a href="#tutoriales" id="toc-tutoriales" class="nav-link" data-scroll-target="#tutoriales"><span class="toc-section-number">4.2.2</span>  Tutoriales</a></li>
   </ul></li>
   <li><a href="#el-lenguaje-de-programación-r" id="toc-el-lenguaje-de-programación-r" class="nav-link" data-scroll-target="#el-lenguaje-de-programación-r"><span class="toc-section-number">4.3</span>  El lenguaje de programación R</a>
   <ul class="collapse">
   <li><a href="#tipos-de-datos-y-variables" id="toc-tipos-de-datos-y-variables" class="nav-link" data-scroll-target="#tipos-de-datos-y-variables"><span class="toc-section-number">4.3.1</span>  Tipos de datos y variables</a></li>
   <li><a href="#funciones" id="toc-funciones" class="nav-link" data-scroll-target="#funciones"><span class="toc-section-number">4.3.2</span>  Funciones</a></li>
   <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes"><span class="toc-section-number">4.3.3</span>  Paquetes</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="toc-section-number">4.3.4</span>  Tidyverse</a></li>
+  <li><a href="#el-conjunto-de-datos-palmerpenguins" id="toc-el-conjunto-de-datos-palmerpenguins" class="nav-link" data-scroll-target="#el-conjunto-de-datos-palmerpenguins"><span class="toc-section-number">4.3.5</span>  El conjunto de datos palmerpenguins</a></li>
   </ul></li>
-  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link" data-scroll-target="#descripción-general"><span class="toc-section-number">4.4</span>  Descripción general</a></li>
-  <li><a href="#anatomía-de-un-documento-quarto" id="toc-anatomía-de-un-documento-quarto" class="nav-link" data-scroll-target="#anatomía-de-un-documento-quarto"><span class="toc-section-number">4.5</span>  Anatomía de un documento Quarto</a>
+  <li><a href="#ejemplos-de-visualizaciones-de-datos" id="toc-ejemplos-de-visualizaciones-de-datos" class="nav-link" data-scroll-target="#ejemplos-de-visualizaciones-de-datos"><span class="toc-section-number">4.4</span>  Ejemplos de visualizaciones de datos</a>
   <ul class="collapse">
-  <li><a href="#metadatos-en-yaml" id="toc-metadatos-en-yaml" class="nav-link" data-scroll-target="#metadatos-en-yaml"><span class="toc-section-number">4.5.1</span>  Metadatos en YAML</a></li>
-  <li><a href="#narrativa-en-markdown" id="toc-narrativa-en-markdown" class="nav-link" data-scroll-target="#narrativa-en-markdown"><span class="toc-section-number">4.5.2</span>  Narrativa en Markdown</a></li>
-  <li><a href="#bloques-de-código-fuente" id="toc-bloques-de-código-fuente" class="nav-link" data-scroll-target="#bloques-de-código-fuente"><span class="toc-section-number">4.5.3</span>  Bloques de código fuente</a></li>
+  <li><a href="#tablas" id="toc-tablas" class="nav-link" data-scroll-target="#tablas"><span class="toc-section-number">4.4.1</span>  Tablas</a></li>
+  <li><a href="#gráficos" id="toc-gráficos" class="nav-link" data-scroll-target="#gráficos"><span class="toc-section-number">4.4.2</span>  Gráficos</a></li>
+  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"><span class="toc-section-number">4.4.3</span>  Mapas</a></li>
   </ul></li>
-  <li><a href="#cómo-funciona-quarto" id="toc-cómo-funciona-quarto" class="nav-link" data-scroll-target="#cómo-funciona-quarto"><span class="toc-section-number">4.6</span>  ¿Cómo funciona Quarto?</a></li>
-  <li><a href="#herramientas-para-escritura" id="toc-herramientas-para-escritura" class="nav-link" data-scroll-target="#herramientas-para-escritura"><span class="toc-section-number">4.7</span>  Herramientas para escritura</a>
-  <ul class="collapse">
-  <li><a href="#figuras" id="toc-figuras" class="nav-link" data-scroll-target="#figuras"><span class="toc-section-number">4.7.1</span>  Figuras</a></li>
-  <li><a href="#citas-bibliográficas" id="toc-citas-bibliográficas" class="nav-link" data-scroll-target="#citas-bibliográficas"><span class="toc-section-number">4.7.2</span>  Citas bibliográficas</a></li>
-  </ul></li>
-  <li><a href="#ejemplo-de-documento-quarto" id="toc-ejemplo-de-documento-quarto" class="nav-link" data-scroll-target="#ejemplo-de-documento-quarto"><span class="toc-section-number">4.8</span>  Ejemplo de documento Quarto</a></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">4.9</span>  Ejercicios</a></li>
-  <li><a href="#recursos-de-interés" id="toc-recursos-de-interés" class="nav-link" data-scroll-target="#recursos-de-interés"><span class="toc-section-number">4.10</span>  Recursos de interés</a></li>
-  <li><a href="#referencias-1" id="toc-referencias-1" class="nav-link" data-scroll-target="#referencias-1"><span class="toc-section-number">4.11</span>  Referencias</a></li>
+  <li><a href="#integración-de-código-r-en-documentos-quarto" id="toc-integración-de-código-r-en-documentos-quarto" class="nav-link" data-scroll-target="#integración-de-código-r-en-documentos-quarto"><span class="toc-section-number">4.5</span>  Integración de código R en documentos Quarto</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">4.6</span>  Ejercicios</a></li>
   </ul>
 </nav>
     </div>
@@ -261,6 +254,7 @@ div.csl-indent {
 
 <section id="resumen" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="resumen"><span class="header-section-number">4.1</span> Resumen</h2>
+<p>R es un lenguaje de programación enfocado en análisis estadístico. En este capítulo, se explica la sintaxis básica del lenguaje y como bloques de código en R, y sus salidas, pueden ser incluídos en documentos Quarto.</p>
 </section>
 <section id="trabajo-previo" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="trabajo-previo"><span class="header-section-number">4.2</span> Trabajo previo</h2>
@@ -273,18 +267,15 @@ div.csl-indent {
 </ul>
 <p>Si se va a trabajar con datos geoespaciales, es conveniente contar con un sistema de información geográfica de escritorio, como <a href="https://qgis.org/">QGIS</a>.</p>
 </section>
-<section id="tutoriales" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="tutoriales"><span class="header-section-number">4.2.2</span> Tutoriales</h3>
-</section>
 </section>
 <section id="el-lenguaje-de-programación-r" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="el-lenguaje-de-programación-r"><span class="header-section-number">4.3</span> El lenguaje de programación R</h2>
-<p><a href="https://www.r-project.org/">R</a> es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse <a href="https://en.wikipedia.org/wiki/Data_science">ciencia de datos (<em>data science</em>)</a>, <a href="https://en.wikipedia.org/wiki/Big_data"><em>big data</em></a> y <a href="https://en.wikipedia.org/wiki/Machine_learning">aprendizaje automático (<em>machine learning</em>)</a>, con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.</p>
+<p><a href="https://www.r-project.org/">R</a> es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse <a href="https://en.wikipedia.org/wiki/Data_science">ciencia de datos (<em>data science</em>)</a>, <a href="https://en.wikipedia.org/wiki/Big_data"><em>big data</em></a> y <a href="https://en.wikipedia.org/wiki/Machine_learning">aprendizaje automático (<em>machine learning</em>)</a>. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.</p>
 <p>R es un proyecto de <a href="https://en.wikipedia.org/wiki/Free_software">software libre</a> que se comparte mediante una licencia <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public Licence (GNU GPL)</a>. Esta característica permite que la funcionalidad original de R pueda ser ampliada mediante bibliotecas o paquetes desarrollados por la comunidad de programadores.</p>
 <p>Para programar en R, puede utilizarse una interfaz de línea de comandos, editores de texto (ej. <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.vim.org/">Vim</a>) y también ambientes de desarrollo integrados (IDE, <em>integrated development environment</em>) como <a href="https://jupyter.org/">Jupyter</a> o <a href="https://rstudio.com/">RStudio</a>.</p>
 <section id="tipos-de-datos-y-variables" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="tipos-de-datos-y-variables"><span class="header-section-number">4.3.1</span> Tipos de datos y variables</h3>
-<p>R puede trabajar con varios <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types">tipos de datos básicos</a>, entre los que están números, caracteres (i.e.&nbsp;textos), lógicos, vectores y matrices. También puede trabajar con <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects">tipos compuestos</a>, como factores y <em>data frames</em>.</p>
+<p>R puede trabajar con varios <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types">tipos de datos básicos</a>, entre los que están números, caracteres (i.e.&nbsp;textos), lógicos, vectores y matrices. También puede trabajar con <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects">tipos compuestos</a>, como factores y data frames.</p>
 <p>En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación. Estos son <code>=</code> y <code>&lt;-</code> (o <code>-&gt;</code>). Por ejemplo, las siguientes sentencias crean variables de varios tipos de datos simples.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Números (pueden ser enteros o decimales)</span></span>
@@ -329,18 +320,33 @@ div.csl-indent {
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Despliegue de los datos de iris</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>La función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> permite leer datos de un archivo de valores separados por comas (CSV), el cual puede estar en una ubicación local o remota.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lectura de archivo CSV ubicado en la Web</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>especies_mamiferos_cr <span class="ot">&lt;-</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/especies-mamiferos-cr.csv"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Desplegue de los datos</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(especies_mamiferos_cr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejercicio</strong></p>
+<ul>
+<li>Descargue en su computadora el archivo <a href="https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv">https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv</a>, cárguelo en un data frame y despliegue sus datos.</li>
+</ul>
 </section>
 <section id="funciones" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="funciones"><span class="header-section-number">4.3.2</span> Funciones</h3>
-<p>R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamadas <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (<code>,</code>).</p>
+<p>R estructura un programa en unidades de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamadas <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (<code>,</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Impresión de una hilera de caracteres</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Hola mundo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Impresión de una hilera de caracteres</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Hola mundo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hola mundo"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la media aritmética</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la media aritmética</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
@@ -351,91 +357,332 @@ div.csl-indent {
 <p>Las funciones de R se distribuyen en <a href="https://en.wikipedia.org/wiki/R_package">paquetes</a>. Cada paquete contiene un conjunto de funciones y estructuras de datos relacionadas entre sí. También hay paquetes que contienen datos.</p>
 <p>Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función <a href="https://rdrr.io/r/base/library.html">library()</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete stats</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete stats</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Algunos paquetes están contenidos en la distribución base de R. Otros deben instalarse con la función <a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a>.</p>
 <p>En el siguiente ejemplo, se instala el paquete <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación del paquete palmerpenguins (note las comillas)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete palmerpenguins</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación del paquete palmerpenguins (note las comillas)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete palmerpenguins</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tidyverse" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">4.3.4</span> Tidyverse</h3>
+<section id="descripción-general" class="level4" data-number="4.3.4.1">
+<h4 data-number="4.3.4.1" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">4.3.4.1</span> Descripción general</h4>
+<p><a href="https://www.tidyverse.org/">Tidyverse</a> es una colección de paquetes de R enfocados en ciencia de datos, una discipina que permite convertir datos no procesados en entendimiento, comprensión y conocimiento.</p>
+<p>La <a href="#fig-modelo-ciencia-datos">Figure&nbsp;<span>4.1</span></a> ilustra el modelo de un proyecto típico de ciencia de datos, el cual incluye los procesos de importar, organizar, transformar, visualizar, modelar y comunicar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-modelo-ciencia-datos" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/modelo-ciencia-datos.png" class="img-fluid figure-img" width="258"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Modelo de ciencia de datos. Imagen de <a href="https://r4ds.had.co.nz/introduction.html">Hadley Wickham</a>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Los paquetes de Tidyverse comparten filosofía de diseño, gramática y estructuras de datos para apoyar estos procesos del modelo de ciencia de datos.</p>
+</section>
+<section id="paquetes-1" class="level4" data-number="4.3.4.2">
+<h4 data-number="4.3.4.2" class="anchored" data-anchor-id="paquetes-1"><span class="header-section-number">4.3.4.2</span> Paquetes</h4>
+<p>El núcleo de Tidyverse está compuesto por <a href="https://www.tidyverse.org/packages/#core-tidyverse">ocho paquetes base</a>, los cuales proveen las funcionalidades utilizadas más frecuentemente en análisis de datos:</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/">ggplot2</a>: sistema para la creación declarativa de gráficos, basado en el libro <a href="https://www.springer.com/gp/book/9780387245447"><em>The Grammar of Graphics</em>, de Wilkinson et al.</a>.</li>
+<li><a href="https://dplyr.tidyverse.org/">dplyr</a>: gramática para la manipulación de datos que proporciona un conjunto consistente de “verbos” que resulven los retos más comunes de manipulación de datos.</li>
+<li><a href="https://tidyr.tidyverse.org/">tidyr</a>: conjunto de funciones para organizar (<em>to tidy</em>) datos, colocando las observaciones, variables y valores en filas, columnas y celdas de estructuras rectangulares.</li>
+<li><a href="https://readr.tidyverse.org/">readr</a>: conjunto de funciones para cargar datos de estructuras rectangulares (ej. archivos CSV) en memoria.</li>
+<li><a href="https://purrr.tidyverse.org/">purr</a>: conjunto de herramientas de <a href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional">programación funcional</a> para trabajar con funciones y vectores.</li>
+<li><a href="https://tibble.tidyverse.org/">tibble</a>: un <em>tibble</em> es una redefinición del concepto de data frame, para hacerlos más eficientes y fáciles de usar.</li>
+<li><a href="https://stringr.tidyverse.org/">stringr</a>: colección de funciones para facilitar el trabajo con hileras de caracteres.</li>
+<li><a href="https://forcats.tidyverse.org/">forcats</a>: colección de funciones para facilitar el trabajo con factores.</li>
+</ul>
+<p>Hay <a href="https://www.tidyverse.org/packages/">otros paquetes</a> para tareas más especifícas relacionadas con importación, limpieza y modelado de datos, entre otras. Los paquetes de Tidyverse son de los <a href="https://www.r-pkg.org/downloaded">más descargados</a>, entre la totalidad de paquetes del lenguaje de programación R.</p>
+</section>
+<section id="instalación-y-carga" class="level4" data-number="4.3.4.3">
+<h4 data-number="4.3.4.3" class="anchored" data-anchor-id="instalación-y-carga"><span class="header-section-number">4.3.4.3</span> Instalación y carga</h4>
+<p>Los paquetes de Tidyverse pueden instalarse de manera conjunta o individualmente con la función <code>install.packages()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación conjunta</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de paquetes individuales</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Una vez instalados, los paquetes también pueden cargarse conjunta o separadamente con la función <code>library()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga conjunta</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de paquetes individuales</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="descripción-general" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">4.4</span> Descripción general</h2>
-<p><a href="https://quarto.org/">Quarto</a> es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Entre sus principales capacidades están:</p>
+<section id="el-conjunto-de-datos-palmerpenguins" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="el-conjunto-de-datos-palmerpenguins"><span class="header-section-number">4.3.5</span> El conjunto de datos palmerpenguins</h3>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> es un <a href="https://cloud.r-project.org/web/packages/palmerpenguins/">paquete de datos de R</a> ampliamente utilizado para ejemplificar funciones de exploración y visualización, como las de Tidyverse. Contiene 344 observaciones de pingüinos de tres especies, las cuales habitan en tres islas del archipiélago Palmer, en la Antártida. Para cada individuo se registraron variables como especie, sexo, masa (peso), longitud de la aleta (<em>flipper</em>), longitud del pico (<em>bill</em>) y profundidad del pico, entre otras.</p>
+<p><code>palmerpenguins</code> puede instalarse con la función <code>install.packages()</code> y cargarse con la función <code>library()</code>.</p>
+<p>El paquete contiene dos conjuntos de datos:</p>
 <ul>
-<li>Crear contenido dinámico con los lenguajes <a href="https://www.r-project.org/">R</a>, <a href="https://www.python.org/">Python</a>, <a href="https://julialang.org/">Julia</a> y <a href="https://observablehq.com/@observablehq/observables-not-javascript">Observable</a>.</li>
-<li>Crear documentos Markdown de texto plano o <a href="https://jupyter.org/">cuadernos de notas de Jupyter</a>.</li>
-<li>Publicar artículos académicos, reportes, presentaciones, sitios web, <em>blogs</em> y libros en HTML, PDF, MS Word, ePub y otros formatos.</li>
-<li>Crear contenido científico, incluyendo ecuaciones, citas bibliográficas, referencias cruzadas, figuras y otros elementos.</li>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins_raw.html">penguins_raw</a>: datos sin procesar.</li>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a>: subconjunto curado de los datos sin procesar.</li>
 </ul>
-<p>Quarto fue anunciado oficialmente por <a href="https://posit.co/">Posit</a> (anteriormente, la Fundación RStudio) en <a href="https://posit.co/blog/announcing-quarto-a-new-scientific-and-technical-publishing-system/">julio de 2022</a>, como la <a href="https://quarto.org/docs/faq/rmarkdown.html">siguiente generación</a> de <a href="https://rmarkdown.rstudio.com/">R Markdown</a>, un formato que permite insertar código en R, y sus salidas, en documentos escritos en Markdown. R Markdown fue introducido por Yihui Xie en 2012, junto con el paquete <a href="https://yihui.org/knitr/">knitr</a>, cuyo propósito es facilitar la investigación reproducible en R a través de la <a href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_literaria">programación literaria (<em>literate programming</em>)</a>, un paradigma de programación propuesto por Donald Knuth en 1984.</p>
-<p>Los programas “literarios” (o “letrados”) están escritos como una exposición lógica en un lenguaje humano similar a la explicación de las fórmulas y ecuaciones empleadas para representar y resolver un problema en un texto de física o de matemáticas. En estos programas, se describe el análisis del problema, su solución y su implementación, intercalando código fuente entre los párrafos (y otros contenidos como imágenes, tablas, gráficos estadísticos y mapas), de forma similar a como en los textos de matemáticas se intercalan las fórmulas y las ecuaciones. La programación literaria puede mejorar enormemente un programa, ya que permite documentar ampliamente en qué consiste el problema a resolver, cómo se resuelve, cómo y por qué se adoptó cierto diseño, cómo se optimizó y cómo se implementó en un lenguaje de programación.</p>
+<p><code>palmerpinguins</code> se utiliza en este capítulo para ejemplificar varias de las funcionalidades de Tidyverse.</p>
 </section>
-<section id="anatomía-de-un-documento-quarto" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="anatomía-de-un-documento-quarto"><span class="header-section-number">4.5</span> Anatomía de un documento Quarto</h2>
-<p>Un documento Quarto tiene tres tipos de contenido:</p>
+</section>
+<section id="ejemplos-de-visualizaciones-de-datos" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="ejemplos-de-visualizaciones-de-datos"><span class="header-section-number">4.4</span> Ejemplos de visualizaciones de datos</h2>
+<p>Se presentan ejemplos de visualizaciones generadas con R en formato de tablas, gráficos y mapas.</p>
+<p>Se cargan los paquetes <code>dplyr</code>, para manipulación de datos, y <code>palmerpenguins</code> como conjunto de datos de ejemplo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de dplyr</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de palmerpenguins</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="tablas" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="tablas"><span class="header-section-number">4.4.1</span> Tablas</h3>
+<p>Hay varios paquetes de R para hacer tablas. Uno de estos es el paquete <a href="https://rstudio.github.io/DT/">DT</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de DT</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"DT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de DT</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La siguiente tabla muestra algunas de las columnas del conjunto de datos <code>palmerpenguins</code>. Note el uso del operador <em>pipe</em> (<code>|&gt;</code>) para pasar datos entre procesos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="co"># datos</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, sex, body_mass_g) <span class="sc">|&gt;</span> <span class="co"># selección de columnas</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species, sex, body_mass_g) <span class="sc">|&gt;</span> <span class="co"># ordenamiento</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"Especie"</span>, <span class="st">"Sexo"</span>, <span class="st">"Peso"</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">5</span>,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">language =</span> <span class="fu">list</span>(<span class="at">url =</span> <span class="st">'//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames=</span> <span class="cn">FALSE</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8c9b027762e4a920e0d3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8c9b027762e4a920e0d3">{"x":{"filter":"none","vertical":false,"data":[["Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo"],["female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male",null,null,null,null,null,null,"female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male",null,null,null,null,null],[2850,2850,2900,2900,2900,2925,3000,3000,3050,3050,3050,3050,3075,3100,3150,3150,3150,3150,3175,3175,3200,3200,3200,3200,3250,3250,3275,3300,3300,3300,3325,3325,3325,3350,3350,3350,3400,3400,3400,3400,3425,3450,3450,3450,3450,3450,3450,3475,3500,3500,3500,3550,3550,3550,3550,3550,3600,3600,3600,3625,3700,3700,3700,3700,3700,3725,3750,3800,3800,3800,3800,3825,3900,3325,3425,3475,3500,3500,3550,3550,3550,3600,3650,3650,3700,3725,3750,3750,3750,3775,3800,3800,3800,3800,3875,3900,3900,3900,3900,3900,3900,3900,3950,3950,3950,3950,3950,3975,4000,4000,4000,4000,4050,4050,4075,4100,4100,4150,4150,4150,4200,4200,4250,4250,4250,4250,4275,4300,4300,4300,4300,4350,4400,4400,4400,4450,4450,4475,4500,4600,4600,4650,4675,4700,4725,4775,2975,3300,3475,3700,4250,null,2700,2900,3200,3250,3250,3300,3325,3350,3350,3400,3400,3400,3450,3500,3500,3525,3525,3575,3600,3600,3650,3650,3650,3675,3675,3700,3700,3700,3775,3800,3850,3900,3950,4150,3250,3300,3400,3450,3550,3600,3650,3700,3725,3750,3775,3775,3800,3800,3800,3900,3950,3950,3950,4000,4050,4050,4050,4050,4100,4100,4150,4300,4300,4400,4450,4500,4550,4800,3950,4150,4200,4200,4200,4300,4300,4350,4375,4400,4400,4400,4400,4450,4450,4500,4550,4575,4600,4600,4600,4625,4625,4650,4650,4650,4700,4700,4700,4700,4700,4725,4750,4750,4750,4750,4800,4800,4850,4850,4850,4850,4875,4875,4900,4900,4925,4950,4950,4975,5000,5000,5000,5050,5100,5150,5200,5200,4750,4925,5000,5000,5000,5050,5050,5100,5100,5150,5200,5200,5250,5250,5250,5300,5300,5300,5300,5350,5350,5350,5400,5400,5400,5400,5400,5450,5500,5500,5500,5500,5500,5550,5550,5550,5550,5550,5550,5600,5600,5650,5650,5650,5700,5700,5700,5700,5700,5750,5800,5800,5850,5850,5850,5950,5950,6000,6000,6050,6300,4100,4650,4725,4875,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Especie<\/th>\n      <th>Sexo<\/th>\n      <th>Peso<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"language":{"url":"//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"},"columnDefs":[{"className":"dt-right","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><strong>Ejercicios</strong></p>
 <ul>
-<li>Metadatos en YAML.</li>
-<li>Narrativa en Markdown.</li>
-<li>Bloques de código fuente.</li>
+<li>Con base en el bloque de código anterior, genere una tabla que muestre la especie, la longitud del pico y la longitud de la aleta de cada pingüino, ordenada por longitud del pico.</li>
+<li>Repita el ejercicio anterior, solo para los pingüinos machos. (Sugerencia: use la función <code>filter()</code> de <code>dplyr</code>).</li>
 </ul>
-<section id="metadatos-en-yaml" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="metadatos-en-yaml"><span class="header-section-number">4.5.1</span> Metadatos en YAML</h3>
-<p>Todo documento Quarto inicia con un encabezado en la sintaxis <a href="https://es.wikipedia.org/wiki/YAML">YAML (YAML Ain’t Markup Language)</a>, el cual contiene metadatos del documento como el título, el autor, la fecha de creación, el formato de salida y la estructura de la tabla de contenidos, entre muchos otros.</p>
-<p>Un encabezado YAML comienza y termina con tres guiones (<code>---</code>) y contiene un conjunto de campos y valores de la forma:</p>
-<pre><code>---
-campo01: valor01
-campo02: valor02
-campo0n: valor0n
----</code></pre>
-<p>Por ejemplo, un encabezado YAML típico puede ser el siguiente:</p>
-<pre><code>---
-title: Mi primer documento Quarto
-format: html
-editor: visual
----</code></pre>
-<p>Los campos del encabezado pueden anidarse con sangrías de dos espacios como, por ejemplo:</p>
-<pre><code>---
-format:
-  html:
-    toc: true
-    toc_float: true
----</code></pre>
-<p>Los elementos de metadatos que pueden especificarse en el encabezado, pueden variar de acuerdo al formato de salida, como puede verse en los siguientes enlaces:</p>
+</section>
+<section id="gráficos" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="gráficos"><span class="header-section-number">4.4.2</span> Gráficos</h3>
+<p>Se ejemplifican varios tipos de gráficos <code>estadísticos</code> generados con la función ‘ggplot()’ del paquete <code>ggplot2</code> de Tidyverse, para el conjunto de datos <code>palmerpenguins</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de ggplot2</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de ggplot2</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="gráficos-de-dispersión-scatter-plots" class="level4" data-number="4.4.2.1">
+<h4 data-number="4.4.2.1" class="anchored" data-anchor-id="gráficos-de-dispersión-scatter-plots"><span class="header-section-number">4.4.2.1</span> Gráficos de dispersión (<em>scatter plots</em>)</h4>
+<p>Este tipo de gráficos muestra relaciones entre variables numéricas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión de longitud del pico vs masa (peso)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="co"># datos</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> <span class="co"># mapeo de variables estéticas</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># geometría</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Longitud del pico vs. masa"</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Longitud del pico (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Especie"</span>, <span class="at">shape =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-01-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión de longitud del pico vs masa (peso) por especie</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">shape =</span> species),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"darkorchid"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Longitud del pico vs. masa por especie"</span>) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Longitud del pico (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Especie"</span>, <span class="at">shape =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-02-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ejercicios</strong></p>
 <ul>
-<li><a href="https://quarto.org/docs/reference/formats/html.html">Elementos de metadatos para HTML</a></li>
-<li><a href="https://quarto.org/docs/reference/formats/pdf.html">Elementos de metadatos para PDF</a></li>
-<li><a href="https://quarto.org/docs/reference/formats/docx.html">Elementos metadatos para MS Word</a></li>
+<li>Genere un gráfico de dispersión que muestre la relación entre la longitud de la aleta y el peso de todos los pingüinos del conjunto de datos.</li>
+<li>Repita el ejercicio anterior, pero agrúpelo por sexo.</li>
 </ul>
-<p>Existen elementos de metadatos para muchos otros formatos de salida (OpenOffice, ePub, presentaciones, wikis, etc.), como puede apreciarse en la <a href="https://quarto.org/docs/reference/">Referencia de Quarto</a>.</p>
 </section>
-<section id="narrativa-en-markdown" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="narrativa-en-markdown"><span class="header-section-number">4.5.2</span> Narrativa en Markdown</h3>
-<p>La narrativa proporciona estructura y contenido al documento en la forma de encabezados, párrafos, enlaces y otros elementos de la sintaxis de <a href="https://daringfireball.net/projects/markdown/">Markdown</a>.</p>
+<section id="histogramas" class="level4" data-number="4.4.2.2">
+<h4 data-number="4.4.2.2" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">4.4.2.2</span> Histogramas</h4>
+<p>Este tipo de gráficos muestra distribuciones de variables numéricas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución de la variable de masa (peso)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución de la variable masa (peso)"</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-03-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución de la variable de masa (peso) por especie</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"darkorchid"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución de la variable masa (peso) por especie"</span>) <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"n"</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-04-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ejercicios</strong></p>
+<ul>
+<li>Genere un histograma que muestre la distribución de la longitud del pico para todos los pingüinos del conjunto de datos.</li>
+<li>Repita el ejercicio anterior, pero agrúpelo por sexo.</li>
+</ul>
 </section>
-<section id="bloques-de-código-fuente" class="level3" data-number="4.5.3">
-<h3 data-number="4.5.3" class="anchored" data-anchor-id="bloques-de-código-fuente"><span class="header-section-number">4.5.3</span> Bloques de código fuente</h3>
+<section id="diagramas-de-caja" class="level4" data-number="4.4.2.3">
+<h4 data-number="4.4.2.3" class="anchored" data-anchor-id="diagramas-de-caja"><span class="header-section-number">4.4.2.3</span> Diagramas de caja</h4>
+<p>Este tipo de gráficos muestra información de una variable numérica a través de su mediana, sus cuartiles y sus valores atípicos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de caja de la variable masa (peso)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-05-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de caja de la variable masa (peso) por especie</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color =</span> species), <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Especie"</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-06-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="mapas" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="mapas"><span class="header-section-number">4.4.3</span> Mapas</h3>
+<p>Hay varios paquetes de R para datos geoespaciales. Entre estos, están <a href="https://r-spatial.github.io/sf/">sf</a>, para manejar datos vectoriales, y <a href="https://rstudio.github.io/leaflet/">leaflet</a>, para generar mapas para la Web.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de sf</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de leaflet</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"leaflet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de sf</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de leaflet</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El siguiente mapa muestra los registros de presencia en Costa Rica de la especie <em>Puma concolor</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lectura de un archivo CSV con registros de presencia</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>registros <span class="ot">&lt;-</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">c</span>(</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"X_POSSIBLE_NAMES=decimalLongitude"</span>, <span class="co"># columna de longitud decimal</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Y_POSSIBLE_NAMES=decimalLatitude"</span>   <span class="co"># columna de latitud decimal</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtro por especie</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>registros <span class="ot">&lt;-</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  registros <span class="sc">|&gt;</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Puma concolor"</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Mapa</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="co"># centro y nivel inicial de acercamiento</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lng =</span> <span class="sc">-</span><span class="fl">84.19452</span>,</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat =</span> <span class="fl">9.572735</span>,</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">zoom =</span> <span class="dv">7</span>) <span class="sc">|&gt;</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>(<span class="at">group =</span> <span class="st">"OpenStreetMap"</span>) <span class="sc">|&gt;</span> <span class="co"># capa base de OSM |&gt;</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># capa de registros de presencia (puntos)</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> registros,</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">stroke =</span> F,</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="dv">4</span>,</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillColor =</span> <span class="st">'blue'</span>,</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillOpacity =</span> <span class="dv">1</span>,</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="st">"Puma concolor"</span>,</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="fu">paste</span>(</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Especie: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>species),</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Localidad: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>locality),</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Fuente: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>institutionCode),</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep =</span> <span class="st">'&lt;br/&gt;'</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addLayersControl</span>(</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseGroups =</span> <span class="fu">c</span>(<span class="st">"OpenStreetMap"</span>),</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">overlayGroups =</span> <span class="fu">c</span>(<span class="st">"Felinos"</span>)) <span class="sc">|&gt;</span> <span class="co"># control de capas</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addScaleBar</span>(<span class="at">position =</span> <span class="st">"bottomleft"</span>, <span class="at">options =</span> <span class="fu">scaleBarOptions</span>(<span class="at">imperial =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> <span class="co"># barra de escala</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMiniMap</span>(<span class="at">position =</span> <span class="st">"bottomleft"</span>) <span class="co"># mapa de ubicación</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-47a910153fe53fda8e4c" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-47a910153fe53fda8e4c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[9.572735,-84.19452],7,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OpenStreetMap",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[9.4333,8.627857,8.463374,8.551713,10.294274,8.81664,10.351244,8.543367,8.458845,8.458567,9.342408,8.631942,8.619177,10.295727,10.29174,8.408661,8.632044,10.836068,10.377738,8.450145,8.450145,9.792021,8.642761,10.820738,10.301944,8.406944,8.64369,8.4068,8.40959,10.133582,8.560631,8.454176,8.48,8.545378,10.423268,10.430623,8.449956,9.52825,10.355167,8.710681,8.557283,10.329438,8.620622,8.411309,9.582887,9.868272,10.35192,8.391172,10.428271,10.431345,8.640454,8.546267,8.480352,10.988233,8.6986489],[-83.4667,-83.730026,-83.588478,-83.543663,-84.119168,-83.136722,-84.792093,-83.576614,-83.587044,-83.587722,-83.941417,-83.728829,-83.734288,-84.80044,-84.800993,-83.327498,-83.720297,-85.619334,-84.61128,-83.567897,-83.567897,-84.593712,-83.664421,-85.319701,-84.034228,-83.339722,-83.148603,-83.33003,-83.32932,-84.105661,-83.585358,-83.575916,-83.59,-83.575868,-84.02203,-84.006971,-83.495966,-83.876113,-84.673167,-83.272008,-83.628635,-84.80149,-83.731705,-83.343176,-83.769932,-85.26441,-84.670325,-83.325221,-84.005649,-84.009919,-83.731718,-83.557658,-83.589561,-85.7949264,-83.4870175],4,null,"Puma concolor",{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1},null,null,["<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Cordillera de Talamanca, Chirripó-Massiv (Sabanna de los Leones)<br/><strong>Fuente: <\/strong>MNHM","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Barva<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Port Parker/ Gulf of Santa Elena Port Parker<br/><strong>Fuente: <\/strong>LACM","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Rincon Rincon de Osa<br/><strong>Fuente: <\/strong>LACM"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":["OpenStreetMap","Felinos",{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":false,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addMiniMap","args":[null,null,"bottomleft",150,150,19,19,-5,false,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]}],"limits":{"lat":[8.391172,10.988233],"lng":[-85.7949264,-83.136722]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="integración-de-código-r-en-documentos-quarto" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="integración-de-código-r-en-documentos-quarto"><span class="header-section-number">4.5</span> Integración de código R en documentos Quarto</h2>
 <p>En Quarto, los bloques (<em>chunks</em>) de código fuente se delimitan con tres <a href="https://en.wikipedia.org/wiki/Backtick"><em>backticks</em></a>, tanto al inicio como al final del bloque. Los bloques en R se identifican con <code>{r}</code> y se configuran con diferentes opciones que inician con <code>#|</code>. Los bloques de otros lenguajes de programación se identifican con <code>{python}</code> y <code>{julia}</code>, por ejemplo.</p>
-<p>El siguiente es un ejemplo de bloque de código en R y su salida:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graficacion-cars</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> cars<span class="sc">$</span>speed,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> cars<span class="sc">$</span>dist,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Velocidad vs distancia de frenado"</span>,</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Velocidad (mph)"</span>,</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Distancia (pies)"</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El siguiente es un bloque de código en R y su salida.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graficacion-cars</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> cars<span class="sc">$</span>speed,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> cars<span class="sc">$</span>dist,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Velocidad vs distancia de frenado"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Velocidad (mph)"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Distancia (pies)"</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="04-r_files/figure-html/graficacion-cars-1.png" class="img-fluid" width="672"></p>
@@ -443,316 +690,19 @@ format:
 </div>
 <p>La opción <code>label</code> se utiliza para etiquetar el bloque. La de <code>include</code> para especificar si se desea que el bloque y sus resultados se incluyan en el documento de salida. Por su parte, <code>echo</code> indica si el código fuente debe desplegarse o no.</p>
 </section>
-</section>
-<section id="cómo-funciona-quarto" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="cómo-funciona-quarto"><span class="header-section-number">4.6</span> ¿Cómo funciona Quarto?</h2>
-<p>Quarto se apoya en <a href="https://yihui.org/knitr/">knitr</a> y en <a href="http://pandoc.org/">Pandoc</a>. knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la <a href="#fig-quarto-knitr-pandoc">Figure&nbsp;<span>4.1</span></a>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-quarto-knitr-pandoc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/rstudio-qmd-how-it-works.png" class="img-fluid figure-img" width="700"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de <a href="Conversión%20de%20un%20documento%20R%20Markdown%20(.RMD)%20a%20su%20formato%20de%20salida">quarto.org</a>.</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="herramientas-para-escritura" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="herramientas-para-escritura"><span class="header-section-number">4.7</span> Herramientas para escritura</h2>
-<section id="figuras" class="level3" data-number="4.7.1">
-<h3 data-number="4.7.1" class="anchored" data-anchor-id="figuras"><span class="header-section-number">4.7.1</span> Figuras</h3>
-<section id="sintaxis-básica" class="level4" data-number="4.7.1.1">
-<h4 data-number="4.7.1.1" class="anchored" data-anchor-id="sintaxis-básica"><span class="header-section-number">4.7.1.1</span> Sintaxis básica</h4>
-<p>En su forma más básica, una figura puede crearse en Quarto con la misma sintaxis de Markdown (específicamente Pandoc Markdown).</p>
-<pre><code>![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Jaguar (<em>Panthera onca</em>). Imagen del <em>U.S. Fish and Wildlife Service</em>.</figcaption><p></p>
-</figure>
-</div>
-<p>Nótese como el texto entre paréntesis cuadrados se despliega al pie de la figura. En algunos formatos de salida (ej. PDF, LaTeX), las figuras se numeran automáticamente.</p>
-</section>
-<section id="tamaño" class="level4" data-number="4.7.1.2">
-<h4 data-number="4.7.1.2" class="anchored" data-anchor-id="tamaño"><span class="header-section-number">4.7.1.2</span> Tamaño</h4>
-<p>Por defecto, las figuras se despliegan con su tamaño nativo. Este puede modificarse con los atributos <code>width</code> y <code>height</code>, los cuales utilizan pixeles como unidad de medida por defecto.</p>
-<pre><code>![Jaguar](img/jaguar.jpg){width=300}</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" class="img-fluid figure-img" width="300"></p>
-<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
-</figure>
-</div>
-<p>Si se usa solo uno de los atributos, el otro se ajusta automáticamente. Pueden usarse otras unidades de medida como porcentajes, pulgadas o milímetros.</p>
-<pre><code>![Jaguar](img/jaguar.jpg){width=80%}</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
-</figure>
-</div>
-<pre><code>![Jaguar](img/jaguar.jpg){height=3in}</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" style="height:3in" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
-</figure>
-</div>
-<pre><code>![Jaguar](img/jaguar.jpg){height=76.2mm}</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" style="height:76.2mm" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="enlaces" class="level4" data-number="4.7.1.3">
-<h4 data-number="4.7.1.3" class="anchored" data-anchor-id="enlaces"><span class="header-section-number">4.7.1.3</span> Enlaces</h4>
-<p>Una figura puede funcionar como un enlace a otro documento. La dirección del enlace se escribe entre paréntesis redondos.</p>
-<pre><code>[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)</code></pre>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://es.wikipedia.org/wiki/Panthera_onca"><img src="img/jaguar.jpg" style="height:50mm" class="figure-img"></a></p>
-<p></p><figcaption class="figure-caption">Jaguar</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="alineación" class="level4" data-number="4.7.1.4">
-<h4 data-number="4.7.1.4" class="anchored" data-anchor-id="alineación"><span class="header-section-number">4.7.1.4</span> Alineación</h4>
-<p>La alineación por defecto de las figuras es en el centro. Se pueden elegir otras alineaciones mediante el atributo <code>fig-align</code>.</p>
-<pre><code>![Puma](img/puma.jpg){fig-align="right" height=50mm}</code></pre>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" style="height:50mm" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Puma</figcaption><p></p>
-</figure>
-</div>
-<pre><code>![Puma](img/puma.jpg){fig-align="left" height=50mm}</code></pre>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="img/jaguar.jpg" style="height:50mm" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Puma</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="referencias" class="level4" data-number="4.7.1.5">
-<h4 data-number="4.7.1.5" class="anchored" data-anchor-id="referencias"><span class="header-section-number">4.7.1.5</span> Referencias</h4>
-<p>Para crear referencias a figuras, deben identificarse con el prefijo <code>fig-</code>. Luego, pueden referenciarse con el prefijo <code>@</code>. Por ejemplo:</p>
-<pre><code>Actualmente, el portal de datos de la Infraestructura Mundial
-de Información en Biodiversidad (GBIF) agrupa más de 
-dos mil millones de registros de presencia de especies, 
-cuya distribución espacial puede observarse en la @fig-mapagbif.
-
-![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}</code></pre>
-<p>Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la <a href="#fig-mapa-gbif">Figure&nbsp;<span>4.2</span></a>.</p>
-<div id="fig-mapa-gbif" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/mapa-gbif.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Distribución espacial de los registros de presencia agrupados por GBIF</figcaption><p></p>
-</figure>
-</div>
-</section>
-<section id="grupos-de-figuras" class="level4" data-number="4.7.1.6">
-<h4 data-number="4.7.1.6" class="anchored" data-anchor-id="grupos-de-figuras"><span class="header-section-number">4.7.1.6</span> Grupos de figuras</h4>
-<p>Para mostrar varias figuras como un grupo, puede crearse una división (<code>div</code>) con los caracteres <code>:::</code>, al inicial y al final. Por ejemplo:</p>
-<pre><code>::: {#fig-felinos-grandes-costarica layout-ncol=2}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-Felinos más grandes de Costa Rica
-:::</code></pre>
-<div id="fig-felinos-grandes-costarica" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-jaguar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/panthera_onca_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-grandes-costarica"></p>
-<p></p><figcaption class="figure-caption">(a) Jaguar (<em>Panthera onca</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-puma" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/puma_concolor_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-grandes-costarica"></p>
-<p></p><figcaption class="figure-caption">(b) Puma (<em>Puma concolor</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.3: Felinos más grandes de Costa Rica</figcaption><p></p>
-</figure>
-</div>
-<p>El atributo <code>layout-ncol</code> especifica el número de columnas.</p>
-<pre><code>::: {#fig-felinos-costarica layout-ncol=2}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
-
-![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
-
-![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
-
-![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
-
-Todos los felinos de Costa Rica
-:::</code></pre>
-<div id="fig-felinos-costarica" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-jaguar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/panthera_onca_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(a) Jaguar (<em>Panthera onca</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-puma" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/puma_concolor_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(b) Puma (<em>Puma concolor</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-manigordo" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/leopardus_pardalis_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(c) Manigordo (<em>Leopardus pardalis</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-yaguarondi" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/puma_yagouaroundi_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(d) Yaguarondí (<em>Puma yagouaroundi</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-caucel" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/leopardus_wiedii_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(e) Caucel (<em>Leopardus wiedii</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
-<div id="fig-tigrinus" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/leopardus_tigrinus_miniatura.png" class="img-fluid figure-img" data-ref-parent="fig-felinos-costarica"></p>
-<p></p><figcaption class="figure-caption">(f) Tigrillo (<em>Leopardus tigrinus</em>)</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Todos los felinos de Costa Rica</figcaption><p></p>
-</figure>
-</div>
-<p>Para más detalles sobre figuras, se recomienda consultar <a href="https://quarto.org/docs/authoring/figures.html">Quarto - Figures</a>.</p>
-</section>
-</section>
-<section id="citas-bibliográficas" class="level3" data-number="4.7.2">
-<h3 data-number="4.7.2" class="anchored" data-anchor-id="citas-bibliográficas"><span class="header-section-number">4.7.2</span> Citas bibliográficas</h3>
-<p>Quarto puede generar citas bibliográficas y bibliografías en un varios estilos. Para esto, es necesario:</p>
-<ul>
-<li>Un documento Quarto con citas (vea <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations">Citation Markdown</a>).</li>
-<li>Una fuente de datos bibliográfica como, por ejemplo, un archivo BibLaTeX (<code>.bib</code>) o un archivo BibTeX (<code>.bibtex</code>).</li>
-<li>Opcionalmente, un archivo CSL (<code>.csl</code>) para formatear las citas y la bibiografía.</li>
-</ul>
-<section id="archivos-bibliográficos" class="level4" data-number="4.7.2.1">
-<h4 data-number="4.7.2.1" class="anchored" data-anchor-id="archivos-bibliográficos"><span class="header-section-number">4.7.2.1</span> Archivos bibliográficos</h4>
-<p>El archivo (o los archivos) bibliográficos que utiliza un documento, se especifican en la sección de YAML, mediante el campo <code>bibliography</code>. Por ejemplo:</p>
-<pre><code>---
-title: "Felinos"
-bibliography: bibliografia/referencias.bib
----</code></pre>
-<p>En <a href="https://pandoc.org/MANUAL.html#citations">Pandoc - Citations</a> puede encontrar más información sobre los formatos bibliográficos. También puede ver aquí un <a href="bibliografia/referencias.bib">ejemplo de archivo <code>.bib</code></a>.</p>
-</section>
-<section id="sintaxis-de-las-citas" class="level4" data-number="4.7.2.2">
-<h4 data-number="4.7.2.2" class="anchored" data-anchor-id="sintaxis-de-las-citas"><span class="header-section-number">4.7.2.2</span> Sintaxis de las citas</h4>
-<p>Las citas se especifican con el prefijo <code>@</code>. Por ejemplo:</p>
-<pre><code>La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].</code></pre>
-<p>Genera la siguiente salida:</p>
-<p>La familia <em>Felidae</em> tiene 36 especies <span class="citation" data-cites="lamberski_felidae_2015">(<a href="03-quarto.html#ref-lamberski_felidae_2015" role="doc-biblioref">Lamberski, 2015</a>)</span>.</p>
-<p>Para más información sobre las variaciones en la sintaxis de las citas, se recomienda consultar <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations">Citation Syntax</a>.</p>
-</section>
-<section id="estilo-de-las-citas" class="level4" data-number="4.7.2.3">
-<h4 data-number="4.7.2.3" class="anchored" data-anchor-id="estilo-de-las-citas"><span class="header-section-number">4.7.2.3</span> Estilo de las citas</h4>
-<p>Por defecto, Quarto utiliza el <a href="https://chicagomanualofstyle.org/">Manual de estilo Chicago</a>, pero puede usar cualquier estilo definido mediante <a href="https://citationstyles.org/">Citation Style Language (CSL)</a>. El archivo CSL que se utiliza debe especificarse en la sección YAML con el campo <code>csl</code>.</p>
-<pre><code>---
-title: "Felinos"
-bibliography: bibliografia/referencias.bib
-csl: bibliografia/apa-6th-edition.csl
----</code></pre>
-<p>Pueden encontrarse archivos CSL ya definidos en el <a href="https://github.com/citation-style-language/styles">repositorio central del Proyecto CSL</a> o en el <a href="https://www.zotero.org/styles">repositorio de estilos de Zotero</a>.</p>
-<p>Para más información sobre los estilos de las citas, se recomienda consultar <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style">Citation Style</a>.</p>
-</section>
-<section id="generación-de-bibliografía" class="level4" data-number="4.7.2.4">
-<h4 data-number="4.7.2.4" class="anchored" data-anchor-id="generación-de-bibliografía"><span class="header-section-number">4.7.2.4</span> Generación de bibliografía</h4>
-<p>La lista de recursos citados se genera en una división con la identificación <code>refs</code>. Por ejemplo:</p>
-<pre><code>### Referencias
-
-::: {#refs}
-:::</code></pre>
-<p>Si no encuentra esta división en el documento, Quarto generará la bibliografía al final de este.</p>
-<p>Para más detalles sobre citas bibliográficas en Quarto, se recomienda consultar <a href="https://quarto.org/docs/authoring/footnotes-and-citations.html">Quarto . Citations &amp; Footnotes</a>.</p>
-</section>
-</section>
-</section>
-<section id="ejemplo-de-documento-quarto" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="ejemplo-de-documento-quarto"><span class="header-section-number">4.8</span> Ejemplo de documento Quarto</h2>
-<ul>
-<li>Sitio en GitHub Pages: <a href="https://mesa-monitoreo-puntos.github.io/felinos/" class="uri">https://mesa-monitoreo-puntos.github.io/felinos/</a></li>
-<li>Código fuente: <a href="https://github.com/mesa-monitoreo-puntos/felinos" class="uri">https://github.com/mesa-monitoreo-puntos/felinos</a></li>
-</ul>
-</section>
-<section id="ejercicios" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">4.9</span> Ejercicios</h2>
+<section id="ejercicios" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">4.6</span> Ejercicios</h2>
 <ol type="1">
-<li>Desarrolle en documento Quarto con un tema de su elección y publíquelo en GitHub Pages. Se recomienda seguir los siguientes pasos:
-<ol type="a">
-<li>Cree un nuevo proyecto en RStudio.</li>
-<li>Cree un documento Quarto con nombre <code>index.qmd</code> que incluya, al menos:
-<ul>
-<li>Texto.</li>
-<li>Varios niveles de encabezados.</li>
-<li>Enlaces.</li>
-<li>Figuras y referencias a estas.</li>
-<li>Citas bibliográficas.</li>
-</ul></li>
-<li>Genere el archivo <code>index.html</code>.</li>
-<li>Cree un nuevo repositorio en GitHub y suba los archivos <code>index.qmd</code> e <code>index.html</code>.</li>
-<li>Publique el repositorio como un sitio GitHub Pages.</li>
-</ol></li>
+<li>Desarrolle un documento Quarto con datos de una familia de mamíferos de Costa Rica. Incluya:</li>
 </ol>
-</section>
-<section id="recursos-de-interés" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="recursos-de-interés"><span class="header-section-number">4.10</span> Recursos de interés</h2>
 <ul>
-<li><a href="https://quarto.org/docs/authoring/figures.html">Quarto - Figures</a></li>
-<li><a href="https://quarto.org/docs/authoring/footnotes-and-citations.html">Quarto . Citations &amp; Footnotes</a></li>
+<li>Una tabla con registros de presencia.</li>
+<li>Un gráfico con cantidades de registros por especie.</li>
+<li>Un mapa de distribución.</li>
 </ul>
-</section>
-<section id="referencias-1" class="level2" data-number="4.11">
-<h2 data-number="4.11" class="anchored" data-anchor-id="referencias-1"><span class="header-section-number">4.11</span> Referencias</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography" style="display: none">
-<div id="ref-lamberski_felidae_2015" class="csl-entry" role="doc-biblioentry">
-Lamberski, N. (2015). Felidae. In <em>Fowler’s <span>Zoo</span> and <span>Wild</span> <span>Animal</span> <span>Medicine</span>, <span>Volume</span> 8</em> (pp. 467–476). Elsevier. <a href="https://doi.org/10.1016/B978-1-4557-7397-8.00047-5">https://doi.org/10.1016/B978-1-4557-7397-8.00047-5</a>
-</div>
-</div>
+<ol start="2" type="1">
+<li>Publique el documento como un sitio en GitHub Pages.</li>
+</ol>
 
 
 </section>

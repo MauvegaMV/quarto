@@ -7,7 +7,7 @@ csl: bibliografia/apa-6th-edition.csl
 # R
 
 ## Resumen
-
+R es un lenguaje de programación enfocado en análisis estadístico. En este capítulo, se explica la sintaxis básica del lenguaje y como bloques de código en R, y sus salidas, pueden ser incluídos en documentos Quarto.
 
 ## Trabajo previo
 
@@ -19,18 +19,16 @@ Para la edición de código en R, se recomienda instalar:
 
 Si se va a trabajar con datos geoespaciales, es conveniente contar con un sistema de información geográfica de escritorio, como [QGIS](https://qgis.org/).
 
-### Tutoriales
-
 
 ## El lenguaje de programación R
-[R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [ciencia de datos (*data science*)](https://en.wikipedia.org/wiki/Data_science), [*big data*](https://en.wikipedia.org/wiki/Big_data) y [aprendizaje automático (*machine learning*)](https://en.wikipedia.org/wiki/Machine_learning), con aplicaciones en campos como biomedicina, bioinformática y finanzas, entre muchos otros. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
+[R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [ciencia de datos (*data science*)](https://en.wikipedia.org/wiki/Data_science), [*big data*](https://en.wikipedia.org/wiki/Big_data) y [aprendizaje automático (*machine learning*)](https://en.wikipedia.org/wiki/Machine_learning). Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
 
 R es un proyecto de [software libre](https://en.wikipedia.org/wiki/Free_software) que se comparte mediante una licencia [GNU General Public Licence (GNU GPL)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). Esta característica permite que la funcionalidad original de R pueda ser ampliada mediante bibliotecas o paquetes desarrollados por la comunidad de programadores.
 
 Para programar en R, puede utilizarse una interfaz de línea de comandos, editores de texto (ej. [Visual Studio Code](https://code.visualstudio.com/), [Vim](https://www.vim.org/)) y también ambientes de desarrollo integrados (IDE, *integrated development environment*) como [Jupyter](https://jupyter.org/) o [RStudio](https://rstudio.com/).
 
 ### Tipos de datos y variables
-R puede trabajar con varios [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types), entre los que están números, caracteres (i.e. textos), lógicos, vectores y matrices. También puede trabajar con [tipos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects), como factores y *data frames*.
+R puede trabajar con varios [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types), entre los que están números, caracteres (i.e. textos), lógicos, vectores y matrices. También puede trabajar con [tipos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects), como factores y data frames.
 
 En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación. Estos son `=` y `<-` (o `->`). Por ejemplo, las siguientes sentencias crean variables de varios tipos de datos simples.
 
@@ -82,8 +80,29 @@ View(mtcars)
 View(iris)
 ```
 
+La función [read.csv()](https://rdrr.io/r/utils/read.table.html) permite leer datos de un archivo de valores separados por comas (CSV), el cual puede estar en una ubicación local o remota.
+
+```{r}
+#| label: code-readcsv
+#| collapse: true
+#| eval: false
+
+# Lectura de archivo CSV ubicado en la Web
+especies_mamiferos_cr <-
+  read.csv(
+    "https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/especies-mamiferos-cr.csv"
+  )
+
+# Desplegue de los datos
+View(especies_mamiferos_cr)
+```
+
+**Ejercicio**  
+
+- Descargue en su computadora el archivo [https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv](https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv), cárguelo en un data frame y despliegue sus datos.
+
 ### Funciones
-R, al igual que otros lenguajes de programación, estructura su funcionalidad en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamadas [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (`()`) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (`,`).
+R estructura un programa en unidades de [código fuente](https://en.wikipedia.org/wiki/Source_code) llamadas [funciones](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions). Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (`()`) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (`,`).
 
 ```{r}
 #| label: code-functions-examples
@@ -123,69 +142,341 @@ install.packages("palmerpenguins")
 library(palmerpenguins)
 ```
 
-## Descripción general
-[Quarto](https://quarto.org/) es un sistema de publicación de documentos técnicos y científicos, basado en código abierto. Entre sus principales capacidades están:
+### Tidyverse
 
--   Crear contenido dinámico con los lenguajes [R](https://www.r-project.org/), [Python](https://www.python.org/), [Julia](https://julialang.org/) y [Observable](https://observablehq.com/@observablehq/observables-not-javascript).
--   Crear documentos Markdown de texto plano o [cuadernos de notas de Jupyter](https://jupyter.org/).
--   Publicar artículos académicos, reportes, presentaciones, sitios web, *blogs* y libros en HTML, PDF, MS Word, ePub y otros formatos.
--   Crear contenido científico, incluyendo ecuaciones, citas bibliográficas, referencias cruzadas, figuras y otros elementos.
+#### Descripción general
+[Tidyverse](https://www.tidyverse.org/) es una colección de paquetes de R enfocados en ciencia de datos, una discipina que permite convertir datos no procesados en entendimiento, comprensión y conocimiento.
+
+La @fig-modelo-ciencia-datos ilustra el modelo de un proyecto típico de ciencia de datos, el cual incluye los procesos de importar, organizar, transformar, visualizar, modelar y comunicar.
+
+```{r}
+#| label: fig-modelo-ciencia-datos
+#| fig.cap: Modelo de ciencia de datos. Imagen de [Hadley Wickham](https://r4ds.had.co.nz/introduction.html).
+#| echo: false
+
+knitr::include_graphics(rep("img/modelo-ciencia-datos.png"))
+```
+
+Los paquetes de Tidyverse comparten filosofía de diseño, gramática y estructuras de datos para apoyar estos procesos del modelo de ciencia de datos.
+
+#### Paquetes
+El núcleo de Tidyverse está compuesto por [ocho paquetes base](https://www.tidyverse.org/packages/#core-tidyverse), los cuales proveen las funcionalidades utilizadas más frecuentemente en análisis de datos:
+
+- [ggplot2](https://ggplot2.tidyverse.org/): sistema para la creación declarativa de gráficos, basado en el libro [*The Grammar of Graphics*, de Wilkinson et al.](https://www.springer.com/gp/book/9780387245447).
+- [dplyr](https://dplyr.tidyverse.org/): gramática para la manipulación de datos que proporciona un conjunto consistente de "verbos" que resulven los retos más comunes de manipulación de datos.
+- [tidyr](https://tidyr.tidyverse.org/): conjunto de funciones para organizar (*to tidy*) datos, colocando las observaciones, variables y valores en filas, columnas y celdas de estructuras rectangulares.
+- [readr](https://readr.tidyverse.org/): conjunto de funciones para cargar datos de estructuras rectangulares (ej. archivos CSV) en memoria.
+- [purr](https://purrr.tidyverse.org/): conjunto de herramientas de [programación funcional](https://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional) para trabajar con funciones y vectores.
+- [tibble](https://tibble.tidyverse.org/): un *tibble* es una redefinición del concepto de data frame, para hacerlos más eficientes y fáciles de usar.
+- [stringr](https://stringr.tidyverse.org/): colección de funciones para facilitar el trabajo con hileras de caracteres.
+- [forcats](https://forcats.tidyverse.org/): colección de funciones para facilitar el trabajo con factores.
+
+Hay [otros paquetes](https://www.tidyverse.org/packages/) para tareas más especifícas relacionadas con importación, limpieza y modelado de datos, entre otras. Los paquetes de Tidyverse son de los [más descargados](https://www.r-pkg.org/downloaded), entre la totalidad de paquetes del lenguaje de programación R.
+
+#### Instalación y carga
+Los paquetes de Tidyverse pueden instalarse de manera conjunta o individualmente con la función `install.packages()`:
+
+```{r}
+#| label: instalacion-tidyverse
+#| eval: false
+
+# Instalación conjunta
+install.packages("tidyverse")
+
+# Instalación de paquetes individuales
+install.packages("ggplot2")
+install.packages("dplyr")
+```
+
+Una vez instalados, los paquetes también pueden cargarse conjunta o separadamente con la función `library()`:
+
+```{r}
+#| label: carga-tidyverse
+#| message: false
+
+# Carga conjunta
+library(tidyverse)
+
+# Carga de paquetes individuales
+library(ggplot2)
+library(dplyr)
+```
+
+### El conjunto de datos palmerpenguins
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) es un [paquete de datos de R](https://cloud.r-project.org/web/packages/palmerpenguins/) ampliamente utilizado para ejemplificar funciones de exploración y visualización, como las de Tidyverse. Contiene 344 observaciones de pingüinos de tres especies, las cuales habitan en tres islas del archipiélago Palmer, en la Antártida. Para cada individuo se registraron variables como especie, sexo, masa (peso), longitud de la aleta (*flipper*), longitud del pico (*bill*) y profundidad del pico, entre otras.
+
+`palmerpenguins` puede instalarse con la función `install.packages()` y cargarse con la función `library()`.
+
+El paquete contiene dos conjuntos de datos:
+
+-   [penguins_raw](https://allisonhorst.github.io/palmerpenguins/reference/penguins_raw.html): datos sin procesar.
+-   [penguins](https://allisonhorst.github.io/palmerpenguins/reference/penguins.html): subconjunto curado de los datos sin procesar.
+
+`palmerpinguins` se utiliza en este capítulo para ejemplificar varias de las funcionalidades de Tidyverse.
+
+## Ejemplos de visualizaciones de datos
+Se presentan ejemplos de visualizaciones generadas con R en formato de tablas, gráficos y mapas.
+
+Se cargan los paquetes `dplyr`, para manipulación de datos, y `palmerpenguins` como conjunto de datos de ejemplo.
+
+```{r}
+#| label: cargar-paquetes
+#| message: false
+
+# Carga de dplyr
+library(dplyr)
+
+# Carga de palmerpenguins
+library(palmerpenguins)
+```
 
 
-Quarto fue anunciado oficialmente por [Posit](https://posit.co/) (anteriormente, la Fundación RStudio) en [julio de 2022](https://posit.co/blog/announcing-quarto-a-new-scientific-and-technical-publishing-system/), como la [siguiente generación](https://quarto.org/docs/faq/rmarkdown.html) de [R Markdown](https://rmarkdown.rstudio.com/), un formato que permite insertar código en R, y sus salidas, en documentos escritos en Markdown. R Markdown fue introducido por Yihui Xie en 2012, junto con el paquete [knitr](https://yihui.org/knitr/), cuyo propósito es facilitar la investigación reproducible en R a través de la [programación literaria (*literate programming*)](https://es.wikipedia.org/wiki/Programaci%C3%B3n_literaria), un paradigma de programación propuesto por Donald Knuth en 1984.
+### Tablas
+Hay varios paquetes de R para hacer tablas. Uno de estos es el paquete [DT](https://rstudio.github.io/DT/).
 
-Los programas "literarios" (o "letrados") están escritos como una exposición lógica en un lenguaje humano similar a la explicación de las fórmulas y ecuaciones empleadas para representar y resolver un problema en un texto de física o de matemáticas. En estos programas, se describe el análisis del problema, su solución y su implementación, intercalando código fuente entre los párrafos (y otros contenidos como imágenes, tablas, gráficos estadísticos y mapas), de forma similar a como en los textos de matemáticas se intercalan las fórmulas y las ecuaciones. La programación literaria puede mejorar enormemente un programa, ya que permite documentar ampliamente en qué consiste el problema a resolver, cómo se resuelve, cómo y por qué se adoptó cierto diseño, cómo se optimizó y cómo se implementó en un lenguaje de programación.
+```{r}
+#| label: instalacion-dt
+#| eval: false
 
-## Anatomía de un documento Quarto
-Un documento Quarto tiene tres tipos de contenido:
+# Instalación de DT
+install.packages("DT")
+```
 
--   Metadatos en YAML.
--   Narrativa en Markdown.
--   Bloques de código fuente.
+```{r}
+#| label: carga-dt
+#| message: false
 
-### Metadatos en YAML
-Todo documento Quarto inicia con un encabezado en la sintaxis [YAML (YAML Ain't Markup Language)](https://es.wikipedia.org/wiki/YAML), el cual contiene metadatos del documento como el título, el autor, la fecha de creación, el formato de salida y la estructura de la tabla de contenidos, entre muchos otros.
+# Carga de DT
+library(DT)
+```
 
-Un encabezado YAML comienza y termina con tres guiones (`---`) y contiene un conjunto de campos y valores de la forma:
+La siguiente tabla muestra algunas de las columnas del conjunto de datos `palmerpenguins`. Note el uso del operador *pipe* (`|>`) para pasar datos entre procesos.
 
-    ---
-    campo01: valor01
-    campo02: valor02
-    campo0n: valor0n
-    ---
+```{r}
+#| label: penguins-table
 
-Por ejemplo, un encabezado YAML típico puede ser el siguiente:
+penguins |> # datos
+  select(species, sex, body_mass_g) |> # selección de columnas
+  arrange(species, sex, body_mass_g) |> # ordenamiento
+  datatable(
+    colnames = c("Especie", "Sexo", "Peso"),
+    options = list(
+      pageLength = 5,
+      language = list(url = '//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json')
+    ),
+    rownames= FALSE
+  )
+```
 
-    ---
-    title: Mi primer documento Quarto
-    format: html
-    editor: visual
-    ---
+**Ejercicios**  
 
-Los campos del encabezado pueden anidarse con sangrías de dos espacios como, por ejemplo:
+- Con base en el bloque de código anterior, genere una tabla que muestre la especie, la longitud del pico y la longitud de la aleta de cada pingüino, ordenada por longitud del pico.
+- Repita el ejercicio anterior, solo para los pingüinos machos. (Sugerencia: use la función `filter()` de `dplyr`).
 
-    ---
-    format:
-      html:
-        toc: true
-        toc_float: true
-    ---
+### Gráficos
+Se ejemplifican varios tipos de gráficos `estadísticos` generados con la función 'ggplot()' del paquete `ggplot2` de Tidyverse, para el conjunto de datos `palmerpenguins`.
 
-Los elementos de metadatos que pueden especificarse en el encabezado, pueden variar de acuerdo al formato de salida, como puede verse en los siguientes enlaces:
+```{r}
+#| label: instalacion-ggplot2
+#| eval: false
 
--   [Elementos de metadatos para HTML](https://quarto.org/docs/reference/formats/html.html)
--   [Elementos de metadatos para PDF](https://quarto.org/docs/reference/formats/pdf.html)
--   [Elementos metadatos para MS Word](https://quarto.org/docs/reference/formats/docx.html)
+# Instalación de ggplot2
+install.packages("ggplot2")
+```
 
-Existen elementos de metadatos para muchos otros formatos de salida (OpenOffice, ePub, presentaciones, wikis, etc.), como puede apreciarse en la [Referencia de Quarto](https://quarto.org/docs/reference/).
+```{r}
+#| label: carga-ggplot2
+#| message: false
 
-### Narrativa en Markdown
-La narrativa proporciona estructura y contenido al documento en la forma de encabezados, párrafos, enlaces y otros elementos de la sintaxis de [Markdown](https://daringfireball.net/projects/markdown/).
+# Carga de ggplot2
+library(ggplot2)
+```
 
-### Bloques de código fuente
+#### Gráficos de dispersión (*scatter plots*)
+Este tipo de gráficos muestra relaciones entre variables numéricas.
+
+```{r}
+#| label: ejemplo-palmerpenguins-01
+#| warning: false
+
+# Gráfico de dispersión de longitud del pico vs masa (peso)
+penguins |> # datos
+  ggplot(aes(x = bill_length_mm, y = body_mass_g)) + # mapeo de variables estéticas
+  geom_point(size = 2) + # geometría
+  geom_smooth(method = "lm", se = FALSE) +
+  ggtitle("Longitud del pico vs. masa") +
+  xlab("Longitud del pico (mm)") +
+  ylab("Masa (g)") +
+  labs(color = "Especie", shape = "Especie")
+```
+
+```{r ejemplo-palmerpenguins-02}
+#| label: ejemplo-palmerpenguins-02
+#| warning: false
+
+# Gráfico de dispersión de longitud del pico vs masa (peso) por especie
+penguins |>
+  ggplot(aes(x = bill_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species,
+                 shape = species),
+             size = 2) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  scale_color_manual(values = c("darkorange", "darkorchid", "cyan4")) +
+  ggtitle("Longitud del pico vs. masa por especie") +
+  xlab("Longitud del pico (mm)") +
+  ylab("Masa (g)") +
+  labs(color = "Especie", shape = "Especie")
+```
+
+**Ejercicios**  
+
+- Genere un gráfico de dispersión que muestre la relación entre la longitud de la aleta y el peso de todos los pingüinos del conjunto de datos.
+- Repita el ejercicio anterior, pero agrúpelo por sexo.
+
+#### Histogramas
+Este tipo de gráficos muestra distribuciones de variables numéricas.
+
+```{r ejemplo-palmerpenguins-03}
+#| label: ejemplo-palmerpenguins-03
+#| warning: false
+#| message: false
+
+# Distribución de la variable de masa (peso)
+penguins |>
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram() +
+  ggtitle("Distribución de la variable masa (peso)") +
+  xlab("Masa (g)") +
+  ylab("n")
+```
+
+```{r ejemplo-palmerpenguins-04}
+#| label: ejemplo-palmerpenguins-04
+#| warning: false
+#| message: false
+
+# Distribución de la variable de masa (peso) por especie
+penguins |>
+  ggplot(aes(x = body_mass_g)) +
+  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+  scale_fill_manual(values = c("darkorange", "darkorchid", "cyan4")) +
+  ggtitle("Distribución de la variable masa (peso) por especie") +
+  xlab("Masa (g)") +
+  ylab("n") +
+  labs(fill = "Especie")
+```
+
+**Ejercicios**  
+
+- Genere un histograma que muestre la distribución de la longitud del pico para todos los pingüinos del conjunto de datos.
+- Repita el ejercicio anterior, pero agrúpelo por sexo.
+
+#### Diagramas de caja
+Este tipo de gráficos muestra información de una variable numérica a través de su mediana, sus cuartiles y sus valores atípicos.
+
+```{r}
+#| label: ejemplo-palmerpenguins-05
+#| warning: false
+
+# Diagrama de caja de la variable masa (peso)
+penguins |>
+  ggplot(aes(y = body_mass_g)) +
+  geom_boxplot() +
+  ylab("Masa (g)")
+```
+
+```{r}
+#| label: ejemplo-palmerpenguins-06
+#| warning: false
+
+# Diagrama de caja de la variable masa (peso) por especie
+penguins |>
+  ggplot(aes(x = species, y = body_mass_g)) +
+  geom_boxplot(aes(color = species), width = 0.3, show.legend = FALSE) +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  xlab("Especie") +
+  ylab("Masa (g)")
+```
+
+### Mapas
+Hay varios paquetes de R para datos geoespaciales. Entre estos, están [sf](https://r-spatial.github.io/sf/), para manejar datos vectoriales, y [leaflet](https://rstudio.github.io/leaflet/), para generar mapas para la Web.
+
+```{r}
+#| label: instalacion-sf-leaflet
+#| eval: false
+
+# Instalación de sf
+install.packages("sf")
+
+# Instalación de leaflet
+install.packages("leaflet")
+```
+
+```{r}
+#| label: carga-sf-leaflet
+#| message: false
+
+# Carga de sf
+library(sf)
+
+# Carga de leaflet
+library(leaflet)
+```
+
+El siguiente mapa muestra los registros de presencia en Costa Rica de la especie *Puma concolor*.
+
+```{r}
+#| label: st_read-texto
+
+# Lectura de un archivo CSV con registros de presencia
+registros <-
+  st_read(
+    "https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv",
+    options = c(
+      "X_POSSIBLE_NAMES=decimalLongitude", # columna de longitud decimal
+      "Y_POSSIBLE_NAMES=decimalLatitude"   # columna de latitud decimal
+    ),
+    quiet = TRUE
+  )
+
+# Filtro por especie
+registros <-
+  registros |>
+  filter(species == "Puma concolor")
+
+# Mapa
+leaflet() |>
+  setView(# centro y nivel inicial de acercamiento
+    lng = -84.19452,
+    lat = 9.572735,
+    zoom = 7) |>
+  addTiles(group = "OpenStreetMap") |> # capa base de OSM |>
+  addCircleMarkers(
+    # capa de registros de presencia (puntos)
+    data = registros,
+    stroke = F,
+    radius = 4,
+    fillColor = 'blue',
+    fillOpacity = 1,
+    group = "Puma concolor",
+    popup = paste(
+      paste0("<strong>Especie: </strong>", registros$species),
+      paste0("<strong>Localidad: </strong>", registros$locality),
+      paste0("<strong>Fuente: </strong>", registros$institutionCode),
+      sep = '<br/>'
+    )
+  ) |>
+  addLayersControl(
+    baseGroups = c("OpenStreetMap"),
+    overlayGroups = c("Felinos")) |> # control de capas
+  addScaleBar(position = "bottomleft", options = scaleBarOptions(imperial = FALSE)) |> # barra de escala
+  addMiniMap(position = "bottomleft") # mapa de ubicación
+```
+
+## Integración de código R en documentos Quarto
 En Quarto, los bloques (*chunks*) de código fuente se delimitan con tres [*backticks*](https://en.wikipedia.org/wiki/Backtick), tanto al inicio como al final del bloque. Los bloques en R se identifican con `{r}` y se configuran con diferentes opciones que inician con `#|`. Los bloques de otros lenguajes de programación se identifican con `{python}` y `{julia}`, por ejemplo.
 
-El siguiente es un ejemplo de bloque de código en R y su salida:
+El siguiente es un bloque de código en R y su salida.
 
 ```` md
 ```{r}`r ''`
@@ -219,239 +510,13 @@ plot(
 
 La opción `label` se utiliza para etiquetar el bloque. La de `include` para especificar si se desea que el bloque y sus resultados se incluyan en el documento de salida. Por su parte, `echo` indica si el código fuente debe desplegarse o no.
 
-## ¿Cómo funciona Quarto?
-Quarto se apoya en [knitr](https://yihui.org/knitr/) y en [Pandoc](http://pandoc.org/). knitr ejecuta el código en R (u otro lenguaje) y convierte los documentos a Markdown. Por su parte, Pandoc exporta los documentos Markdown al formato de salida deseado (ej. HTML, PDF, MS Word, MS PowerPoint). Este proceso se ilustra en la @fig-quarto-knitr-pandoc.
-
-```{r}
-#| label: fig-quarto-knitr-pandoc
-#| fig.cap: Conversión de un documento Quarto (.qmd) a su formato de salida. Imagen de [quarto.org](Conversión de un documento R Markdown (.RMD) a su formato de salida).
-#| echo: false
-
-knitr::include_graphics(rep("img/rstudio-qmd-how-it-works.png"))
-```
-
-## Herramientas para escritura
-
-### Figuras
-
-#### Sintaxis básica
-En su forma más básica, una figura puede crearse en Quarto con la misma sintaxis de Markdown (específicamente Pandoc Markdown).
-
-```
-![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
-```
-![Jaguar (*Panthera onca*). Imagen del *U.S. Fish and Wildlife Service*.](img/jaguar.jpg)
-
-Nótese como el texto entre paréntesis cuadrados se despliega al pie de la figura. En algunos formatos de salida (ej. PDF, LaTeX), las figuras se numeran automáticamente.
-
-#### Tamaño
-Por defecto, las figuras se despliegan con su tamaño nativo. Este puede modificarse con los atributos `width` y `height`, los cuales utilizan pixeles como unidad de medida por defecto.
-
-```
-![Jaguar](img/jaguar.jpg){width=300}
-```
-![Jaguar](img/jaguar.jpg){width=300}
-
-Si se usa solo uno de los atributos, el otro se ajusta automáticamente. Pueden usarse otras unidades de medida como porcentajes, pulgadas o milímetros.
-
-```
-![Jaguar](img/jaguar.jpg){width=80%}
-```
-![Jaguar](img/jaguar.jpg){width=80%}
-
-```
-![Jaguar](img/jaguar.jpg){height=3in}
-```
-![Jaguar](img/jaguar.jpg){height=3in}
-
-```
-![Jaguar](img/jaguar.jpg){height=76.2mm}
-```
-![Jaguar](img/jaguar.jpg){height=76.2mm}
-
-#### Enlaces
-Una figura puede funcionar como un enlace a otro documento. La dirección del enlace se escribe entre paréntesis redondos.
-
-```
-[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
-```
-[![Jaguar](img/jaguar.jpg){height=50mm}](https://es.wikipedia.org/wiki/Panthera_onca)
-
-#### Alineación
-La alineación por defecto de las figuras es en el centro. Se pueden elegir otras alineaciones mediante el atributo `fig-align`.
-
-```
-![Puma](img/puma.jpg){fig-align="right" height=50mm}
-```
-![Puma](img/jaguar.jpg){fig-align="right" height=50mm}
-
-```
-![Puma](img/puma.jpg){fig-align="left" height=50mm}
-```
-![Puma](img/jaguar.jpg){fig-align="left" height=50mm}
-
-#### Referencias
-Para crear referencias a figuras, deben identificarse con el prefijo `fig-`. Luego, pueden referenciarse con el prefijo `@`. Por ejemplo:
-
-```
-Actualmente, el portal de datos de la Infraestructura Mundial
-de Información en Biodiversidad (GBIF) agrupa más de 
-dos mil millones de registros de presencia de especies, 
-cuya distribución espacial puede observarse en la @fig-mapagbif.
-
-![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapagbif}
-```
-
-Actualmente, el portal de datos de la Infraestructura Mundial de Información en Biodiversidad (GBIF) agrupa más de dos mil millones de registros de presencia de especies, cuya distribución espacial puede observarse en la @fig-mapa-gbif.
-
-![Distribución espacial de los registros de presencia agrupados por GBIF](img/mapa-gbif.png){#fig-mapa-gbif}
-
-#### Grupos de figuras
-Para mostrar varias figuras como un grupo, puede crearse una división (`div`) con los caracteres `:::`, al inicial y al final. Por ejemplo:
-
-```
-::: {#fig-felinos-grandes-costarica layout-ncol=2}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-Felinos más grandes de Costa Rica
-:::
-```
-
-::: {#fig-felinos-grandes-costarica layout-ncol=2}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-Felinos más grandes de Costa Rica
-:::
-
-El atributo `layout-ncol` especifica el número de columnas.
-
-```
-::: {#fig-felinos-costarica layout-ncol=2}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
-
-![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
-
-![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
-
-![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
-
-Todos los felinos de Costa Rica
-:::
-```
-
-::: {#fig-felinos-costarica layout-ncol=3}
-
-![Jaguar (*Panthera onca*)](img/panthera_onca_miniatura.png){#fig-jaguar}
-
-![Puma (*Puma concolor*)](img/puma_concolor_miniatura.png){#fig-puma}
-
-![Manigordo (*Leopardus pardalis*)](img/leopardus_pardalis_miniatura.png){#fig-manigordo}
-
-![Yaguarondí (*Puma yagouaroundi*)](img/puma_yagouaroundi_miniatura.png){#fig-yaguarondi}
-
-![Caucel (*Leopardus wiedii*)](img/leopardus_wiedii_miniatura.png){#fig-caucel}
-
-![Tigrillo (*Leopardus tigrinus*)](img/leopardus_tigrinus_miniatura.png){#fig-tigrinus}
-
-
-Todos los felinos de Costa Rica
-:::
-
-Para más detalles sobre figuras, se recomienda consultar [Quarto - Figures](https://quarto.org/docs/authoring/figures.html).
-
-### Citas bibliográficas
-Quarto puede generar citas bibliográficas y bibliografías en un varios estilos. Para esto, es necesario:
-
-- Un documento Quarto con citas (vea [Citation Markdown](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations)).
-- Una fuente de datos bibliográfica como, por ejemplo, un archivo BibLaTeX (`.bib`) o un archivo BibTeX (`.bibtex`).
-- Opcionalmente, un archivo CSL (`.csl`) para formatear las citas y la bibiografía.
-
-#### Archivos bibliográficos
-El archivo (o los archivos) bibliográficos que utiliza un documento, se especifican en la sección de YAML, mediante el campo `bibliography`. Por ejemplo:
-
-```
----
-title: "Felinos"
-bibliography: bibliografia/referencias.bib
----
-```
-
-En [Pandoc - Citations](https://pandoc.org/MANUAL.html#citations) puede encontrar más información sobre los formatos bibliográficos. También puede ver aquí un [ejemplo de archivo `.bib`](bibliografia/referencias.bib).
-
-#### Sintaxis de las citas
-Las citas se especifican con el prefijo `@`. Por ejemplo:
-
-```
-La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
-```
-
-Genera la siguiente salida:
-
-La familia *Felidae* tiene 36 especies [@lamberski_felidae_2015].
-
-Para más información sobre las variaciones en la sintaxis de las citas, se recomienda consultar [Citation Syntax](https://quarto.org/docs/authoring/footnotes-and-citations.html#sec-citations).
-
-#### Estilo de las citas
-Por defecto, Quarto utiliza el [Manual de estilo Chicago](https://chicagomanualofstyle.org/), pero puede usar cualquier estilo definido mediante [Citation Style Language (CSL)](https://citationstyles.org/). El archivo CSL que se utiliza debe especificarse en la sección YAML con el campo `csl`.
-
-```
----
-title: "Felinos"
-bibliography: bibliografia/referencias.bib
-csl: bibliografia/apa-6th-edition.csl
----
-```
-
-Pueden encontrarse archivos CSL ya definidos en el [repositorio central del Proyecto CSL](https://github.com/citation-style-language/styles) o en el [repositorio de estilos de Zotero](https://www.zotero.org/styles).
-
-Para más información sobre los estilos de las citas, se recomienda consultar [Citation Style](https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style).
-
-#### Generación de bibliografía
-La lista de recursos citados se genera en una división con la identificación `refs`. Por ejemplo:
-
-```
-### Referencias
-
-::: {#refs}
-:::
-```
-
-Si no encuentra esta división en el documento, Quarto generará la bibliografía al final de este.
-
-Para más detalles sobre citas bibliográficas en Quarto, se recomienda consultar [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html).
-
-## Ejemplo de documento Quarto
--   Sitio en GitHub Pages: <https://mesa-monitoreo-puntos.github.io/felinos/>
--   Código fuente: <https://github.com/mesa-monitoreo-puntos/felinos>
 
 ## Ejercicios
-1. Desarrolle en documento Quarto con un tema de su elección y publíquelo en GitHub Pages. Se recomienda seguir los siguientes pasos:
-    a. Cree un nuevo proyecto en RStudio.
-    b. Cree un documento Quarto con nombre `index.qmd` que incluya, al menos:
-        - Texto.
-        - Varios niveles de encabezados.
-        - Enlaces.
-        - Figuras y referencias a estas.
-        - Citas bibliográficas.
-    c. Genere el archivo `index.html`.
-    d. Cree un nuevo repositorio en GitHub y suba los archivos `index.qmd` e `index.html`.
-    e. Publique el repositorio como un sitio GitHub Pages.
-        
-## Recursos de interés
-- [Quarto - Figures](https://quarto.org/docs/authoring/figures.html)
-- [Quarto . Citations & Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html)
 
-## Referencias
-::: {#refs}
-:::
+1. Desarrolle un documento Quarto con datos de una familia de mamíferos de Costa Rica. Incluya:
+
+- Una tabla con registros de presencia.
+- Un gráfico con cantidades de registros por especie.
+- Un mapa de distribución.
+
+2. Publique el documento como un sitio en GitHub Pages.
