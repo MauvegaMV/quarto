@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Desarrollo de capacidades - 4&nbsp; R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-quarto.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<link href="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet">
+<script src="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="site_libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Desarrollo de capacidades</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Bienvenida</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-markdown.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Markdown</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-git.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Git</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-r.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contenidos</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen"><span class="toc-section-number">4.1</span>  Resumen</a></li>
+  <li><a href="#trabajo-previo" id="toc-trabajo-previo" class="nav-link" data-scroll-target="#trabajo-previo"><span class="toc-section-number">4.2</span>  Trabajo previo</a>
+  <ul class="collapse">
+  <li><a href="#instalación-de-software" id="toc-instalación-de-software" class="nav-link" data-scroll-target="#instalación-de-software"><span class="toc-section-number">4.2.1</span>  Instalación de software</a></li>
+  </ul></li>
+  <li><a href="#el-lenguaje-de-programación-r" id="toc-el-lenguaje-de-programación-r" class="nav-link" data-scroll-target="#el-lenguaje-de-programación-r"><span class="toc-section-number">4.3</span>  El lenguaje de programación R</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-datos-y-variables" id="toc-tipos-de-datos-y-variables" class="nav-link" data-scroll-target="#tipos-de-datos-y-variables"><span class="toc-section-number">4.3.1</span>  Tipos de datos y variables</a></li>
+  <li><a href="#funciones" id="toc-funciones" class="nav-link" data-scroll-target="#funciones"><span class="toc-section-number">4.3.2</span>  Funciones</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes"><span class="toc-section-number">4.3.3</span>  Paquetes</a></li>
+  </ul></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><span class="toc-section-number">4.4</span>  Tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link" data-scroll-target="#descripción-general"><span class="toc-section-number">4.4.1</span>  Descripción general</a></li>
+  <li><a href="#paquetes-1" id="toc-paquetes-1" class="nav-link" data-scroll-target="#paquetes-1"><span class="toc-section-number">4.4.2</span>  Paquetes</a></li>
+  <li><a href="#instalación-y-carga" id="toc-instalación-y-carga" class="nav-link" data-scroll-target="#instalación-y-carga"><span class="toc-section-number">4.4.3</span>  Instalación y carga</a></li>
+  <li><a href="#datos-tidy" id="toc-datos-tidy" class="nav-link" data-scroll-target="#datos-tidy"><span class="toc-section-number">4.4.4</span>  Datos <em>tidy</em></a></li>
+  <li><a href="#pipes" id="toc-pipes" class="nav-link" data-scroll-target="#pipes"><span class="toc-section-number">4.4.5</span>  <em>Pipes</em></a></li>
+  </ul></li>
+  <li><a href="#ejemplos-de-visualizaciones-de-datos" id="toc-ejemplos-de-visualizaciones-de-datos" class="nav-link" data-scroll-target="#ejemplos-de-visualizaciones-de-datos"><span class="toc-section-number">4.5</span>  Ejemplos de visualizaciones de datos</a>
+  <ul class="collapse">
+  <li><a href="#el-conjunto-de-datos-palmerpenguins" id="toc-el-conjunto-de-datos-palmerpenguins" class="nav-link" data-scroll-target="#el-conjunto-de-datos-palmerpenguins"><span class="toc-section-number">4.5.1</span>  El conjunto de datos palmerpenguins</a></li>
+  <li><a href="#tablas" id="toc-tablas" class="nav-link" data-scroll-target="#tablas"><span class="toc-section-number">4.5.2</span>  Tablas</a></li>
+  <li><a href="#gráficos" id="toc-gráficos" class="nav-link" data-scroll-target="#gráficos"><span class="toc-section-number">4.5.3</span>  Gráficos</a></li>
+  <li><a href="#mapas" id="toc-mapas" class="nav-link" data-scroll-target="#mapas"><span class="toc-section-number">4.5.4</span>  Mapas</a></li>
+  </ul></li>
+  <li><a href="#integración-de-código-r-en-documentos-quarto" id="toc-integración-de-código-r-en-documentos-quarto" class="nav-link" data-scroll-target="#integración-de-código-r-en-documentos-quarto"><span class="toc-section-number">4.6</span>  Integración de código R en documentos Quarto</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="toc-section-number">4.7</span>  Ejercicios</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="resumen" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="resumen"><span class="header-section-number">4.1</span> Resumen</h2>
+<p>R es un lenguaje de programación enfocado en análisis estadístico. En este capítulo, se explica la sintaxis básica del lenguaje y como bloques de código en R, y sus salidas, pueden ser incluídos en documentos Quarto.</p>
+</section>
+<section id="trabajo-previo" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="trabajo-previo"><span class="header-section-number">4.2</span> Trabajo previo</h2>
+<section id="instalación-de-software" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="instalación-de-software"><span class="header-section-number">4.2.1</span> Instalación de software</h3>
+<p>Para la edición de código en R, se recomienda instalar:</p>
+<ul>
+<li><a href="https://cloud.r-project.org/">Sistema base del lenguaje R</a></li>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a> (la versión v2022.07 y superiores son las cuales cuentan con los componentes necesarios para trabajar con Quarto)</li>
+</ul>
+<p>Si se va a trabajar con datos geoespaciales, es conveniente contar con un sistema de información geográfica de escritorio, como <a href="https://qgis.org/">QGIS</a>.</p>
+</section>
+</section>
+<section id="el-lenguaje-de-programación-r" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="el-lenguaje-de-programación-r"><span class="header-section-number">4.3</span> El lenguaje de programación R</h2>
+<p><a href="https://www.r-project.org/">R</a> es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse <a href="https://en.wikipedia.org/wiki/Data_science">ciencia de datos (<em>data science</em>)</a>, <a href="https://en.wikipedia.org/wiki/Big_data"><em>big data</em></a> y <a href="https://en.wikipedia.org/wiki/Machine_learning">aprendizaje automático (<em>machine learning</em>)</a>. Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.</p>
+<p>R es un proyecto de <a href="https://en.wikipedia.org/wiki/Free_software">software libre</a> que se comparte mediante una licencia <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public Licence (GNU GPL)</a>. Esta característica permite que la funcionalidad original de R pueda ser ampliada mediante bibliotecas o paquetes desarrollados por la comunidad de programadores.</p>
+<p>Para programar en R, puede utilizarse una interfaz de línea de comandos, editores de texto (ej. <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.vim.org/">Vim</a>) y también ambientes de desarrollo integrados (IDE, <em>integrated development environment</em>) como <a href="https://jupyter.org/">Jupyter</a> o <a href="https://rstudio.com/">RStudio</a>.</p>
+<section id="tipos-de-datos-y-variables" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="tipos-de-datos-y-variables"><span class="header-section-number">4.3.1</span> Tipos de datos y variables</h3>
+<p>R puede trabajar con varios tipos de datos como números, textos y expresiones lógicas. También con datos agrupados en estructuras similares a tablas.</p>
+<p>En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación: <code>=</code>, <code>&lt;-</code> y <code>-&gt;</code>. Por ejemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de una variable numérica con valor inicial igual a 10</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="tipos-básicos" class="level4" data-number="4.3.1.1">
+<h4 data-number="4.3.1.1" class="anchored" data-anchor-id="tipos-básicos"><span class="header-section-number">4.3.1.1</span> Tipos básicos</h4>
+<p>Los <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types">tipos de datos básicos</a> incluyen números, caracteres (i.e.&nbsp;textos), expresiones lógicas, vectores y matrices. Las siguientes sentencias crean variables de varios tipos de datos simples.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Números (pueden ser enteros o decimales)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 10</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Hileras de caracteres (se delimitan entre comillas simples o dobles)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nombre <span class="ot">&lt;-</span> <span class="st">'Manuel'</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nombre</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Manuel"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Lógicos (Verdadero o Falso, TRUE o FALSE)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">2</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] FALSE</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectores (pueden contener elementos de cualquier tipo de datos)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>dias <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Domingo'</span>, <span class="st">'Lunes'</span>, <span class="st">'Martes'</span>, <span class="st">'Miércoles'</span>, <span class="st">'Jueves'</span>, <span class="st">'Viernes'</span>, <span class="st">'Sábado'</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>dias</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Domingo"   "Lunes"     "Martes"    "Miércoles" "Jueves"    "Viernes"  </span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [7] "Sábado"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tipos-compuestos" class="level4" data-number="4.3.1.2">
+<h4 data-number="4.3.1.2" class="anchored" data-anchor-id="tipos-compuestos"><span class="header-section-number">4.3.1.2</span> Tipos compuestos</h4>
+<p>Los <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects">tipos de datos compuestos</a> se utilizan para implementar conjuntos de datos, los cuales incluyen varios tipos de datos simples. Entre los tipos de datos compuestos, se encuentran los factores y los data frames.</p>
+<section id="data-frames" class="level5" data-number="4.3.1.2.1">
+<h5 data-number="4.3.1.2.1" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4.3.1.2.1</span> Data frames</h5>
+<p>Los <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Data-frame-objects">data frames</a> son fundamentales para el análisis de datos en R. Son estructuras bidimensionales similares a tablas. Sus filas corresponden a las <a href="https://es.wikipedia.org/wiki/Observaci%C3%B3n">observaciones</a> de un conjunto de datos y sus columnas a las <a href="https://es.wikipedia.org/wiki/Variable_estad%C3%ADstica">variables</a>. Los data frames implementan un conjunto de funciones similares a las de una hoja electrónica o una tabla de una base de datos relacional.</p>
+<p>La distribución base de R incluye varios data frames de ejemplo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Información sobre todos los conjuntos de datos incorporados en la distribución base de R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Información sobre el cojunto de datos cars</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>?cars</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Despliegue de los datos de cars</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(cars)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Información sobre el cojunto de datos mtcars</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>?mtcars</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Despliegue de los datos de mtcars</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(mtcars)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Información sobre el cojunto de datos iris</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>?iris</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Despliegue de los datos de iris</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>R cuenta con una gran cantidad de funciones y operadores para manipular data frames. La notación <code>[fila, columna]</code> se utiliza para acceder a los elementos de un data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor de la fila 1 y columna 1 del conjunto de datos iris</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fila 1 y columna 4</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, <span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] setosa
+Levels: setosa versicolor virginica</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fila 2 (todas las columnas)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fila 2, columnas 3 y 4</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>iris[<span class="dv">1</span>, <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Petal.Length Petal.Width
+1          1.4         0.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columna 1 (todas las filas)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>iris[, <span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
+  [7] setosa     setosa     setosa     setosa     setosa     setosa    
+ [13] setosa     setosa     setosa     setosa     setosa     setosa    
+ [19] setosa     setosa     setosa     setosa     setosa     setosa    
+ [25] setosa     setosa     setosa     setosa     setosa     setosa    
+ [31] setosa     setosa     setosa     setosa     setosa     setosa    
+ [37] setosa     setosa     setosa     setosa     setosa     setosa    
+ [43] setosa     setosa     setosa     setosa     setosa     setosa    
+ [49] setosa     setosa     versicolor versicolor versicolor versicolor
+ [55] versicolor versicolor versicolor versicolor versicolor versicolor
+ [61] versicolor versicolor versicolor versicolor versicolor versicolor
+ [67] versicolor versicolor versicolor versicolor versicolor versicolor
+ [73] versicolor versicolor versicolor versicolor versicolor versicolor
+ [79] versicolor versicolor versicolor versicolor versicolor versicolor
+ [85] versicolor versicolor versicolor versicolor versicolor versicolor
+ [91] versicolor versicolor versicolor versicolor versicolor versicolor
+ [97] versicolor versicolor versicolor versicolor virginica  virginica 
+[103] virginica  virginica  virginica  virginica  virginica  virginica 
+[109] virginica  virginica  virginica  virginica  virginica  virginica 
+[115] virginica  virginica  virginica  virginica  virginica  virginica 
+[121] virginica  virginica  virginica  virginica  virginica  virginica 
+[127] virginica  virginica  virginica  virginica  virginica  virginica 
+[133] virginica  virginica  virginica  virginica  virginica  virginica 
+[139] virginica  virginica  virginica  virginica  virginica  virginica 
+[145] virginica  virginica  virginica  virginica  virginica  virginica 
+Levels: setosa versicolor virginica</code></pre>
+</div>
+</div>
+<p>El símbolo <code>$</code> se emplea para referirse a una columna (i.e.&nbsp;variable) de un data frame, por su nombre (y no por su índice). También facilita algunas operaciones, como filtrado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Columna Species</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] setosa     setosa     setosa     setosa     setosa     setosa    
+  [7] setosa     setosa     setosa     setosa     setosa     setosa    
+ [13] setosa     setosa     setosa     setosa     setosa     setosa    
+ [19] setosa     setosa     setosa     setosa     setosa     setosa    
+ [25] setosa     setosa     setosa     setosa     setosa     setosa    
+ [31] setosa     setosa     setosa     setosa     setosa     setosa    
+ [37] setosa     setosa     setosa     setosa     setosa     setosa    
+ [43] setosa     setosa     setosa     setosa     setosa     setosa    
+ [49] setosa     setosa     versicolor versicolor versicolor versicolor
+ [55] versicolor versicolor versicolor versicolor versicolor versicolor
+ [61] versicolor versicolor versicolor versicolor versicolor versicolor
+ [67] versicolor versicolor versicolor versicolor versicolor versicolor
+ [73] versicolor versicolor versicolor versicolor versicolor versicolor
+ [79] versicolor versicolor versicolor versicolor versicolor versicolor
+ [85] versicolor versicolor versicolor versicolor versicolor versicolor
+ [91] versicolor versicolor versicolor versicolor versicolor versicolor
+ [97] versicolor versicolor versicolor versicolor virginica  virginica 
+[103] virginica  virginica  virginica  virginica  virginica  virginica 
+[109] virginica  virginica  virginica  virginica  virginica  virginica 
+[115] virginica  virginica  virginica  virginica  virginica  virginica 
+[121] virginica  virginica  virginica  virginica  virginica  virginica 
+[127] virginica  virginica  virginica  virginica  virginica  virginica 
+[133] virginica  virginica  virginica  virginica  virginica  virginica 
+[139] virginica  virginica  virginica  virginica  virginica  virginica 
+[145] virginica  virginica  virginica  virginica  virginica  virginica 
+Levels: setosa versicolor virginica</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un subconjunto con las filas de la especie setosa</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y con longitud del sépalo mayor o igual a 5.5</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>setosa <span class="ot">&lt;-</span> iris[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">"setosa"</span> <span class="sc">&amp;</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">&gt;=</span> <span class="fl">5.5</span>, ]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>setosa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+15          5.8         4.0          1.2         0.2  setosa
+16          5.7         4.4          1.5         0.4  setosa
+19          5.7         3.8          1.7         0.3  setosa
+34          5.5         4.2          1.4         0.2  setosa
+37          5.5         3.5          1.3         0.2  setosa</code></pre>
+</div>
+</div>
+<p>La función <a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a> permite leer datos de un archivo de valores separados por comas (CSV), el cual puede estar en una ubicación local o remota, y almacenarlos como un data frame.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lectura de archivo CSV ubicado en la Web</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>especies_mamiferos_cr <span class="ot">&lt;-</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read.csv</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/especies-mamiferos-cr.csv"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Desplegue de los datos</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(especies_mamiferos_cr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejercicio</strong><br>
+- Descargue en su computadora el archivo <a href="https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv">https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv</a>, cárguelo en un data frame y despliegue sus datos.</p>
+</section>
+</section>
+</section>
+<section id="funciones" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="funciones"><span class="header-section-number">4.3.2</span> Funciones</h3>
+<p>R estructura un programa en unidades de <a href="https://en.wikipedia.org/wiki/Source_code">código fuente</a> llamadas <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Functions">funciones</a>. Cada función realiza una tarea específica como, por ejemplo, un cálculo matemático y, por lo general, retorna un valor como salida. Todas las funciones tienen un nombre y, opcionalmente, un conjunto de argumentos que especifican los datos de entrada que procesa la función. Los argumentos se escriben entre paréntesis redondos (<code>()</code>) y estos siempre deben incluirse, aún en el caso de que la función no tenga ningún argumento. Si la función tiene varios argumentos, deben separarse mediante comas (<code>,</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Impresión de una hilera de caracteres</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Hola mundo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hola mundo"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la media aritmética</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+</section>
+<section id="paquetes" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="paquetes"><span class="header-section-number">4.3.3</span> Paquetes</h3>
+<p>Las funciones de R se distribuyen en <a href="https://en.wikipedia.org/wiki/R_package">paquetes</a>. Cada paquete contiene un conjunto de funciones y estructuras de datos relacionadas entre sí. También hay paquetes que contienen datos (ej. <a href="https://cran.r-project.org/web/packages/gapminder/">gapminder</a>).</p>
+<p>Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función <a href="https://rdrr.io/r/base/library.html">library()</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete stats (para estadística)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Algunos paquetes están contenidos en la distribución base de R. Otros deben instalarse con la función <a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a>.</p>
+<p>En el siguiente bloque de código, se instala el paquete <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación del paquete palmerpenguins (note las comillas)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga del paquete palmerpenguins</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="tidyverse" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="tidyverse"><span class="header-section-number">4.4</span> Tidyverse</h2>
+<section id="descripción-general" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="descripción-general"><span class="header-section-number">4.4.1</span> Descripción general</h3>
+<p><a href="https://www.tidyverse.org/">Tidyverse</a> es una colección de paquetes de R enfocados en <a href="https://es.wikipedia.org/wiki/Ciencia_de_datos">ciencia de datos</a>, una discipina que permite convertir datos no procesados en entendimiento, comprensión y conocimiento.</p>
+<p>La <a href="#fig-modelo-ciencia-datos">Figure&nbsp;<span>4.1</span></a> ilustra el modelo de un proyecto típico de ciencia de datos, el cual incluye los procesos de importar, organizar, transformar, visualizar, modelar y comunicar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-modelo-ciencia-datos" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/modelo-ciencia-datos.png" class="img-fluid figure-img" width="258"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Modelo de ciencia de datos. Imagen de <a href="https://r4ds.had.co.nz/introduction.html">Hadley Wickham</a>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="paquetes-1" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="paquetes-1"><span class="header-section-number">4.4.2</span> Paquetes</h3>
+<p>Los paquetes de Tidyverse comparten filosofía de diseño, gramática y estructuras de datos para apoyar estos procesos del modelo de ciencia de datos. El núcleo de Tidyverse está compuesto por <a href="https://www.tidyverse.org/packages/#core-tidyverse">ocho paquetes base</a>, los cuales proveen las funcionalidades utilizadas más frecuentemente en análisis de datos:</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/">ggplot2</a>: sistema para la creación declarativa de gráficos, basado en el libro <a href="https://www.springer.com/gp/book/9780387245447"><em>The Grammar of Graphics</em>, de Wilkinson et al.</a>.</li>
+<li><a href="https://dplyr.tidyverse.org/">dplyr</a>: gramática para la manipulación de datos que proporciona un conjunto consistente de “verbos” que resulven los retos más comunes de manipulación de datos.</li>
+<li><a href="https://tidyr.tidyverse.org/">tidyr</a>: conjunto de funciones para organizar (<em>to tidy</em>) datos, colocando las observaciones, variables y valores en filas, columnas y celdas de estructuras rectangulares.</li>
+<li><a href="https://readr.tidyverse.org/">readr</a>: conjunto de funciones para cargar datos de estructuras rectangulares (ej. archivos CSV) en memoria.</li>
+<li><a href="https://purrr.tidyverse.org/">purr</a>: conjunto de herramientas de <a href="https://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional">programación funcional</a> para trabajar con funciones y vectores.</li>
+<li><a href="https://tibble.tidyverse.org/">tibble</a>: un <em>tibble</em> es una redefinición del concepto de data frame, para hacerlos más eficientes y fáciles de usar.</li>
+<li><a href="https://stringr.tidyverse.org/">stringr</a>: colección de funciones para facilitar el trabajo con hileras de caracteres.</li>
+<li><a href="https://forcats.tidyverse.org/">forcats</a>: colección de funciones para facilitar el trabajo con factores.</li>
+</ul>
+<p>Hay <a href="https://www.tidyverse.org/packages/">otros paquetes</a> para tareas más especifícas relacionadas con importación, limpieza y modelado de datos, entre otras. Los paquetes de Tidyverse son de los <a href="https://www.r-pkg.org/downloaded">más descargados</a>, entre la totalidad de paquetes del lenguaje de programación R.</p>
+</section>
+<section id="instalación-y-carga" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="instalación-y-carga"><span class="header-section-number">4.4.3</span> Instalación y carga</h3>
+<p>Los paquetes de Tidyverse pueden instalarse de manera conjunta o individualmente con la función <code>install.packages()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación conjunta</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de paquetes individuales</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Una vez instalados, los paquetes también pueden cargarse conjunta o separadamente con la función <code>library()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga conjunta</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de paquetes individuales</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datos-tidy" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="datos-tidy"><span class="header-section-number">4.4.4</span> Datos <em>tidy</em></h3>
+<p>Los paquetes de Tidyverse trabajan con <a href="https://www.jstatsoft.org/article/view/v059i10">datos <em>tidy</em></a> (i.e.&nbsp;ordenados, organizados), un concepto relacionado con la organización de los datos en estructuras rectangulares de filas y columnas, similares a las tablas o matrices.</p>
+<p>Los datos <em>tidy</em> deben cumplir con tres características:</p>
+<ol type="1">
+<li>Cada variable debe tener su propia columna.</li>
+<li>Cada observación debe tener su propia fila.</li>
+<li>Cada valor debe tener su propia celda.</li>
+</ol>
+<p>Estas características se ilustran en la <a href="#fig-datos-tidy">Figure&nbsp;<span>4.2</span></a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-datos-tidy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/datos-tidy.png" class="img-fluid figure-img" width="960"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Datos <em>tidy</em>. Imagen de <a href="https://r4ds.had.co.nz/tidy-data.html">Hadley Wickham</a>.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>El empleo de este modelo de datos es común en todos los paquetes de Tidyverse, lo que posibilita aprender y usar sus funciones con mayor facilidad. Además, permite invertir menos esfuerzo en lidiar con diferentes modelos de datos y así dedicar más tiempo y esfuerzo en los problemas de análisis a resolver.</p>
+</section>
+<section id="pipes" class="level3" data-number="4.4.5">
+<h3 data-number="4.4.5" class="anchored" data-anchor-id="pipes"><span class="header-section-number">4.4.5</span> <em>Pipes</em></h3>
+<p>Las funciones de Tidyverse pueden encadenarse a través del operador <em>pipe</em> (tubo), ya sea el del paquete magrittr <a href="https://magrittr.tidyverse.org/reference/pipe.html">(%&gt;%)</a> o el del paquete base de R <a href="https://michaelbarrowman.co.uk/post/the-new-base-pipe/">(|&gt;)</a>. Los <em>pipes</em> se utilizan para conectar procesos y así construir <em>pipelines</em> (tuberías). En este contexto, un <em>pipeline</em> consiste de una cadena de procesos conectados de forma tal que la salida de cada proceso de la cadena es la entrada del próximo. Esto permite la comunicación y sincronización entre los procesos y evita la anidación (<em>nesting</em>) de llamados a funciones.</p>
+<p>El siguiente ejemplo implementa un <em>pipeline</em> de dos funciones de Tidyverse:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cadena de "pipes" entre funciones de Tidyverse</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Gentoo"</span>) <span class="sc">|&gt;</span> <span class="co"># subconjunto de observaciones</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, bill_length_mm, flipper_length_mm) <span class="co"># subconjunto de columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="ejemplos-de-visualizaciones-de-datos" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="ejemplos-de-visualizaciones-de-datos"><span class="header-section-number">4.5</span> Ejemplos de visualizaciones de datos</h2>
+<p>Se presentan ejemplos de visualizaciones generadas con R en formato de tablas, gráficos y mapas.</p>
+<p>Se cargan los paquetes <code>dplyr</code>, para manipulación de datos, y <code>palmerpenguins</code> como conjunto de datos de ejemplo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de dplyr</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de palmerpenguins</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="el-conjunto-de-datos-palmerpenguins" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="el-conjunto-de-datos-palmerpenguins"><span class="header-section-number">4.5.1</span> El conjunto de datos palmerpenguins</h3>
+<p><a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins</a> es un <a href="https://cloud.r-project.org/web/packages/palmerpenguins/">paquete de datos de R</a> ampliamente utilizado para ejemplificar funciones de exploración y visualización, como las de Tidyverse. Contiene 344 observaciones de pingüinos de tres especies, las cuales habitan en tres islas del archipiélago Palmer, en la Antártida. Para cada individuo se registraron variables como especie, sexo, masa (peso), longitud de la aleta (<em>flipper</em>), longitud del pico (<em>bill</em>) y profundidad del pico, entre otras.</p>
+<p><code>palmerpenguins</code> puede instalarse con la función <code>install.packages()</code> y cargarse con la función <code>library()</code>.</p>
+<p>El paquete contiene dos conjuntos de datos:</p>
+<ul>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins_raw.html">penguins_raw</a>: datos sin procesar.</li>
+<li><a href="https://allisonhorst.github.io/palmerpenguins/reference/penguins.html">penguins</a>: subconjunto curado de los datos sin procesar.</li>
+</ul>
+<p><code>palmerpinguins</code> se utiliza en este capítulo para ejemplificar varias de las funcionalidades de Tidyverse.</p>
+</section>
+<section id="tablas" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="tablas"><span class="header-section-number">4.5.2</span> Tablas</h3>
+<p>Hay varios paquetes de R para hacer tablas. Uno de estos es el paquete <a href="https://rstudio.github.io/DT/">DT</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de DT</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"DT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de DT</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La siguiente tabla muestra algunas de las columnas del conjunto de datos <code>palmerpenguins</code>. Note el uso del operador <em>pipe</em> (<code>|&gt;</code>) para pasar datos entre procesos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="co"># datos</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, sex, body_mass_g) <span class="sc">|&gt;</span> <span class="co"># selección de columnas</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species, sex, body_mass_g) <span class="sc">|&gt;</span> <span class="co"># ordenamiento</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"Especie"</span>, <span class="st">"Sexo"</span>, <span class="st">"Peso"</span>),</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">pageLength =</span> <span class="dv">5</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">language =</span> <span class="fu">list</span>(<span class="at">url =</span> <span class="st">'//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json'</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames=</span> <span class="cn">FALSE</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-fdcc7a151664a805ffff" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fdcc7a151664a805ffff">{"x":{"filter":"none","vertical":false,"data":[["Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Adelie","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Chinstrap","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo","Gentoo"],["female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male",null,null,null,null,null,null,"female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","female","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male","male",null,null,null,null,null],[2850,2850,2900,2900,2900,2925,3000,3000,3050,3050,3050,3050,3075,3100,3150,3150,3150,3150,3175,3175,3200,3200,3200,3200,3250,3250,3275,3300,3300,3300,3325,3325,3325,3350,3350,3350,3400,3400,3400,3400,3425,3450,3450,3450,3450,3450,3450,3475,3500,3500,3500,3550,3550,3550,3550,3550,3600,3600,3600,3625,3700,3700,3700,3700,3700,3725,3750,3800,3800,3800,3800,3825,3900,3325,3425,3475,3500,3500,3550,3550,3550,3600,3650,3650,3700,3725,3750,3750,3750,3775,3800,3800,3800,3800,3875,3900,3900,3900,3900,3900,3900,3900,3950,3950,3950,3950,3950,3975,4000,4000,4000,4000,4050,4050,4075,4100,4100,4150,4150,4150,4200,4200,4250,4250,4250,4250,4275,4300,4300,4300,4300,4350,4400,4400,4400,4450,4450,4475,4500,4600,4600,4650,4675,4700,4725,4775,2975,3300,3475,3700,4250,null,2700,2900,3200,3250,3250,3300,3325,3350,3350,3400,3400,3400,3450,3500,3500,3525,3525,3575,3600,3600,3650,3650,3650,3675,3675,3700,3700,3700,3775,3800,3850,3900,3950,4150,3250,3300,3400,3450,3550,3600,3650,3700,3725,3750,3775,3775,3800,3800,3800,3900,3950,3950,3950,4000,4050,4050,4050,4050,4100,4100,4150,4300,4300,4400,4450,4500,4550,4800,3950,4150,4200,4200,4200,4300,4300,4350,4375,4400,4400,4400,4400,4450,4450,4500,4550,4575,4600,4600,4600,4625,4625,4650,4650,4650,4700,4700,4700,4700,4700,4725,4750,4750,4750,4750,4800,4800,4850,4850,4850,4850,4875,4875,4900,4900,4925,4950,4950,4975,5000,5000,5000,5050,5100,5150,5200,5200,4750,4925,5000,5000,5000,5050,5050,5100,5100,5150,5200,5200,5250,5250,5250,5300,5300,5300,5300,5350,5350,5350,5400,5400,5400,5400,5400,5450,5500,5500,5500,5500,5500,5550,5550,5550,5550,5550,5550,5600,5600,5650,5650,5650,5700,5700,5700,5700,5700,5750,5800,5800,5850,5850,5850,5950,5950,6000,6000,6050,6300,4100,4650,4725,4875,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Especie<\/th>\n      <th>Sexo<\/th>\n      <th>Peso<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"language":{"url":"//cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"},"columnDefs":[{"className":"dt-right","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Hay paquetes más elaborados para la generación de tablas en R (ej. <a href="https://gt.rstudio.com/">gt</a>).</p>
+<p><strong>Ejercicios</strong><br>
+- Con base en el bloque de código anterior, genere con <code>DT</code> una tabla que muestre la especie, la longitud del pico y la longitud de la aleta de cada pingüino, ordenada por longitud del pico. - Repita el ejercicio anterior, solo para los pingüinos machos. (Sugerencia: use la función <code>filter()</code> de <code>dplyr</code>).</p>
+</section>
+<section id="gráficos" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="gráficos"><span class="header-section-number">4.5.3</span> Gráficos</h3>
+<p><a href="https://ggplot2.tidyverse.org/">ggplot2</a> es un sistema para la creación declarativa de gráficos, creado por Hadley Wickham en 2005. Está basado en el libro <a href="https://www.springer.com/gp/book/9780387245447"><em>The Grammar of Graphics</em>, de Leland Wilkinson</a>, un esquema general para visualización de datos que descompone un gráfico en sus principales componentes semáticos, tales como capas y geometrías.</p>
+<p>De acuerdo con <em>The Grammar of Graphics</em>, los tres principales componentes de un gráfico son:</p>
+<ol type="1">
+<li>Datos (observaciones y variables).</li>
+<li>Conjunto de mapeos de las variables del conjunto de datos a propiedades visuales (<em>aesthetics</em>) del gráfico, tales como posición en el eje x, posición en el eje y, color, tamaño y forma, entre otras.</li>
+<li>Al menos una capa, la cual describe como graficar cada observación. Por lo general, las capas se crean con funciones de geometrías (ej. puntos, líneas, barras).</li>
+</ol>
+<p>Seguidamente, se ejemplifican varios tipos de gráficos <code>estadísticos</code> generados con la función ‘ggplot()’ del paquete <code>ggplot2</code> de Tidyverse, para el conjunto de datos <code>palmerpenguins</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de ggplot2</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de ggplot2</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="gráficos-de-dispersión-scatter-plots" class="level4" data-number="4.5.3.1">
+<h4 data-number="4.5.3.1" class="anchored" data-anchor-id="gráficos-de-dispersión-scatter-plots"><span class="header-section-number">4.5.3.1</span> Gráficos de dispersión (<em>scatter plots</em>)</h4>
+<p>Este tipo de gráficos muestra relaciones entre variables numéricas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión de longitud del pico vs masa (peso)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> <span class="co"># datos</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span> <span class="co"># mapeo de variables estéticas</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># geometría</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Longitud del pico vs. masa"</span>) <span class="sc">+</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Longitud del pico (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Especie"</span>, <span class="at">shape =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-01-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión de longitud del pico vs masa (peso) por especie</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">shape =</span> species),</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"darkorchid"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Longitud del pico vs. masa por especie"</span>) <span class="sc">+</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Longitud del pico (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Especie"</span>, <span class="at">shape =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-02-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ejercicios</strong><br>
+- Genere un gráfico de dispersión que muestre la relación entre la longitud de la aleta y el peso de todos los pingüinos del conjunto de datos. - Repita el ejercicio anterior, pero agrúpelo por sexo.</p>
+</section>
+<section id="histogramas" class="level4" data-number="4.5.3.2">
+<h4 data-number="4.5.3.2" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">4.5.3.2</span> Histogramas</h4>
+<p>Este tipo de gráficos muestra distribuciones de variables numéricas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución de la variable de masa (peso)</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución de la variable masa (peso)"</span>) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-03-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Distribución de la variable de masa (peso) por especie</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">fill =</span> species), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"darkorchid"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Distribución de la variable masa (peso) por especie"</span>) <span class="sc">+</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Masa (g)"</span>) <span class="sc">+</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"n"</span>) <span class="sc">+</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"Especie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-04-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Ejercicios</strong><br>
+- Genere un histograma que muestre la distribución de la longitud del pico para todos los pingüinos del conjunto de datos. - Repita el ejercicio anterior, pero agrúpelo por sexo.</p>
+</section>
+<section id="diagramas-de-caja" class="level4" data-number="4.5.3.3">
+<h4 data-number="4.5.3.3" class="anchored" data-anchor-id="diagramas-de-caja"><span class="header-section-number">4.5.3.3</span> Diagramas de caja</h4>
+<p>Este tipo de gráficos muestra información de una variable numérica a través de su mediana, sus cuartiles y sus valores atípicos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de caja de la variable masa (peso)</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-05-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de caja de la variable masa (peso) por especie</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> species, <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">color =</span> species), <span class="at">width =</span> <span class="fl">0.3</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Especie"</span>) <span class="sc">+</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Masa (g)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/ejemplo-palmerpenguins-06-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="mapas" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="mapas"><span class="header-section-number">4.5.4</span> Mapas</h3>
+<p>Hay varios paquetes de R para datos geoespaciales. Entre estos, están <a href="https://r-spatial.github.io/sf/">sf</a>, para manejar datos vectoriales, y <a href="https://rstudio.github.io/leaflet/">leaflet</a>, para generar mapas para la Web.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de sf</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sf"</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación de leaflet</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"leaflet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de sf</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga de leaflet</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El siguiente mapa muestra los registros de presencia en Costa Rica de la especie <em>Puma concolor</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lectura de un archivo CSV con registros de presencia</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>registros <span class="ot">&lt;-</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_read</span>(</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv"</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">options =</span> <span class="fu">c</span>(</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"X_POSSIBLE_NAMES=decimalLongitude"</span>, <span class="co"># columna de longitud decimal</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Y_POSSIBLE_NAMES=decimalLatitude"</span>   <span class="co"># columna de latitud decimal</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtro por especie</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>registros <span class="ot">&lt;-</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  registros <span class="sc">|&gt;</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Puma concolor"</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Mapa</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="co"># centro y nivel inicial de acercamiento</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">lng =</span> <span class="sc">-</span><span class="fl">84.19452</span>,</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">lat =</span> <span class="fl">9.572735</span>,</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">zoom =</span> <span class="dv">7</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>(<span class="at">group =</span> <span class="st">"OpenStreetMap"</span>) <span class="sc">|&gt;</span> <span class="co"># capa base de OSM |&gt;</span></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># capa de registros de presencia (puntos)</span></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> registros,</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">stroke =</span> F,</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">radius =</span> <span class="dv">4</span>,</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillColor =</span> <span class="st">'blue'</span>,</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">fillOpacity =</span> <span class="dv">1</span>,</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="st">"Puma concolor"</span>,</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">popup =</span> <span class="fu">paste</span>(</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Especie: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>species),</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Localidad: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>locality),</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">paste0</span>(<span class="st">"&lt;strong&gt;Fuente: &lt;/strong&gt;"</span>, registros<span class="sc">$</span>institutionCode),</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep =</span> <span class="st">'&lt;br/&gt;'</span></span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addLayersControl</span>(</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">baseGroups =</span> <span class="fu">c</span>(<span class="st">"OpenStreetMap"</span>),</span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">overlayGroups =</span> <span class="fu">c</span>(<span class="st">"Puma concolor"</span>)) <span class="sc">|&gt;</span> <span class="co"># control de capas</span></span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addScaleBar</span>(<span class="at">position =</span> <span class="st">"bottomleft"</span>, <span class="at">options =</span> <span class="fu">scaleBarOptions</span>(<span class="at">imperial =</span> <span class="cn">FALSE</span>)) <span class="sc">|&gt;</span> <span class="co"># barra de escala</span></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMiniMap</span>(<span class="at">position =</span> <span class="st">"bottomleft"</span>) <span class="co"># mapa de ubicación</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0a717d86495372621628" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-0a717d86495372621628">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[9.572735,-84.19452],7,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OpenStreetMap",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[9.4333,8.627857,8.463374,8.551713,10.294274,8.81664,10.351244,8.543367,8.458845,8.458567,9.342408,8.631942,8.619177,10.295727,10.29174,8.408661,8.632044,10.836068,10.377738,8.450145,8.450145,9.792021,8.642761,10.820738,10.301944,8.406944,8.64369,8.4068,8.40959,10.133582,8.560631,8.454176,8.48,8.545378,10.423268,10.430623,8.449956,9.52825,10.355167,8.710681,8.557283,10.329438,8.620622,8.411309,9.582887,9.868272,10.35192,8.391172,10.428271,10.431345,8.640454,8.546267,8.480352,10.988233,8.6986489],[-83.4667,-83.730026,-83.588478,-83.543663,-84.119168,-83.136722,-84.792093,-83.576614,-83.587044,-83.587722,-83.941417,-83.728829,-83.734288,-84.80044,-84.800993,-83.327498,-83.720297,-85.619334,-84.61128,-83.567897,-83.567897,-84.593712,-83.664421,-85.319701,-84.034228,-83.339722,-83.148603,-83.33003,-83.32932,-84.105661,-83.585358,-83.575916,-83.59,-83.575868,-84.02203,-84.006971,-83.495966,-83.876113,-84.673167,-83.272008,-83.628635,-84.80149,-83.731705,-83.343176,-83.769932,-85.26441,-84.670325,-83.325221,-84.005649,-84.009919,-83.731718,-83.557658,-83.589561,-85.7949264,-83.4870175],4,null,"Puma concolor",{"interactive":true,"className":"","stroke":false,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"blue","fillOpacity":1},null,null,["<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Cordillera de Talamanca, Chirripó-Massiv (Sabanna de los Leones)<br/><strong>Fuente: <\/strong>MNHM","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Barva<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Costa Rica - Corcovado NP<br/><strong>Fuente: <\/strong>","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong><br/><strong>Fuente: <\/strong>iNaturalist","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Port Parker/ Gulf of Santa Elena Port Parker<br/><strong>Fuente: <\/strong>LACM","<strong>Especie: <\/strong>Puma concolor<br/><strong>Localidad: <\/strong>Rincon Rincon de Osa<br/><strong>Fuente: <\/strong>LACM"],null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":["OpenStreetMap","Puma concolor",{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":false,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addMiniMap","args":[null,null,"bottomleft",150,150,19,19,-5,false,false,false,false,false,false,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]}],"limits":{"lat":[8.391172,10.988233],"lng":[-85.7949264,-83.136722]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="integración-de-código-r-en-documentos-quarto" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="integración-de-código-r-en-documentos-quarto"><span class="header-section-number">4.6</span> Integración de código R en documentos Quarto</h2>
+<p>En Quarto, los bloques (<em>chunks</em>) de código fuente se delimitan con tres <a href="https://en.wikipedia.org/wiki/Backtick"><em>backticks</em></a>, tanto al inicio como al final del bloque. Los bloques en R se identifican con <code>{r}</code> y se configuran con diferentes opciones que inician con <code>#|</code>. Los bloques de otros lenguajes de programación se identifican con <code>{python}</code> y <code>{julia}</code>, por ejemplo.</p>
+<p>El siguiente es un bloque de código en R y su salida.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graficacion-cars</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> cars<span class="sc">$</span>speed,</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> cars<span class="sc">$</span>dist,</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Velocidad vs distancia de frenado"</span>,</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Velocidad (mph)"</span>,</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Distancia (pies)"</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="04-r_files/figure-html/graficacion-cars-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>La opción <code>label</code> se utiliza para etiquetar el bloque. La de <code>include</code> para especificar si se desea que el bloque y sus resultados se incluyan en el documento de salida. Por su parte, <code>echo</code> indica si el código fuente debe desplegarse o no.</p>
+</section>
+<section id="ejercicios" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">4.7</span> Ejercicios</h2>
+<ol type="1">
+<li>Desarrolle un documento Quarto con datos de una familia de mamíferos de Costa Rica. Incluya:</li>
+</ol>
+<ul>
+<li>Una tabla con registros de presencia.</li>
+<li>Un gráfico con cantidades de registros por especie.</li>
+<li>Un mapa de distribución.</li>
+</ul>
+<ol start="2" type="1">
+<li>Publique el documento como un sitio en GitHub Pages.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03-quarto.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

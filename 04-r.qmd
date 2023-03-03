@@ -19,7 +19,6 @@ Para la edición de código en R, se recomienda instalar:
 
 Si se va a trabajar con datos geoespaciales, es conveniente contar con un sistema de información geográfica de escritorio, como [QGIS](https://qgis.org/).
 
-
 ## El lenguaje de programación R
 [R](https://www.r-project.org/) es un lenguaje de programación enfocado en análisis estadístico. Es ampliamente utilizado en diversas áreas de investigación, entre las que pueden mencionarse [ciencia de datos (*data science*)](https://en.wikipedia.org/wiki/Data_science), [*big data*](https://en.wikipedia.org/wiki/Big_data) y [aprendizaje automático (*machine learning*)](https://en.wikipedia.org/wiki/Machine_learning). Fue creado por Ross Ihaka y Robert Gentleman en la Universidad de Auckland, Nueva Zelanda, en 1993.
 
@@ -28,12 +27,23 @@ R es un proyecto de [software libre](https://en.wikipedia.org/wiki/Free_software
 Para programar en R, puede utilizarse una interfaz de línea de comandos, editores de texto (ej. [Visual Studio Code](https://code.visualstudio.com/), [Vim](https://www.vim.org/)) y también ambientes de desarrollo integrados (IDE, *integrated development environment*) como [Jupyter](https://jupyter.org/) o [RStudio](https://rstudio.com/).
 
 ### Tipos de datos y variables
-R puede trabajar con varios [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types), entre los que están números, caracteres (i.e. textos), lógicos, vectores y matrices. También puede trabajar con [tipos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects), como factores y data frames.
+R puede trabajar con varios tipos de datos como números, textos y expresiones lógicas. También con datos agrupados en estructuras similares a tablas.
 
-En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación. Estos son `=` y `<-` (o `->`). Por ejemplo, las siguientes sentencias crean variables de varios tipos de datos simples.
+En la memoria de una computadora, los datos se almacenan en variables. Una variable puede considerarse como una etiqueta que se le asigna a un dato. Hay muchas formas de crear variables en R. Una de las más sencillas es con los operadores de asignación: `=`, `<-` y `->`. Por ejemplo:
 
 ```{r}
 #| label: code-asignacion
+#| collapse: true
+
+# Creación de una variable numérica con valor inicial igual a 10
+x <- 10
+```
+
+#### Tipos básicos
+Los [tipos de datos básicos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Basic-types) incluyen números, caracteres (i.e. textos), expresiones lógicas, vectores y matrices. Las siguientes sentencias crean variables de varios tipos de datos simples.
+
+```{r}
+#| label: code-asignacion-simples
 #| collapse: true
 
 # Números (pueden ser enteros o decimales)
@@ -53,9 +63,13 @@ dias <- c('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sáb
 dias
 ```
 
-Un tipo de datos fundamental para el análisis de datos en R, es el [data frame](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Data-frame-objects). Es una estructura bidimensional similar a lo que comúnmente se conoce como una tabla. Sus filas corresponden a las [observaciones](https://es.wikipedia.org/wiki/Observaci%C3%B3n) de un conjunto de datos y sus columnas a las [variables](https://es.wikipedia.org/wiki/Variable_estad%C3%ADstica). Los data frames implementan un conjunto de funciones similares a las de una hoja electrónica o una tabla de una base de datos relacional.
+#### Tipos compuestos
+Los [tipos de datos compuestos](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Special-compound-objects) se utilizan para implementar conjuntos de datos, los cuales incluyen varios tipos de datos simples. Entre los tipos de datos compuestos, se encuentran los factores y los data frames.
 
-R cuenta con una gran cantidad de funciones para manejar data frames y también con varios conjuntos de datos, implementados como data frames, los cuales se instalan con la distribución base de R.
+##### Data frames
+Los [data frames](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Data-frame-objects) son fundamentales para el análisis de datos en R. Son estructuras bidimensionales similares a tablas. Sus filas corresponden a las [observaciones](https://es.wikipedia.org/wiki/Observaci%C3%B3n) de un conjunto de datos y sus columnas a las [variables](https://es.wikipedia.org/wiki/Variable_estad%C3%ADstica). Los data frames implementan un conjunto de funciones similares a las de una hoja electrónica o una tabla de una base de datos relacional.
+
+La distribución base de R incluye varios data frames de ejemplo.
 
 ```{r}
 #| label: code-data
@@ -80,7 +94,44 @@ View(mtcars)
 View(iris)
 ```
 
-La función [read.csv()](https://rdrr.io/r/utils/read.table.html) permite leer datos de un archivo de valores separados por comas (CSV), el cual puede estar en una ubicación local o remota.
+R cuenta con una gran cantidad de funciones y operadores para manipular data frames. La notación `[fila, columna]` se utiliza para acceder a los elementos de un data frame.
+
+```{r}
+#| label: dataframes
+#| collapse: false
+
+# Valor de la fila 1 y columna 1 del conjunto de datos iris
+iris[1, 1]
+
+# Fila 1 y columna 4
+iris[1, 5]
+
+# Fila 2 (todas las columnas)
+iris[1, ]
+
+# Fila 2, columnas 3 y 4
+iris[1, c(3, 4)]
+
+# Columna 1 (todas las filas)
+iris[, 5]
+```
+
+El símbolo `$` se emplea para referirse a una columna (i.e. variable) de un data frame, por su nombre (y no por su índice). También facilita algunas operaciones, como filtrado.
+
+```{r}
+#| label: dataframes-dollar
+#| collapse: false
+
+# Columna Species
+iris$Species
+
+# Creación de un subconjunto con las filas de la especie setosa
+# y con longitud del sépalo mayor o igual a 5.5
+setosa <- iris[iris$Species == "setosa" & iris$Sepal.Length >= 5.5, ]
+setosa
+```
+
+La función [read.csv()](https://rdrr.io/r/utils/read.table.html) permite leer datos de un archivo de valores separados por comas (CSV), el cual puede estar en una ubicación local o remota, y almacenarlos como un data frame.
 
 ```{r}
 #| label: code-readcsv
@@ -98,7 +149,6 @@ View(especies_mamiferos_cr)
 ```
 
 **Ejercicio**  
-
 - Descargue en su computadora el archivo [https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv](https://raw.githubusercontent.com/mesa-monitoreo-puntos/capacitacion/main/datos/registros-mamiferos-cr.csv), cárguelo en un data frame y despliegue sus datos.
 
 ### Funciones
@@ -116,20 +166,20 @@ mean(c(2, 4, 5, 9))
 ```
 
 ### Paquetes
-Las funciones de R se distribuyen en [paquetes](https://en.wikipedia.org/wiki/R_package). Cada paquete contiene un conjunto de funciones y estructuras de datos relacionadas entre sí. También hay paquetes que contienen datos.
+Las funciones de R se distribuyen en [paquetes](https://en.wikipedia.org/wiki/R_package). Cada paquete contiene un conjunto de funciones y estructuras de datos relacionadas entre sí. También hay paquetes que contienen datos (ej. [gapminder](https://cran.r-project.org/web/packages/gapminder/)).
 
 Para utilizar un paquete, primero debe cargarse (en la memoria del computador) con la función [library()](https://rdrr.io/r/base/library.html).
 
 ```{r}
 #| label: code-library
 
-# Carga del paquete stats
+# Carga del paquete stats (para estadística)
 library(stats)
 ```
 
 Algunos paquetes están contenidos en la distribución base de R. Otros deben instalarse con la función [install.packages()](https://rdrr.io/r/utils/install.packages.html).
 
-En el siguiente ejemplo, se instala el paquete [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/).
+En el siguiente bloque de código, se instala el paquete [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/).
 
 ```{r}
 #| label: code-install.packages
@@ -142,10 +192,10 @@ install.packages("palmerpenguins")
 library(palmerpenguins)
 ```
 
-### Tidyverse
+## Tidyverse
 
-#### Descripción general
-[Tidyverse](https://www.tidyverse.org/) es una colección de paquetes de R enfocados en ciencia de datos, una discipina que permite convertir datos no procesados en entendimiento, comprensión y conocimiento.
+### Descripción general
+[Tidyverse](https://www.tidyverse.org/) es una colección de paquetes de R enfocados en [ciencia de datos](https://es.wikipedia.org/wiki/Ciencia_de_datos), una discipina que permite convertir datos no procesados en entendimiento, comprensión y conocimiento.
 
 La @fig-modelo-ciencia-datos ilustra el modelo de un proyecto típico de ciencia de datos, el cual incluye los procesos de importar, organizar, transformar, visualizar, modelar y comunicar.
 
@@ -157,10 +207,8 @@ La @fig-modelo-ciencia-datos ilustra el modelo de un proyecto típico de ciencia
 knitr::include_graphics(rep("img/modelo-ciencia-datos.png"))
 ```
 
-Los paquetes de Tidyverse comparten filosofía de diseño, gramática y estructuras de datos para apoyar estos procesos del modelo de ciencia de datos.
-
-#### Paquetes
-El núcleo de Tidyverse está compuesto por [ocho paquetes base](https://www.tidyverse.org/packages/#core-tidyverse), los cuales proveen las funcionalidades utilizadas más frecuentemente en análisis de datos:
+### Paquetes
+Los paquetes de Tidyverse comparten filosofía de diseño, gramática y estructuras de datos para apoyar estos procesos del modelo de ciencia de datos. El núcleo de Tidyverse está compuesto por [ocho paquetes base](https://www.tidyverse.org/packages/#core-tidyverse), los cuales proveen las funcionalidades utilizadas más frecuentemente en análisis de datos:
 
 - [ggplot2](https://ggplot2.tidyverse.org/): sistema para la creación declarativa de gráficos, basado en el libro [*The Grammar of Graphics*, de Wilkinson et al.](https://www.springer.com/gp/book/9780387245447).
 - [dplyr](https://dplyr.tidyverse.org/): gramática para la manipulación de datos que proporciona un conjunto consistente de "verbos" que resulven los retos más comunes de manipulación de datos.
@@ -173,7 +221,7 @@ El núcleo de Tidyverse está compuesto por [ocho paquetes base](https://www.tid
 
 Hay [otros paquetes](https://www.tidyverse.org/packages/) para tareas más especifícas relacionadas con importación, limpieza y modelado de datos, entre otras. Los paquetes de Tidyverse son de los [más descargados](https://www.r-pkg.org/downloaded), entre la totalidad de paquetes del lenguaje de programación R.
 
-#### Instalación y carga
+### Instalación y carga
 Los paquetes de Tidyverse pueden instalarse de manera conjunta o individualmente con la función `install.packages()`:
 
 ```{r}
@@ -202,17 +250,41 @@ library(ggplot2)
 library(dplyr)
 ```
 
-### El conjunto de datos palmerpenguins
-[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) es un [paquete de datos de R](https://cloud.r-project.org/web/packages/palmerpenguins/) ampliamente utilizado para ejemplificar funciones de exploración y visualización, como las de Tidyverse. Contiene 344 observaciones de pingüinos de tres especies, las cuales habitan en tres islas del archipiélago Palmer, en la Antártida. Para cada individuo se registraron variables como especie, sexo, masa (peso), longitud de la aleta (*flipper*), longitud del pico (*bill*) y profundidad del pico, entre otras.
+### Datos *tidy*
+Los paquetes de Tidyverse trabajan con [datos *tidy*](https://www.jstatsoft.org/article/view/v059i10) (i.e. ordenados, organizados), un concepto relacionado con la organización de los datos en estructuras rectangulares de filas y columnas, similares a las tablas o matrices.
 
-`palmerpenguins` puede instalarse con la función `install.packages()` y cargarse con la función `library()`.
+Los datos *tidy* deben cumplir con tres características:
 
-El paquete contiene dos conjuntos de datos:
+1.  Cada variable debe tener su propia columna.
+2.  Cada observación debe tener su propia fila.
+3.  Cada valor debe tener su propia celda.
 
--   [penguins_raw](https://allisonhorst.github.io/palmerpenguins/reference/penguins_raw.html): datos sin procesar.
--   [penguins](https://allisonhorst.github.io/palmerpenguins/reference/penguins.html): subconjunto curado de los datos sin procesar.
+Estas características se ilustran en la @fig-datos-tidy.
 
-`palmerpinguins` se utiliza en este capítulo para ejemplificar varias de las funcionalidades de Tidyverse.
+```{r}
+#| label: fig-datos-tidy
+#| fig.cap: Datos *tidy*. Imagen de [Hadley Wickham](https://r4ds.had.co.nz/tidy-data.html).
+#| echo: false
+
+knitr::include_graphics(rep("img/datos-tidy.png"))
+```
+
+El empleo de este modelo de datos es común en todos los paquetes de Tidyverse, lo que posibilita aprender y usar sus funciones con mayor facilidad. Además, permite invertir menos esfuerzo en lidiar con diferentes modelos de datos y así dedicar más tiempo y esfuerzo en los problemas de análisis a resolver.
+
+### *Pipes*
+Las funciones de Tidyverse pueden encadenarse a través del operador *pipe* (tubo), ya sea el del paquete magrittr [(%\>%)](https://magrittr.tidyverse.org/reference/pipe.html) o el del paquete base de R [(\|\>)](https://michaelbarrowman.co.uk/post/the-new-base-pipe/). Los *pipes* se utilizan para conectar procesos y así construir *pipelines* (tuberías). En este contexto, un *pipeline* consiste de una cadena de procesos conectados de forma tal que la salida de cada proceso de la cadena es la entrada del próximo. Esto permite la comunicación y sincronización entre los procesos y evita la anidación (*nesting*) de llamados a funciones.
+
+El siguiente ejemplo implementa un *pipeline* de dos funciones de Tidyverse:
+
+```{r}
+#| label: ejemplo-pipes
+#| eval: false
+
+# Cadena de "pipes" entre funciones de Tidyverse
+penguins |>
+  dplyr::filter(species == "Gentoo") |> # subconjunto de observaciones
+  select(species, bill_length_mm, flipper_length_mm) # subconjunto de columnas
+```
 
 ## Ejemplos de visualizaciones de datos
 Se presentan ejemplos de visualizaciones generadas con R en formato de tablas, gráficos y mapas.
@@ -230,6 +302,17 @@ library(dplyr)
 library(palmerpenguins)
 ```
 
+### El conjunto de datos palmerpenguins
+[palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) es un [paquete de datos de R](https://cloud.r-project.org/web/packages/palmerpenguins/) ampliamente utilizado para ejemplificar funciones de exploración y visualización, como las de Tidyverse. Contiene 344 observaciones de pingüinos de tres especies, las cuales habitan en tres islas del archipiélago Palmer, en la Antártida. Para cada individuo se registraron variables como especie, sexo, masa (peso), longitud de la aleta (*flipper*), longitud del pico (*bill*) y profundidad del pico, entre otras.
+
+`palmerpenguins` puede instalarse con la función `install.packages()` y cargarse con la función `library()`.
+
+El paquete contiene dos conjuntos de datos:
+
+-   [penguins_raw](https://allisonhorst.github.io/palmerpenguins/reference/penguins_raw.html): datos sin procesar.
+-   [penguins](https://allisonhorst.github.io/palmerpenguins/reference/penguins.html): subconjunto curado de los datos sin procesar.
+
+`palmerpinguins` se utiliza en este capítulo para ejemplificar varias de las funcionalidades de Tidyverse.
 
 ### Tablas
 Hay varios paquetes de R para hacer tablas. Uno de estos es el paquete [DT](https://rstudio.github.io/DT/).
@@ -268,13 +351,22 @@ penguins |> # datos
   )
 ```
 
-**Ejercicios**  
+Hay paquetes más elaborados para la generación de tablas en R (ej. [gt](https://gt.rstudio.com/)).
 
-- Con base en el bloque de código anterior, genere una tabla que muestre la especie, la longitud del pico y la longitud de la aleta de cada pingüino, ordenada por longitud del pico.
+**Ejercicios**  
+- Con base en el bloque de código anterior, genere con `DT` una tabla que muestre la especie, la longitud del pico y la longitud de la aleta de cada pingüino, ordenada por longitud del pico.
 - Repita el ejercicio anterior, solo para los pingüinos machos. (Sugerencia: use la función `filter()` de `dplyr`).
 
 ### Gráficos
-Se ejemplifican varios tipos de gráficos `estadísticos` generados con la función 'ggplot()' del paquete `ggplot2` de Tidyverse, para el conjunto de datos `palmerpenguins`.
+[ggplot2](https://ggplot2.tidyverse.org/) es un sistema para la creación declarativa de gráficos, creado por Hadley Wickham en 2005. Está basado en el libro [*The Grammar of Graphics*, de Leland Wilkinson](https://www.springer.com/gp/book/9780387245447), un esquema general para visualización de datos que descompone un gráfico en sus principales componentes semáticos, tales como capas y geometrías.
+
+De acuerdo con *The Grammar of Graphics*, los tres principales componentes de un gráfico son:
+
+1.  Datos (observaciones y variables).
+2.  Conjunto de mapeos de las variables del conjunto de datos a propiedades visuales (*aesthetics*) del gráfico, tales como posición en el eje x, posición en el eje y, color, tamaño y forma, entre otras.
+3.  Al menos una capa, la cual describe como graficar cada observación. Por lo general, las capas se crean con funciones de geometrías (ej. puntos, líneas, barras).
+
+Seguidamente, se ejemplifican varios tipos de gráficos `estadísticos` generados con la función 'ggplot()' del paquete `ggplot2` de Tidyverse, para el conjunto de datos `palmerpenguins`.
 
 ```{r}
 #| label: instalacion-ggplot2
@@ -329,7 +421,6 @@ penguins |>
 ```
 
 **Ejercicios**  
-
 - Genere un gráfico de dispersión que muestre la relación entre la longitud de la aleta y el peso de todos los pingüinos del conjunto de datos.
 - Repita el ejercicio anterior, pero agrúpelo por sexo.
 
@@ -367,7 +458,6 @@ penguins |>
 ```
 
 **Ejercicios**  
-
 - Genere un histograma que muestre la distribución de la longitud del pico para todos los pingüinos del conjunto de datos.
 - Repita el ejercicio anterior, pero agrúpelo por sexo.
 
@@ -512,7 +602,6 @@ La opción `label` se utiliza para etiquetar el bloque. La de `include` para esp
 
 
 ## Ejercicios
-
 1. Desarrolle un documento Quarto con datos de una familia de mamíferos de Costa Rica. Incluya:
 
 - Una tabla con registros de presencia.
